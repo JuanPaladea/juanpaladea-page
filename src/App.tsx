@@ -1,9 +1,11 @@
+import HeroComponent from './components/HeroComponent'
+import ProjectsComponent from './components/ProjectsComponent'
+
 function App() {
   return (
     <div>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
+      <HeroComponent />
+      <ProjectsComponent />
     </div>
   )
 }
