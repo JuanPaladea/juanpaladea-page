@@ -11,22 +11,25 @@ const HeroComponent = () => {
         </div>
         <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
           <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">
-            Before they sold out RIGHT
-            <br className="hidden lg:inline-block" />
-            readymade gluten
+            Juan Paladea
           </h1>
+          <h2 className="title-font sm:text-3xl text-2xl mb-4 font-medium text-white">
+            Backend Software Developer
+          </h2>
           <p className="mb-8 leading-relaxed">
-            Copper mug try-hard pitchfork pour-over freegan heirloom neutra air
-            plant cold-pressed tacos poke beard tote bag. Heirloom echo park
-            mlkshk tote bag selvage hot chicken authentic tumeric truffaut
-            hexagon try-hard chambray.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas ullam consequuntur rem non explicabo cupiditate fugit repudiandae, vel corporis doloremque laudantium, obcaecati voluptate fugiat quam nobis accusamus, eaque neque quis!
           </p>
           <div className="flex justify-center">
             <button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">
-              Button
+              Projects
             </button>
-            <button className="ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg">
-              Button
+            <button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 mx-2 focus:outline-none hover:bg-blue-600 rounded text-lg">
+              CV  
+            </button>
+          </div>
+          <div className="flex justify-center">
+            <button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg my-4">
+              Contact Me
             </button>
           </div>
         </div>
