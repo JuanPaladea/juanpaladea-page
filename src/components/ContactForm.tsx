@@ -12,8 +12,8 @@ const ContactForm = () => {
             marginHeight={0}
             marginWidth={0}
             scrolling="no"
-            src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=%C4%B0zmir+(My%20Business%20Name)&ie=UTF8&t=&z=14&iwloc=B&output=embed"
-            style={{ filter: "grayscale(1) contrast(1.2) opacity(0.16)" }}
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d210146.75955271677!2d-58.5981081473618!3d-34.61571293339003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca3b4ef90cbd%3A0xa0b3812e88e88e87!2sBuenos%20Aires!5e0!3m2!1sen!2sar!4v1730223674778!5m2!1sen!2sar"
+            style={{ filter: "grayscale(1) contrast(1.2) opacity(0.5)" }}
           ></iframe>
           <div className="bg-gray-900 relative flex flex-wrap py-6 rounded shadow-md">
             <div className="lg:w-1/2 px-6">
