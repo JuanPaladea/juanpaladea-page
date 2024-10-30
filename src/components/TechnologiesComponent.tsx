@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 const TechnologiesComponent = () => {
   const languages = {
     html: {
@@ -62,8 +64,12 @@ const TechnologiesComponent = () => {
 
   return (
     <>
-      <section className="text-gray-400 bg-gray-900 body-font">
-        <div className="container px-5 py-12 mx-auto">
+      <section className="text-gray-400 bg-gray-900 body-font" id="skills">
+        <motion.div 
+        initial={{ opacity : 0 }}
+        whileInView={{ opacity : 1 }}
+        transition={{ duration: 1 }}
+        className="container px-5 py-12 mx-auto">
           <h1 className="sm:w-2/5 text-white font-medium title-font text-xl mb-2">
             Languages
           </h1>
@@ -85,11 +91,15 @@ const TechnologiesComponent = () => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="container px-5 py-12 mx-auto">
+        <motion.div 
+        initial={{ opacity : 0 }}
+        whileInView={{ opacity : 1 }}
+        transition={{ duration: 1 }}
+        className="container px-5 py-12 mx-auto">
           <h1 className="sm:w-2/5 text-white font-medium title-font text-xl mb-2">
-            FrameWorks
+            Frameworks
           </h1>
           <div className="flex flex-wrap -m-2">
             {Object.values(frameWorks).map((framework) => (
@@ -109,9 +119,13 @@ const TechnologiesComponent = () => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="container px-5 py-12 mx-auto">
+        <motion.div 
+        initial={{ opacity : 0 }}
+        whileInView={{ opacity : 1 }}
+        transition={{ duration: 1 }}
+        className="container px-5 py-12 mx-auto">
           <h1 className="sm:w-2/5 text-white font-medium title-font text-xl mb-2">
             Databases
           </h1>
@@ -133,7 +147,7 @@ const TechnologiesComponent = () => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
         
       </section>
     </>

@@ -9,7 +9,7 @@
   --code-line-height: 1.4;
   --scroll-bar-color: #009cde;
   --scroll-bar-bg-color: #f6f6f6;
-}
+  background-color: rgb(17 24 39);}
 
 pre {
   color: var(--code-color);

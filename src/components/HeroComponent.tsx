@@ -1,6 +1,12 @@
+import { motion } from "framer-motion";
+
 const HeroComponent = () => {
   return (
-    <div className="text-gray-400 bg-gray-900 body-font">
+    <motion.div 
+    initial={{ opacity : 0 }}
+    whileInView={{ opacity : 1 }}
+    transition={{ duration: 1 }}
+    className="text-gray-400 bg-gray-900 body-font">
       <div className="container mx-auto flex px-5 py-12 md:flex-row flex-col items-center">
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 md:mb-0 mb-10">
           <img
@@ -29,7 +35,7 @@ const HeroComponent = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

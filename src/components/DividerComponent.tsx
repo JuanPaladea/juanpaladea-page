@@ -1,5 +1,5 @@
 import React from "react";
-
+import { motion } from "framer-motion";
 interface DividerProps {
   title: string;
   subtitle?: string;
@@ -8,7 +8,11 @@ interface DividerProps {
 const DividerComponent: React.FC<DividerProps> = ({ title, subtitle }) => {
   return (
     <>
-      <section className="text-gray-400 bg-gray-900 body-font ">
+      <motion.section 
+      initial={{ opacity : 0 }}
+      whileInView={{ opacity : 1 }}
+      transition={{ duration: 1 }}
+      className="text-gray-400 bg-gray-900 body-font ">
         <div className="container px-5 pt-10 mx-auto">
           <div className="flex flex-col">
             <div className="h-1 bg-gray-800 rounded overflow-hidden">
@@ -24,7 +28,7 @@ const DividerComponent: React.FC<DividerProps> = ({ title, subtitle }) => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 };

@@ -7,6 +7,7 @@ import DividerComponent from './components/DividerComponent'
 import ContactForm from './components/ContactForm'
 import NetworkComponent from './components/NetworkComponent'
 import AboutMeComponent from './components/AboutMeComponent'
+import CertificationsComponent from './components/CertificationsComponent'
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
       <AboutMeComponent />
       <DividerComponent title="Skills" subtitle="Different types of techonologies i developed with in my projects"/>
       <TechnologiesComponent />
+      <DividerComponent title="Certifications"/>
+      <CertificationsComponent />
       <DividerComponent title="Projects"/>
       <ProjectsComponent />
       <DividerComponent title="Contact"/>

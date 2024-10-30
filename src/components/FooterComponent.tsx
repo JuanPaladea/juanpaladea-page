@@ -1,7 +1,13 @@
+import { motion } from "framer-motion";
+
 const FooterComponent = () => {
   return (
     <>
-      <footer className="text-gray-400 bg-gray-900 body-font">
+      <motion.footer 
+      initial={{ opacity : 0 }}
+      whileInView={{ opacity : 1 }}
+      transition={{ duration: 1 }}
+      className="text-gray-400 bg-gray-900 body-font">
         <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
           <a className="flex title-font font-medium items-center md:justify-start justify-center text-white">
             <span className="ml-3 text-xl">Juan Paladea</span>
@@ -37,7 +43,7 @@ const FooterComponent = () => {
             </a>
           </span>
         </div>
-      </footer>
+      </motion.footer>
     </>
   );
 };

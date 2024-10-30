@@ -1,6 +1,12 @@
+import { motion } from "framer-motion";
+
 const AboutMeComponent = () => {
   return (
-    <section className="text-gray-400 bg-gray-900 body-font">
+    <motion.section 
+    initial={{ opacity : 0 }}
+    whileInView={{ opacity : 1 }}
+    transition={{ duration: 1 }}
+    className="text-gray-400 bg-gray-900 body-font">
       <div className="container px-5 py-24 mx-auto">
         <div className="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center">
           <svg
@@ -24,7 +30,7 @@ const AboutMeComponent = () => {
           </p>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
