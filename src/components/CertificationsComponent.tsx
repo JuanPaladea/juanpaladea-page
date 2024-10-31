@@ -15,10 +15,10 @@ const CertificationsComponent = () => {
                 <img
                   alt="team"
                   className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4 transition-transform duration-500 transform group-hover:rotate-y-180"
-                  src="https://dummyimage.com/200x200"
+                  src="https://i.imgur.com/MVDZGP8.png"
                 />
                 <div className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="h-full flex items-center p-4 rounded-lg">
+                  <a href="https://cert.efset.org/tcPa8L" target="_blank" className="h-full flex items-center p-4 rounded-lg">
                     <svg
                       viewBox="0 0 16 16"
                       fill="none"
@@ -47,17 +47,16 @@ const CertificationsComponent = () => {
                         ></path>{" "}
                       </g>
                     </svg>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div className="w-full">
                 <h2 className="title-font font-medium text-lg text-white">
-                  Computer Science - CS50X
+                  EF Standard English Test 
                 </h2>
-                <h3 className="text-gray-500 mb-3">Harvard University</h3>
+                <h3 className="text-gray-500 mb-3">EFSET</h3>
                 <p className="mb-4">
-                  DIY tote bag drinking vinegar cronut adaptogen squid fanny
-                  pack vaporware.
+                  The EF SET (www.efset.org) is a suite of online certifying language exams for students and professionals.
                 </p>
               </div>
             </div>
@@ -69,10 +68,10 @@ const CertificationsComponent = () => {
                 <img
                   alt="team"
                   className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4 transition-transform duration-500 transform group-hover:rotate-y-180"
-                  src="https://dummyimage.com/200x200"
+                  src="https://i.imgur.com/rnKdMbS.png"
                 />
                 <div className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="h-full flex items-center p-4 rounded-lg">
+                  <a href="https://certificates.cs50.io/31f7f89e-7a94-4c88-9509-44d216119600.pdf" target="_blank" className="h-full flex items-center p-4 rounded-lg">
                     <svg
                       viewBox="0 0 16 16"
                       fill="none"
@@ -101,7 +100,7 @@ const CertificationsComponent = () => {
                         ></path>{" "}
                       </g>
                     </svg>
-                  </div>
+                  </a>
                 </div>
               </div>
               <div className="w-full">
@@ -110,8 +109,7 @@ const CertificationsComponent = () => {
                 </h2>
                 <h3 className="text-gray-500 mb-3">Harvard University</h3>
                 <p className="mb-4">
-                  DIY tote bag drinking vinegar cronut adaptogen squid fanny
-                  pack vaporware.
+                  CS50, Harvard University’s introduction to the intellectual enterprises of computer science and the art of programming
                 </p>
               </div>
             </div>

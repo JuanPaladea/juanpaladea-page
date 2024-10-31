@@ -4,61 +4,65 @@ const TechnologiesComponent = () => {
   const languages = {
     html: {
       name: "HTML",
-      icon: "https://dummyimage.com/80x80",
+      icon: "https://www.svgrepo.com/show/452228/html-5.svg",
     },
     css: {
       name: "CSS",
-      icon: "https://dummyimage.com/84x84",
+      icon: "https://www.svgrepo.com/show/452185/css-3.svg",
     },
     js: {
       name: "JavaScript",
-      icon: "https://dummyimage.com/88x88",
+      icon: "https://www.svgrepo.com/show/353925/javascript.svg",
     },
     ts: {
       name: "TypeScript",
-      icon: "https://dummyimage.com/88x88",
+      icon: "https://www.svgrepo.com/show/354478/typescript-icon.svg",
     },
     python: {
       name: "Python",
-      icon: "https://dummyimage.com/88x88",
+      icon: "https://www.svgrepo.com/show/452091/python.svg",
     },
-    c: {
-      name: "C",
-      icon: "https://dummyimage.com/88x88",
+    sql: {
+      name: "SQL",
+      icon: "https://www.svgrepo.com/show/374093/sql.svg",
     },
   }
   
   const frameWorks = {
     node: {
-      name: "Node",
-      icon: "https://dummyimage.com/88x88",
+      name: "NodeJS",
+      icon: "https://www.svgrepo.com/show/378837/node.svg",
     },
     express: {
       name: "Express",
-      icon: "https://dummyimage.com/88x88",
+      icon: "https://www.svgrepo.com/show/376367/express.svg",
     },
     flask: {
       name: "Flask",
-      icon: "https://dummyimage.com/88x88",
+      icon: "https://www.svgrepo.com/show/508915/flask.svg",
     },
     reactVite: {
       name: "React Vite",
-      icon: "https://dummyimage.com/88x88",
+      icon: "https://www.svgrepo.com/show/374167/vite.svg",
     },
   }
 
   const dataBases = {
     mongo: {
       name: "MongoDB",
-      icon: "https://dummyimage.com/88x88",
+      icon: "https://www.svgrepo.com/show/331488/mongodb.svg",
     },
     sql: {
-      name: "SQL",
-      icon: "https://dummyimage.com/88x88",
+      name: "MySQL",
+      icon: "https://www.svgrepo.com/show/355133/mysql.svg",
+    },
+    Postgresql: {
+      name: "PostgreSQL",
+      icon: "https://www.svgrepo.com/show/354200/postgresql.svg",
     },
     firebase: {
       name: "Firebase",
-      icon: "https://dummyimage.com/88x88",
+      icon: "https://www.svgrepo.com/show/373595/firebase.svg",
     },
   }
 
@@ -79,7 +83,7 @@ const TechnologiesComponent = () => {
                 <div className="h-full flex items-center border-gray-800 border p-4 rounded-lg">
                   <img
                     alt="team"
-                    className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                    className="w-16 h-16 object-cover object-center flex-shrink-0 mr-4"
                     src={language.icon}
                   />
                   <div className="flex-grow">
@@ -107,7 +111,7 @@ const TechnologiesComponent = () => {
                 <div className="h-full flex items-center border-gray-800 border p-4 rounded-lg">
                   <img
                     alt="team"
-                    className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                    className="w-16 h-16 object-cover object-center flex-shrink-0 rounded-full mr-4"
                     src={framework.icon}
                   />
                   <div className="flex-grow">
@@ -135,7 +139,7 @@ const TechnologiesComponent = () => {
                 <div className="h-full flex items-center border-gray-800 border p-4 rounded-lg">
                   <img
                     alt="team"
-                    className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                    className="w-16 h-16 object-cover object-center flex-shrink-0 rounded-full mr-4"
                     src={database.icon}
                   />
                   <div className="flex-grow">
