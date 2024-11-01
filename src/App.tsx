@@ -19,10 +19,10 @@ function App() {
       <AboutMeComponent />
       <DividerComponent title="Skills" subtitle="Different types of techonologies i developed with in my projects"/>
       <TechnologiesComponent />
-      <DividerComponent title="Certifications"/>
-      <CertificationsComponent />
       <DividerComponent title="Projects"/>
       <ProjectsComponent />
+      <DividerComponent title="Certifications"/>
+      <CertificationsComponent />
       <DividerComponent title="Contact"/>
       <ContactForm />
       <FooterComponent />

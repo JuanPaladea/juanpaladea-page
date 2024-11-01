@@ -7,7 +7,8 @@ const ProjectsComponent = () => {
       initial={{ opacity : 0 }}
       whileInView={{ opacity : 1 }}
       transition={{ duration: 1 }}
-      className="text-gray-400 bg-gray-900 body-font">
+      className="text-gray-400 bg-gray-900 body-font"
+      id="projects">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4">
             <div className="p-4 md:w-1/2 lg:w-1/3">
@@ -34,11 +35,6 @@ const ProjectsComponent = () => {
                         alt="Firebase"
                         className="w-16 h-16 object-cover object-center flex-shrink-0 rounded-full mr-4"
                         src="https://www.svgrepo.com/show/373595/firebase.svg"
-                      />
-                      <img
-                        alt="team"
-                        className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                        src="https://dummyimage.com/88x88"
                       />
                     </a>
                   </div>
@@ -80,23 +76,18 @@ const ProjectsComponent = () => {
                     <a href="https://backend-practice-ml8a.onrender.com/api-docs/" target="_blank" className="h-full flex items-center p-4 rounded-lg hover:cursor-pointer">
                       <img
                         alt="team"
-                        className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                        src="https://dummyimage.com/88x88"
+                        className="w-16 h-16 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                        src="https://www.svgrepo.com/show/378837/node.svg"
+                      />
+                      <img
+                        alt="team"
+                        className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 mr-4"
+                        src="https://www.svgrepo.com/show/376367/express.svg"
                       />
                       <img
                         alt="team"
                         className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                        src="https://dummyimage.com/88x88"
-                      />
-                      <img
-                        alt="team"
-                        className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                        src="https://dummyimage.com/88x88"
-                      />
-                      <img
-                        alt="team"
-                        className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                        src="https://dummyimage.com/88x88"
+                        src="https://www.svgrepo.com/show/331488/mongodb.svg"
                       />
                     </a>
                   </div>
@@ -137,24 +128,19 @@ const ProjectsComponent = () => {
                   <div className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     <a href="https://libelulis.vercel.app/" target="_blank" className="h-full flex items-center p-4 rounded-lg hover:cursor-pointer">
                       <img
-                        alt="team"
-                        className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                        src="https://dummyimage.com/88x88"
+                        alt="JavaScript"
+                        className="w-16 h-16 object-cover object-center flex-shrink-0 mr-4"
+                        src="https://www.svgrepo.com/show/353925/javascript.svg"
                       />
                       <img
-                        alt="team"
-                        className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                        src="https://dummyimage.com/88x88"
+                        alt="Vite"
+                        className="w-16 h-16 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                        src="https://www.svgrepo.com/show/374167/vite.svg"
                       />
                       <img
-                        alt="team"
-                        className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                        src="https://dummyimage.com/88x88"
-                      />
-                      <img
-                        alt="team"
-                        className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                        src="https://dummyimage.com/88x88"
+                        alt="Firebase"
+                        className="w-16 h-16 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                        src="https://www.svgrepo.com/show/373595/firebase.svg"
                       />
                     </a>
                   </div>

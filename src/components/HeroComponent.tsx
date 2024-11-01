@@ -6,7 +6,8 @@ const HeroComponent = () => {
     initial={{ opacity : 0 }}
     whileInView={{ opacity : 1 }}
     transition={{ duration: 1 }}
-    className="text-gray-400 bg-gray-900 body-font">
+    className="text-gray-400 bg-gray-900 body-font"
+    >
       <div className="container mx-auto flex px-5 py-12 md:flex-row flex-col items-center">
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 md:mb-0 mb-10">
           <img
@@ -23,13 +24,17 @@ const HeroComponent = () => {
             Backend Software Developer
           </h2>
           <p className="mb-8 leading-relaxed">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas ullam consequuntur rem non explicabo cupiditate fugit repudiandae, vel corporis doloremque laudantium, obcaecati voluptate fugiat quam nobis accusamus, eaque neque quis!
+            I am a software developer with a passion for backend development. I
+            have experience in building RESTful APIs and services using Node.js
+            and Express.js. I am also familiar with databases like MongoDB and
+            MySQL. I am looking for opportunities to work on exciting projects
+            and learn new technologies.
           </p>
           <div className="flex justify-center">
-            <button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">
-              Projects
+            <button className="inline-flex text-white border-2 py-2 px-6 focus:outline-none hover:border-blue-600 rounded text-lg">
+              <a href="#projects">Projects</a>
             </button>
-            <button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 mx-2 focus:outline-none hover:bg-blue-600 rounded text-lg">
+            <button className="inline-flex text-white border-2 py-2 px-6 mx-2 focus:outline-none hover:border-blue-600 rounded text-lg">
               CV  
             </button>
           </div>
