@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import React, { useRef }  from "react";
 import emailjs from "@emailjs/browser";
+import toast, { Toaster } from 'react-hot-toast';
 
 const ContactForm = () => {
   const SERVICE_ID = import.meta.env.VITE_APP_SERVICE_ID || "";
@@ -22,34 +23,37 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    
     if (!formData.email || !formData.message) {
-      alert("Please fill all fields");
+      toast.error("Please fill all fields");
       return;
     }
 
     if (!formData.email.includes("@")) {
-      alert("Please enter a valid email");
+      toast.error("Please enter a valid email");
       return;
     }
 
     if (formData.message.length < 10) {
-      alert("Message should be at least 10 characters long");
+      toast.error("Message should be at least 10 characters long");
       return;
     }
 
-    try {
-      if (formRef.current) {
-        await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY);
-      } else {
-        alert("Form reference is not available");
-      }
-      alert("Message sent successfully");
-    } catch (error) {
-      alert("An error occurred, Please try again later");
-      console.error(error);
-    } finally {
-      setFormData({ email: "", message: "" });
+    if (formRef.current) {
+      try {
+        await toast.promise(
+          emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY),
+          {
+            loading: "Sending...",
+            success: "Message sent successfully",
+            error: "An error occurred, Please try again later",
+          }
+        )
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setFormData({ email: "", message: "" });
+      } 
     }
   };
 
@@ -135,6 +139,16 @@ const ContactForm = () => {
           </button>
         </form>
       </div>
+      <Toaster 
+        position="top-right"
+        toastOptions={{
+          duration: 5000,
+          style: {
+            background: '#333',
+            color: '#fff',
+          },
+        }}
+      />
     </motion.section>
   );
 };

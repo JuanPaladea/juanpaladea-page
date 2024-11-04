@@ -11,14 +11,14 @@ const CertificationsComponent = () => {
         <div className="flex flex-wrap -m-4">
           <div className="p-4 lg:w-1/3 md:w-1/2">
             <div className="h-full flex flex-col items-center text-center">
-              <div className="relative group hover:cursor-pointer">
+              <a href="https://cert.efset.org/tcPa8L" target="_blank" className="relative group hover:cursor-pointer">
                 <img
                   alt="team"
                   className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4 transition-transform duration-500 transform group-hover:rotate-y-180"
                   src="https://i.imgur.com/MVDZGP8.png"
                 />
                 <div className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <a href="https://cert.efset.org/tcPa8L" target="_blank" className="h-full flex items-center p-4 rounded-lg">
+                  <div className="h-full flex items-center p-4 rounded-lg">
                     <svg
                       viewBox="0 0 16 16"
                       fill="none"
@@ -47,9 +47,9 @@ const CertificationsComponent = () => {
                         ></path>{" "}
                       </g>
                     </svg>
-                  </a>
+                  </div>
                 </div>
-              </div>
+              </a>
               <div className="w-full">
                 <h2 className="title-font font-medium text-lg text-white">
                   EF Standard English Test 
@@ -64,14 +64,14 @@ const CertificationsComponent = () => {
 
           <div className="p-4 lg:w-1/3 md:w-1/2">
             <div className="h-full flex flex-col items-center text-center">
-              <div className="relative group hover:cursor-pointer">
+              <a href="https://certificates.cs50.io/31f7f89e-7a94-4c88-9509-44d216119600.pdf" target="_blank" className="relative group hover:cursor-pointer">
                 <img
                   alt="team"
                   className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4 transition-transform duration-500 transform group-hover:rotate-y-180"
                   src="https://i.imgur.com/rnKdMbS.png"
                 />
                 <div className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <a href="https://certificates.cs50.io/31f7f89e-7a94-4c88-9509-44d216119600.pdf" target="_blank" className="h-full flex items-center p-4 rounded-lg">
+                  <div className="h-full flex items-center p-4 rounded-lg">
                     <svg
                       viewBox="0 0 16 16"
                       fill="none"
@@ -100,9 +100,9 @@ const CertificationsComponent = () => {
                         ></path>{" "}
                       </g>
                     </svg>
-                  </a>
+                  </div>
                 </div>
-              </div>
+              </a>
               <div className="w-full">
                 <h2 className="title-font font-medium text-lg text-white">
                   Computer Science - CS50X
@@ -118,14 +118,14 @@ const CertificationsComponent = () => {
 
           <div className="p-4 lg:w-1/3 md:w-1/2">
             <div className="h-full flex flex-col items-center text-center">
-              <div className="relative group hover:cursor-pointer">
+              <a href="https://www.coderhouse.com/ar/certificados/66ae613c13652079130ca8fd?lang=en" target="_blank" className="relative group hover:cursor-pointer">
                 <img
                   alt="team"
                   className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4 transition-transform duration-500 transform group-hover:rotate-y-180"
                   src="https://i.imgur.com/8slN0jE.png"
                 />
                 <div className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <a href="https://www.coderhouse.com/ar/certificados/66ae613c13652079130ca8fd?lang=en" target="_blank" className="h-full flex items-center p-4 rounded-lg">
+                  <div className="h-full flex items-center p-4 rounded-lg">
                     <svg
                       viewBox="0 0 16 16"
                       fill="none"
@@ -154,9 +154,9 @@ const CertificationsComponent = () => {
                         ></path>{" "}
                       </g>
                     </svg>
-                  </a>
+                  </div>
                 </div>
-              </div>
+              </a>
               <div className="w-full">
                 <h2 className="title-font font-medium text-lg text-white">
                   Backend Programming Course

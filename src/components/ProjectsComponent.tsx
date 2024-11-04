@@ -126,7 +126,7 @@ const ProjectsComponent = () => {
                     alt="blog"
                   />
                   <div className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <a href="https://libelulis.vercel.app/" target="_blank" className="h-full flex items-center p-4 rounded-lg hover:cursor-pointer">
+                    <div className="h-full flex items-center p-4 rounded-lg hover:cursor-pointer">
                       <img
                         alt="JavaScript"
                         className="w-16 h-16 object-cover object-center flex-shrink-0 mr-4"
@@ -142,7 +142,7 @@ const ProjectsComponent = () => {
                         className="w-16 h-16 object-cover object-center flex-shrink-0 rounded-full mr-4"
                         src="https://www.svgrepo.com/show/373595/firebase.svg"
                       />
-                    </a>
+                    </div>
                   </div>
                 </div>
                 <div className="p-6">
