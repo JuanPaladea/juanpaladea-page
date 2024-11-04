@@ -19,8 +19,8 @@ const ProjectsComponent = () => {
                     src="https://i.imgur.com/HzmBq7I.png"
                     alt="blog"
                   />
-                  <div className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <a href="https://imipp.vercel.app/" target="blank" className="h-full flex items-center p-4 rounded-lg hover:cursor-pointer">
+                  <a href="https://imipp.vercel.app/" target="blank" className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="h-full flex items-center p-4 rounded-lg hover:cursor-pointer">
                       <img
                         alt="JavaScript"
                         className="w-16 h-16 object-cover object-center flex-shrink-0 mr-4"
@@ -36,8 +36,8 @@ const ProjectsComponent = () => {
                         className="w-16 h-16 object-cover object-center flex-shrink-0 rounded-full mr-4"
                         src="https://www.svgrepo.com/show/373595/firebase.svg"
                       />
-                    </a>
-                  </div>
+                    </div>
+                  </a>
                 </div>
                 <div className="p-6">
                   <h2 className="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">
@@ -72,8 +72,8 @@ const ProjectsComponent = () => {
                     src="https://i.imgur.com/w8aEHii.png"
                     alt="Backend e-commerce"
                   />
-                  <div className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <a href="https://backend-practice-ml8a.onrender.com/api-docs/" target="_blank" className="h-full flex items-center p-4 rounded-lg hover:cursor-pointer">
+                  <a href="https://backend-practice-ml8a.onrender.com/api-docs/" target="_blank" className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="h-full flex items-center p-4 rounded-lg hover:cursor-pointer">
                       <img
                         alt="team"
                         className="w-16 h-16 object-cover object-center flex-shrink-0 rounded-full mr-4"
@@ -89,8 +89,8 @@ const ProjectsComponent = () => {
                         className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
                         src="https://www.svgrepo.com/show/331488/mongodb.svg"
                       />
-                    </a>
-                  </div>
+                    </div>
+                  </a>
                 </div>
                 <div className="p-6">
                   <h2 className="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">
@@ -125,7 +125,7 @@ const ProjectsComponent = () => {
                     src="https://i.imgur.com/PeWFKkS.png"
                     alt="blog"
                   />
-                  <div className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <a href="https://libelulis.vercel.app/" target="_blank" className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     <div className="h-full flex items-center p-4 rounded-lg hover:cursor-pointer">
                       <img
                         alt="JavaScript"
@@ -143,7 +143,7 @@ const ProjectsComponent = () => {
                         src="https://www.svgrepo.com/show/373595/firebase.svg"
                       />
                     </div>
-                  </div>
+                  </a>
                 </div>
                 <div className="p-6">
                   <h2 className="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">

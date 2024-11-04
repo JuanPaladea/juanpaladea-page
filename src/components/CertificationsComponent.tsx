@@ -15,7 +15,7 @@ const CertificationsComponent = () => {
                 <img
                   alt="team"
                   className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4 transition-transform duration-500 transform group-hover:rotate-y-180"
-                  src="https://i.imgur.com/MVDZGP8.png"
+                  src="https://i.imgur.com/7qev6Hh.png"
                 />
                 <div className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <div className="h-full flex items-center p-4 rounded-lg">
@@ -54,7 +54,7 @@ const CertificationsComponent = () => {
                 <h2 className="title-font font-medium text-lg text-white">
                   EF Standard English Test 
                 </h2>
-                <h3 className="text-gray-500 mb-3">EFSET</h3>
+                <h3 className="text-gray-500 mb-3">EFSET - C2 Proficiency</h3>
                 <p className="mb-4">
                   The EF SET (www.efset.org) is a suite of online certifying language exams for students and professionals.
                 </p>
