@@ -11,9 +11,10 @@ const CertificationsComponent = () => {
         <div className="flex flex-wrap -m-4">
           <div className="p-4 lg:w-1/3 md:w-1/2">
             <div className="h-full flex flex-col items-center text-center">
-              <a href="https://cert.efset.org/tcPa8L" target="_blank" className="relative group hover:cursor-pointer">
+              <a href="https://cert.efset.org/tcPa8L" target="_blank" title="EF Set Certificate" className="relative group hover:cursor-pointer">
                 <img
-                  alt="team"
+                  alt="EF SET Certificate"
+                  title="EF SET Certificate"
                   className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4 transition-transform duration-500 transform group-hover:rotate-y-180"
                   src="https://i.imgur.com/7qev6Hh.png"
                 />
@@ -51,10 +52,10 @@ const CertificationsComponent = () => {
                 </div>
               </a>
               <div className="w-full">
-                <h2 className="title-font font-medium text-lg text-white">
+                <h4 className="title-font font-medium text-lg text-white">
                   EF Standard English Test 
-                </h2>
-                <h3 className="text-gray-500 mb-3">EFSET - C2 Proficiency</h3>
+                </h4>
+                <h5 className="text-gray-500 mb-3">EFSET - C2 Proficiency</h5>
                 <p className="mb-4">
                   The EF SET (www.efset.org) is a suite of online certifying language exams for students and professionals.
                 </p>
@@ -64,9 +65,10 @@ const CertificationsComponent = () => {
 
           <div className="p-4 lg:w-1/3 md:w-1/2">
             <div className="h-full flex flex-col items-center text-center">
-              <a href="https://certificates.cs50.io/31f7f89e-7a94-4c88-9509-44d216119600.pdf" target="_blank" className="relative group hover:cursor-pointer">
+              <a href="https://certificates.cs50.io/31f7f89e-7a94-4c88-9509-44d216119600.pdf" target="_blank" title="CS50 Certificate" className="relative group hover:cursor-pointer">
                 <img
-                  alt="team"
+                  alt="CS50 Certificate"
+                  title="CS50 Certificate"
                   className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4 transition-transform duration-500 transform group-hover:rotate-y-180"
                   src="https://i.imgur.com/rnKdMbS.png"
                 />
@@ -104,10 +106,10 @@ const CertificationsComponent = () => {
                 </div>
               </a>
               <div className="w-full">
-                <h2 className="title-font font-medium text-lg text-white">
+                <h4 className="title-font font-medium text-lg text-white">
                   Computer Science - CS50X
-                </h2>
-                <h3 className="text-gray-500 mb-3">Harvard University</h3>
+                </h4>
+                <h5 className="text-gray-500 mb-3">Harvard University</h5>
                 <p className="mb-4">
                   CS50, Harvard University’s introduction to the intellectual enterprises of computer science and the art of programming
                 </p>
@@ -118,9 +120,10 @@ const CertificationsComponent = () => {
 
           <div className="p-4 lg:w-1/3 md:w-1/2">
             <div className="h-full flex flex-col items-center text-center">
-              <a href="https://www.coderhouse.com/ar/certificados/66ae613c13652079130ca8fd?lang=en" target="_blank" className="relative group hover:cursor-pointer">
+              <a href="https://www.coderhouse.com/ar/certificados/66ae613c13652079130ca8fd?lang=en" target="_blank" title="Backend Programming Course Certificate" className="relative group hover:cursor-pointer">
                 <img
-                  alt="team"
+                  alt="Backend Programming Course Certificate"
+                  title="Backend Programming Course Certificate"
                   className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4 transition-transform duration-500 transform group-hover:rotate-y-180"
                   src="https://i.imgur.com/8slN0jE.png"
                 />
@@ -158,10 +161,10 @@ const CertificationsComponent = () => {
                 </div>
               </a>
               <div className="w-full">
-                <h2 className="title-font font-medium text-lg text-white">
+                <h4 className="title-font font-medium text-lg text-white">
                   Backend Programming Course
-                </h2>
-                <h3 className="text-gray-500 mb-3">Coderhouse</h3>
+                </h4>
+                <h5 className="text-gray-500 mb-3">Coderhouse</h5>
                 <p className="mb-4">
                   Local course on introduction to backend programming with Node.js and Express.js
                 </p>

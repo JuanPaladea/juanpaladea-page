@@ -11,7 +11,7 @@ import CertificationsComponent from './components/CertificationsComponent'
 
 function App() {
   return (
-    <div>
+    <>
       <HeaderComponent />
       <HeroComponent />
       <NetworkComponent />
@@ -26,7 +26,7 @@ function App() {
       <DividerComponent title="Contact"/>
       <ContactForm />
       <FooterComponent />
-    </div>
+    </>
   )
 }
 

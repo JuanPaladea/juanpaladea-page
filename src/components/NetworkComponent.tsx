@@ -9,7 +9,7 @@ const NetworkComponent = () => {
     className="bg-gray-900 body-font">
       <div className="container px-5 py-12 mx-auto">
         <div className="mx-auto grid grid-cols-2 items-center gap-x-8 gap-y-10">
-          <a href="https://github.com/JuanPaladea" target="_blank">
+          <a href="https://github.com/JuanPaladea" target="_blank" title="github">
             <svg
               width={158}
               height={48}
@@ -38,7 +38,7 @@ const NetworkComponent = () => {
               </g>
             </svg>
           </a>
-          <a href="https://www.linkedin.com/in/juan-francisco-paladea-5703b0191/" target="_blank">
+          <a href="https://www.linkedin.com/in/juan-francisco-paladea-5703b0191/" target="_blank" title="linkedin">
             <svg
               width={158}
               height={48}

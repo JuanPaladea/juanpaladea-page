@@ -85,22 +85,23 @@ const TechnologiesComponent = () => {
         whileInView={{ opacity : 1 }}
         transition={{ duration: 1 }}
         className="container px-5 py-12 mx-auto">
-          <h1 className="sm:w-2/5 text-white font-medium title-font text-xl mb-2">
+          <h3 className="sm:w-2/5 text-white font-medium title-font text-xl mb-2">
             Languages
-          </h1>
+          </h3>
           <div className="flex flex-wrap -m-2">
             {Object.values(languages).map((language) => (
               <div key={language.name} className="p-2 lg:w-1/5 md:w-1/3 w-1/2 w-full">
                 <div className="h-full flex items-center border-gray-800 border p-4 rounded-lg">
                   <img
-                    alt="team"
+                    alt={language.name + ' icon'} 
+                    title={language.name}
                     className="w-16 h-16 object-cover object-center flex-shrink-0 mr-4"
                     src={language.icon}
                   />
                   <div className="flex-grow">
-                    <h2 className="text-white title-font font-medium">
+                    <h4 className="text-white title-font font-medium">
                       {language.name}
-                    </h2>
+                    </h4>
                   </div>
                 </div>
               </div>
@@ -113,22 +114,23 @@ const TechnologiesComponent = () => {
         whileInView={{ opacity : 1 }}
         transition={{ duration: 1 }}
         className="container px-5 py-12 mx-auto">
-          <h1 className="sm:w-2/5 text-white font-medium title-font text-xl mb-2">
+          <h3 className="sm:w-2/5 text-white font-medium title-font text-xl mb-2">
             Frameworks
-          </h1>
+          </h3>
           <div className="flex flex-wrap -m-2">
             {Object.values(frameWorks).map((framework) => (
               <div key={framework.name} className="p-2 lg:w-1/5 md:w-1/3 w-1/2 w-full ">
                 <div className="h-full flex items-center border-gray-800 border p-4 rounded-lg">
                   <img
-                    alt="team"
+                    alt={framework.name + ' icon'}
+                    title={framework.name}
                     className={framework.name === "Flask" || framework.name === "Express" ? 'w-16 h-16 object-cover object-center flex-shrink-0 mr-4 bg-white' : 'w-16 h-16 object-cover object-center flex-shrink-0 mr-4'}                    
                     src={framework.icon}
                   />
                   <div className="flex-grow">
-                    <h2 className="text-white title-font font-medium">
+                    <h4 className="text-white title-font font-medium">
                       {framework.name}
-                    </h2>
+                    </h4>
                   </div>
                 </div>
               </div>
@@ -141,22 +143,23 @@ const TechnologiesComponent = () => {
         whileInView={{ opacity : 1 }}
         transition={{ duration: 1 }}
         className="container px-5 py-12 mx-auto">
-          <h1 className="sm:w-2/5 text-white font-medium title-font text-xl mb-2">
+          <h3 className="sm:w-2/5 text-white font-medium title-font text-xl mb-2">
             Databases
-          </h1>
+          </h3>
           <div className="flex flex-wrap -m-2">
             {Object.values(dataBases).map((database) => (
               <div key={database.name} className="p-2 lg:w-1/5 md:w-1/3 w-1/2 w-full ">
                 <div className="h-full flex items-center border-gray-800 border p-4 rounded-lg">
                   <img
-                    alt="team"
+                    alt={database.name + ' icon'}
+                    title={database.name}
                     className="w-16 h-16 object-cover object-center flex-shrink-0 mr-4"
                     src={database.icon}
                   />
                   <div className="flex-grow">
-                    <h2 className="text-white title-font font-medium">
+                    <h4 className="text-white title-font font-medium">
                       {database.name}
-                    </h2>
+                    </h4>
                   </div>
                 </div>
               </div>
@@ -169,22 +172,23 @@ const TechnologiesComponent = () => {
         whileInView={{ opacity : 1 }}
         transition={{ duration: 1 }}
         className="container px-5 py-12 mx-auto">
-          <h1 className="sm:w-2/5 text-white font-medium title-font text-xl mb-2">
+          <h3 className="sm:w-2/5 text-white font-medium title-font text-xl mb-2">
             BaaS
-          </h1>
+          </h3>
           <div className="flex flex-wrap -m-2">
             {Object.values(BaaS).map((back) => (
               <div key={back.name} className="p-2 lg:w-1/5 md:w-1/3 w-1/2 w-full ">
                 <div className="h-full flex items-center border-gray-800 border p-4 rounded-lg">
                   <img
-                    alt="team"
+                    alt={back.name + ' icon'}
+                    title={back.name}
                     className={back.name === "AWS" || back.name ==="Vercel" ? 'w-16 h-16 object-cover object-center flex-shrink-0 mr-4 bg-white' : 'w-16 h-16 object-cover object-center flex-shrink-0 mr-4'}                     
                     src={back.icon}
                   />
                   <div className="flex-grow">
-                    <h2 className="text-white title-font font-medium">
+                    <h4 className="text-white title-font font-medium">
                       {back.name}
-                    </h2>
+                    </h4>
                   </div>
                 </div>
               </div>

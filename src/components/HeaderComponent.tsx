@@ -10,15 +10,15 @@ const HeaderComponent = () => {
       className="text-gray-400 bg-gray-900 body-font"
       id="home">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <a href="#home" className="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+          <a href="#home" title="Homepage" className="flex title-font font-medium items-center text-white mb-4 md:mb-0">
             <span className="ml-3 text-xl">Juan Paladea</span>
           </a>
           <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-            <a href="#aboutme" className="mr-5 hover:text-white">About Me</a>
-            <a href="#skills" className="mr-5 hover:text-white">Skills</a>
-            <a href="#projects" className="mr-5 hover:text-white">Projects</a>
+            <a href="#aboutme" title="about-me" className="mr-5 hover:text-white">About Me</a>
+            <a href="#skills" title="skills" className="mr-5 hover:text-white">Skills</a>
+            <a href="#projects" title="projects" className="mr-5 hover:text-white">Projects</a>
           </nav>
-          <a href="#contact" className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">
+          <a href="#contact" title="contact" className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">
             <p>Contact</p>
             <svg
               fill="none"
