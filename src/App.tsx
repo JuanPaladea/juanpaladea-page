@@ -17,7 +17,7 @@ function App() {
       <NetworkComponent />
       <DividerComponent title="About me"/>
       <AboutMeComponent />
-      <DividerComponent title="Skills" subtitle="Different types of techonologies i developed with in my projects"/>
+      <DividerComponent title="Skills" subtitle="Different techonologies i developed with in my projects"/>
       <TechnologiesComponent />
       <DividerComponent title="Projects"/>
       <ProjectsComponent />
