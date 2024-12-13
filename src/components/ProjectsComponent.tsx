@@ -51,7 +51,7 @@ const ProjectsComponent = () => {
                     Movie Reservation System
                   </h4>
                   <p className="leading-relaxed mb-3">
-                    Backend API developed with Node.js, Express, and MongoDB. The application provides a platform for managing movies, seats, showtimes and reservations. It also includes user authentication and authorization.
+                    Backend API developed with Node.js, Express, and PostgreSQL. The application provides a platform for managing movies, seats, showtimes and reservations. It also includes user authentication and authorization.
                   </p>
                   <div className="flex items-center flex-wrap ">
                     <a href="https://moviereservation.onrender.com/api-docs/" target="_blank" title="Backend live documentation page" className="text-indigo-400 inline-flex items-center md:mb-2 lg:mb-0">
