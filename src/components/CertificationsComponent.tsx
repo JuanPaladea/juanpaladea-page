@@ -56,8 +56,8 @@ const CertificationsComponent = () => {
                   EF Standard English Test 
                 </h4>
                 <h5 className="text-gray-500 mb-3">EFSET - C2 Proficiency</h5>
-                <p className="mb-4">
-                  The EF SET (www.efset.org) is a suite of online certifying language exams for students and professionals.
+                <p className="mb-4 text-justify">
+                  Achieved a C2 Proficient level in the EF SET 50-minute test format, demonstrating advanced fluency in English. The test assessed listening and reading comprehension skills, aligning with the Common European Framework of Reference for Languages (CEFR). This result reflects a high level of competency in both understanding complex texts and engaging in detailed, nuanced communication.
                 </p>
               </div>
             </div>
@@ -110,8 +110,8 @@ const CertificationsComponent = () => {
                   Computer Science - CS50X
                 </h4>
                 <h5 className="text-gray-500 mb-3">Harvard University</h5>
-                <p className="mb-4">
-                  CS50, Harvard University’s introduction to the intellectual enterprises of computer science and the art of programming
+                <p className="mb-4 text-justify">
+                  Comprehensive introductory course in computer science, covering fundamental topics such as algorithms, data structures, software engineering, web development, and problem-solving techniques. Gained skills in programming languages including C, Python, and SQL, and developed hands-on skills through a series of challenging projects and problem sets. Demonstrated the ability to design, implement, and optimize software solutions to real-world problems.
                 </p>
               </div>
             </div>
@@ -165,8 +165,8 @@ const CertificationsComponent = () => {
                   Backend Programming Course
                 </h4>
                 <h5 className="text-gray-500 mb-3">Coderhouse</h5>
-                <p className="mb-4">
-                  Local course on introduction to backend programming with Node.js and Express.js
+                <p className="mb-4 text-justify">
+                  Comprehensive backend programming course at Coderhouse, an online education platform, focusing on key technologies and practices for backend development. The course covers JavaScript, Express.js, MongoDB, and the creation of RESTful APIs. Gained hands-on experience in building and testing a complete backend project, with an emphasis on API design, database integration, and ensuring robust, scalable solutions.
                 </p>
               </div>
             </div>
