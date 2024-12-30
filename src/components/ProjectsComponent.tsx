@@ -51,7 +51,7 @@ const ProjectsComponent = () => {
                     Movie Reservation System
                   </h4>
                   <p className="leading-relaxed mb-3">
-                    Backend API developed with Node.js, Express, and PostgreSQL. The application provides a platform for managing movies, seats, showtimes and reservations. It also includes user authentication and authorization.
+                     Backend for a movie reservation system using Node.js, Express, and PostgreSQL, hosted on Vercel. The application enables movie, seat, showtime, and reservation management, with secure user authentication and role-based authorization using JWT. Implemented RESTful API endpoints, integrated PostgreSQL for data persistence, and ensured API reliability through unit testing with Jest. The project includes detailed API documentation and follows a modular architecture with clear separation of concerns, leveraging best practices in software development.                  
                   </p>
                   <div className="flex items-center flex-wrap ">
                     <a href="https://moviereservation.onrender.com/api-docs/" target="_blank" title="Backend live documentation page" className="text-indigo-400 inline-flex items-center md:mb-2 lg:mb-0">
@@ -107,7 +107,7 @@ const ProjectsComponent = () => {
                     IMIPP - Landing Page
                   </h4>
                   <p className="leading-relaxed mb-3">
-                    A landing page designed for a scientific research institute, serving as a hub for showcasing ongoing research and events, with contact and subscription forms for user engagement.
+                    Responsive and dynamic landing page for a research institute using React, Vite, and Tailwind CSS, deployed on Vercel. The application fetches data from a backend built with Firestore/Firebase and follows best practices in frontend development. The page features a modular architecture with separate components and pages, managed using React Router DOM for smooth navigation. Additionally, it includes a contact form integrated with EmailJS, enabling seamless communication. The design is modern and mobile-friendly, ensuring a user-centric experience across devices.
                   </p>
                   <div className="flex items-center flex-wrap ">
                     <a href="https://imipp.vercel.app/" target="_blank" title="IMIPP Live Link" className="text-indigo-400 inline-flex items-center md:mb-2 lg:mb-0">
@@ -163,7 +163,7 @@ const ProjectsComponent = () => {
                     E-Commerce Backend
                   </h4>
                   <p className="leading-relaxed mb-3">
-                    Backend API developed with Node.js, Express and MongoDB. The application provides a platform for managing products, shopping carts, messages, and tickets. It also includes user authentication and authorization.
+                    Robust backend for an e-commerce platform using Node.js, TypeScript, and Express. Implemented key features such as user authentication and authorization, with secure JWT-based sessions. Integrated MongoDB to manage data models for cart, orders, products, and users, with seamless interaction through RESTful API endpoints. Ensured the system's reliability with automated tests using Jest, and provided comprehensive API documentation with Swagger. The architecture follows best practices, with a clear separation of concerns including services, controllers, routes and middlewares. Integrated logging using Winston for tracking system activity, and utilized dotenv for secure environment management.
                   </p>
                   <div className="flex items-center flex-wrap ">
                     <a href="https://backend-practice-ml8a.onrender.com/api-docs/" target="_blank" title="Backend live documentation page" className="text-indigo-400 inline-flex items-center md:mb-2 lg:mb-0">
