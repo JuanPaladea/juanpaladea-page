@@ -163,14 +163,14 @@ const ProjectsComponent = () => {
                     E-Commerce Backend
                   </h4>
                   <p className="leading-relaxed mb-3">
-                    Robust backend for an e-commerce platform using Node.js, TypeScript, and Express. Implemented key features such as user authentication and authorization, with secure JWT-based sessions. Integrated MongoDB to manage data models for cart, orders, products, and users, with seamless interaction through RESTful API endpoints. Ensured the system's reliability with automated tests using Jest, and provided comprehensive API documentation with Swagger. The architecture follows best practices, with a clear separation of concerns including services, controllers, routes and middlewares. Integrated logging using Winston for tracking system activity, and utilized dotenv for secure environment management.
+                    Developed a robust backend for an e-commerce platform using Node.js, TypeScript, and Express. Implemented key features such as user authentication and authorization, with secure JWT-based sessions. Integrated MongoDB to manage data models for cart, orders, products, and users, with seamless interaction through RESTful API endpoints. Ensured the system's reliability with automated tests using Jest, and provided comprehensive API documentation with Swagger. The architecture follows best practices, with a clear separation of concerns including services, controllers, routes and middlewares. Integrated logging using Winston for tracking system activity, and utilized dotenv for secure environment management.
                   </p>
                   <div className="flex items-center flex-wrap ">
-                    <a href="https://backend-practice-ml8a.onrender.com/api-docs/" target="_blank" title="Backend live documentation page" className="text-indigo-400 inline-flex items-center md:mb-2 lg:mb-0">
+                    <a href="https://ecommerce-nodejs-o555.onrender.com/" target="_blank" title="Backend live documentation page" className="text-indigo-400 inline-flex items-center md:mb-2 lg:mb-0">
                       Live demo
                     </a>
                     <span className="text-gray-500 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1">
-                      <a href="https://github.com/JuanPaladea/Backend-Practice" target="_blank" title="Backend github page" className="text-indigo-400 inline-flex items-center md:mb-2 lg:mb-0">
+                      <a href="https://github.com/JuanPaladea/ecommerce-nodejs" target="_blank" title="Backend github page" className="text-indigo-400 inline-flex items-center md:mb-2 lg:mb-0">
                         Github
                       </a>
                     </span>
