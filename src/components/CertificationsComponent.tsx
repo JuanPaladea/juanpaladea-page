@@ -120,7 +120,7 @@ const CertificationsComponent = () => {
 
           <div className="p-4 lg:w-1/3 md:w-1/2">
             <div className="h-full flex flex-col items-center text-center">
-              <a href="https://www.coderhouse.com/ar/certificados/66ae613c13652079130ca8fd?lang=en" target="_blank" title="Backend Programming Course Certificate" className="relative group hover:cursor-pointer">
+              <a href="https://pub.coderhouse.com/legacy-certificates/66ae613c13652079130ca8fd?lang=en" target="_blank" title="Backend Programming Course Certificate" className="relative group hover:cursor-pointer">
                 <img
                   alt="Backend Programming Course Certificate"
                   title="Backend Programming Course Certificate"

@@ -17,8 +17,8 @@ const ProjectsComponent = () => {
                   <img
                     className="lg:h-48 md:h-36 w-full object-cover object-center transition-transform duration-500 transform group-hover:rotate-y-180"
                     src="https://i.imgur.com/w8aEHii.png"
-                    title="Backend Movie Reservation System documentation page"
-                    alt="Backend Movie Reservation System"
+                    title="Backend Hospital documentation page"
+                    alt="Backend Hosptal"
                   />
                   <a href="https://moviereservation.onrender.com/api-docs/" target="_blank" title="Backend live documentation page" className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     <div className="h-full flex items-center p-4 rounded-lg hover:cursor-pointer">
@@ -35,8 +35,14 @@ const ProjectsComponent = () => {
                         src="https://www.svgrepo.com/show/376367/express.svg"
                       />
                       <img
-                        alt="MongoDB icon"
-                        title="MongoDB icon"
+                        alt="TypeScript icon"
+                        title="TypeScript icon"
+                        className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 mr-4"
+                        src="https://www.svgrepo.com/show/354478/typescript-icon.svg"
+                      />
+                      <img
+                        alt="PostgreSQL icon"
+                        title="PostgreSQL icon"
                         className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 mr-4"
                         src="https://www.svgrepo.com/show/354200/postgresql.svg"
                       />
@@ -48,17 +54,17 @@ const ProjectsComponent = () => {
                     Back End
                   </h5>
                   <h4 className="title-font text-lg font-medium text-white mb-3">
-                    Movie Reservation System
+                    Hospital Backend
                   </h4>
                   <p className="leading-relaxed mb-3">
-                     Backend for a movie reservation system using Node.js, Express, and PostgreSQL, hosted on Vercel. The application enables movie, seat, showtime, and reservation management, with secure user authentication and role-based authorization using JWT. Implemented RESTful API endpoints, integrated PostgreSQL for data persistence, and ensured API reliability through unit testing with Jest. The project includes detailed API documentation and follows a modular architecture with clear separation of concerns, leveraging best practices in software development.                  
+                  The STANs Backend API is a RESTful API built with Node.js and Express that manages healthcare data such as patients, studies, and bills. It provides endpoints for user authentication (register, login, logout), CRUD operations on patient records, study data, billing information, and file uploads (for study results and payment proofs). The API uses PostgreSQL as its database and implements security best practices including password hashing with bcrypt, JWT-based authentication. The API is documented using Swagger, providing a clear overview of the available endpoints and their usage. The API is deployed on Render, ensuring high availability and scalability.                
                   </p>
                   <div className="flex items-center flex-wrap ">
-                    <a href="https://moviereservation.onrender.com/api-docs/" target="_blank" title="Backend live documentation page" className="text-indigo-400 inline-flex items-center md:mb-2 lg:mb-0">
+                    <a href="https://hospital-backend-kapu.onrender.com/docs/" target="_blank" title="Backend live documentation page" className="text-indigo-400 inline-flex items-center md:mb-2 lg:mb-0">
                       Live demo
                     </a>
                     <span className="text-gray-500 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1">
-                      <a href="https://github.com/JuanPaladea/MovieReservationBack" target="_blank" title="Backend github page" className="text-indigo-400 inline-flex items-center md:mb-2 lg:mb-0">
+                      <a href="https://github.com/JuanPaladea/hospital-backend" target="_blank" title="Backend github page" className="text-indigo-400 inline-flex items-center md:mb-2 lg:mb-0">
                         Github
                       </a>
                     </span>
