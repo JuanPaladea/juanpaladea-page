@@ -20,7 +20,7 @@ const ProjectsComponent = () => {
                     title="Backend Hospital documentation page"
                     alt="Backend Hosptal"
                   />
-                  <a href="https://moviereservation.onrender.com/api-docs/" target="_blank" title="Backend live documentation page" className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <a href="https://hospital-backend-kapu.onrender.com/docs/" target="_blank" title="Backend live documentation page" className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     <div className="h-full flex items-center p-4 rounded-lg hover:cursor-pointer">
                       <img
                         alt="NodeJS icon"
