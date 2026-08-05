@@ -82,31 +82,29 @@ const ContactForm = () => {
         subtitle={t(sectionCopy.contact.subtitle)}
       />
       <div className="container mx-auto flex flex-wrap px-5 py-12 sm:flex-nowrap">
-        <div className="relative flex items-end justify-start overflow-hidden rounded-xl border border-line p-10 sm:mr-10 md:w-1/2 lg:w-2/3">
-          <iframe
-            width="100%"
-            height="100%"
-            title={`${t(ui.mapOf)} ${t(location)}`}
-            className="absolute inset-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d210146.75955271677!2d-58.5981081473618!3d-34.61571293339003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca3b4ef90cbd%3A0xa0b3812e88e88e87!2sBuenos%20Aires!5e0!3m2!1sen!2sar!4v1730223674778!5m2!1sen!2sar"
-            style={{ filter: "grayscale(1) contrast(1.2) opacity(0.5)", border: 0 }}
-          />
-          <div className="relative flex flex-wrap gap-6 rounded-lg border border-line bg-page px-6 py-6 shadow-md">
-            <div>
-              <p className="title-font text-xs font-semibold tracking-widest text-heading">
-                {t(ui.addressLabel)}
-              </p>
-              <p className="leading-relaxed">{t(location)}</p>
+        {/* Facts a recruiter checks first, in place of a decorative city map. */}
+        <div className="rounded-xl border border-line bg-surface p-8 sm:mr-10 md:w-1/2 lg:w-2/3">
+          <dl className="grid gap-6 sm:grid-cols-2">
+            {[
+              { label: ui.basedIn, value: t(location) },
+              { label: ui.timezoneLabel, value: site.timezone },
+              { label: ui.languagesLabel, value: t(ui.languagesValue) },
+              { label: ui.openToLabel, value: t(ui.openToValue) },
+            ].map(({ label, value }) => (
+              <div key={t(label)}>
+                <dt className="title-font text-xs font-semibold tracking-widest text-muted">{t(label)}</dt>
+                <dd className="mt-1 leading-relaxed text-heading">{value}</dd>
+              </div>
+            ))}
+            <div className="sm:col-span-2">
+              <dt className="title-font text-xs font-semibold tracking-widest text-muted">{t(ui.emailLabel)}</dt>
+              <dd className="mt-1">
+                <a href={`mailto:${site.email}`} className="leading-relaxed text-accent-soft hover:opacity-80">
+                  {site.email}
+                </a>
+              </dd>
             </div>
-            <div>
-              <p className="title-font text-xs font-semibold tracking-widest text-heading">{t(ui.emailLabel)}</p>
-              <a href={`mailto:${site.email}`} className="leading-relaxed text-accent-soft hover:opacity-80">
-                {site.email}
-              </a>
-            </div>
-          </div>
+          </dl>
         </div>
 
         <form

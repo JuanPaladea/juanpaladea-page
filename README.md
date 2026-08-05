@@ -37,17 +37,39 @@ These keys ship in the client bundle by design — restrict them with the
 allowed-origins setting in EmailJS. Without them the form falls back to
 showing the contact email address.
 
+## CV
+
+The CV lives in this repo in both languages, as a print-styled page and a
+generated PDF. The hero button links to the PDF matching the visitor's language.
+
+| Source            | Output                             |
+| ----------------- | ---------------------------------- |
+| `public/cv/en.html` | `public/cv/juan-paladea-cv-en.pdf` |
+| `public/cv/es.html` | `public/cv/juan-paladea-cv-es.pdf` |
+
+Edit the HTML, then regenerate the PDF with headless Chrome:
+
+```bash
+chrome --headless --disable-gpu --no-pdf-header-footer --print-to-pdf=public/cv/juan-paladea-cv-en.pdf public/cv/en.html
+```
+
+Both fit two A4 pages and keep a real text layer with embedded fonts, so
+applicant tracking systems can parse them. Keep an eye on the page count after
+editing — Spanish runs about 20% longer than English and prints slightly
+tighter to compensate.
+
 ## Project structure
 
 ```
 public/
+├─ cv/                 CV in both languages: print-styled HTML + generated PDF
 ├─ icons/              Tech logos (local SVGs, no third-party hotlinking)
 └─ img/                Portrait, project shots, certificates
 src/
 ├─ components/
 │  ├─ ui/              Shared building blocks (Section, SectionHeading, TechChip, icons)
 │  └─ *Component.tsx   One component per page section
-├─ data/               Site content + `ui.ts` for interface strings
+├─ data/               Site content: profile, career, skills, projects, certs, UI strings
 ├─ hooks/              useInView — scroll reveal via IntersectionObserver
 ├─ preferences/        Language and theme context, persisted to localStorage
 ├─ App.tsx             Section composition

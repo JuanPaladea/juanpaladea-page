@@ -1,4 +1,4 @@
-import { role, site, summary } from "../data/site";
+import { availability, cvUrl, englishLevel, role, site, summary } from "../data/site";
 import { ui } from "../data/ui";
 import { usePreferences } from "../preferences/context";
 import { ArrowRightIcon, DocumentIcon, GitHubIcon, GridIcon, LinkedInIcon } from "./ui/icons";
@@ -9,7 +9,7 @@ const socials = [
 ];
 
 const HeroComponent = () => {
-  const { t } = usePreferences();
+  const { lang, t } = usePreferences();
 
   return (
     <section id="home" className="relative overflow-hidden" aria-labelledby="hero-heading">
@@ -34,15 +34,20 @@ const HeroComponent = () => {
         </div>
 
         <div className="flex flex-col items-center text-center md:items-start md:text-left">
-          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-sm text-accent-soft">
+          {/* Concrete availability signals beat a generic "open to work" badge. */}
+          <p className="mb-5 inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-sm text-accent-soft">
             <span aria-hidden="true" className="h-2 w-2 rounded-full bg-accent" />
-            {t(ui.available)}
+            {t(availability)}
+            <span aria-hidden="true" className="text-muted">·</span>
+            {site.timezone}
+            <span aria-hidden="true" className="text-muted">·</span>
+            {t(englishLevel)}
           </p>
 
           <h1 id="hero-heading" className="title-font text-4xl font-semibold text-heading sm:text-5xl">
             {site.name}
           </h1>
-          <p className="title-font mt-2 text-2xl font-medium text-accent-soft sm:text-3xl">{t(role)}</p>
+          <p className="title-font mt-2 text-xl font-medium text-accent-soft sm:text-2xl">{t(role)}</p>
           <p className="mt-5 max-w-xl leading-relaxed">{t(summary)}</p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
@@ -61,12 +66,13 @@ const HeroComponent = () => {
               <ArrowRightIcon className="ml-2 h-4 w-4" />
             </a>
             <a
-              href={site.cv}
+              href={cvUrl[lang]}
               target="_blank"
               rel="noopener noreferrer"
+              download
               className="inline-flex items-center rounded-lg border border-line px-6 py-2.5 font-medium text-heading transition-colors duration-300 hover:border-accent hover:bg-elevated"
             >
-              {t(ui.cv)}
+              {t(ui.downloadCv)}
               <DocumentIcon className="ml-2 h-4 w-4" />
             </a>
           </div>

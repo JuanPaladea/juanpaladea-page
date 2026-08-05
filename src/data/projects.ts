@@ -37,17 +37,19 @@ export interface Project {
 }
 
 const backEnd: Localized<string> = { en: "Back End", es: "Backend" };
-const frontEnd: Localized<string> = { en: "Front End", es: "Frontend" };
+const product: Localized<string> = { en: "Product", es: "Producto" };
+const clientWork: Localized<string> = { en: "In production", es: "En producción" };
 
 export const projects: Project[] = [
   {
     id: "hospital-backend",
     category: backEnd,
     title: "Hospital Backend",
-    description: {
-      en: "RESTful API that manages healthcare data — patients, studies and billing — with authentication, file uploads and a documented endpoint surface.",
-      es: "API RESTful que gestiona datos clínicos —pacientes, estudios y facturación— con autenticación, carga de archivos y endpoints documentados.",
-    },
+    description:
+      {
+        en: "RESTful API for clinical data — patients, studies and billing — modelled on the workflows I handle day to day at a research institute. Authentication, file uploads for study results and payment proofs, and a fully documented endpoint surface.",
+        es: "API RESTful para datos clínicos —pacientes, estudios y facturación— modelada sobre los flujos que manejo a diario en un instituto de investigación. Autenticación, carga de archivos para resultados de estudios y comprobantes de pago, y endpoints completamente documentados.",
+      },
     highlights: {
       en: [
         "JWT sessions with bcrypt-hashed passwords",
@@ -73,23 +75,55 @@ export const projects: Project[] = [
     stack: [tech.node, tech.express, tech.typescript, tech.postgres, tech.jwt, tech.swagger],
   },
   {
-    id: "en-una-nota",
-    category: frontEnd,
-    title: "En una nota · Ensalada mixta",
+    id: "imipp",
+    category: clientWork,
+    title: "IMIPP — Research Institute",
     description: {
-      en: "A party game for singing with friends: a random song plays, cuts off after a beat, and the first team to shout has to keep going. Built in vanilla JavaScript with zero runtime dependencies.",
-      es: "Un juego para cantar con amigos: suena una canción al azar, se corta a los pocos segundos y el primer equipo en gritar tiene que seguirla. Hecho en JavaScript puro, sin dependencias de runtime.",
+      en: "The public site for the pediatric pathology research institute where I work. I built it so the team can publish papers, news and services straight from Firestore, without a developer in the loop for every change.",
+      es: "El sitio público del instituto de investigación en patologías pediátricas donde trabajo. Lo construí para que el equipo publique papers, novedades y servicios directamente desde Firestore, sin depender de un desarrollador para cada cambio.",
     },
     highlights: {
       en: [
-        "11 playlists with 350+ songs across genres",
-        "Works offline — custom audio persisted in IndexedDB",
-        "Scoreboard and play history kept in the browser",
+        "In production for a real research institute",
+        "Content managed from Firebase/Firestore",
+        "Modular React architecture, deployed on Vercel",
       ],
       es: [
-        "11 playlists con más de 350 canciones de distintos géneros",
+        "En producción para un instituto de investigación real",
+        "Contenido gestionado desde Firebase/Firestore",
+        "Arquitectura React modular, desplegada en Vercel",
+      ],
+    },
+    image: "/img/imipp.png",
+    imageWidth: 640,
+    imageHeight: 371,
+    imageAlt: {
+      en: "IMIPP research institute landing page",
+      es: "Landing del instituto de investigación IMIPP",
+    },
+    demo: "https://imipp.vercel.app/",
+    demoLabel: { en: "Live site", es: "Ver sitio" },
+    repo: "https://github.com/JuanPaladea/imipp",
+    stack: [tech.react, tech.vite, tech.tailwind, tech.firebase],
+  },
+  {
+    id: "en-una-nota",
+    category: product,
+    title: "En una nota · Ensalada mixta",
+    description: {
+      en: "A party game for singing with friends: a random song plays, cuts off after a beat, and the first team to shout has to keep going. A finished product on its own domain — not a demo — built in vanilla JavaScript with zero runtime dependencies.",
+      es: "Un juego para cantar con amigos: suena una canción al azar, se corta a los pocos segundos y el primer equipo en gritar tiene que seguirla. Un producto terminado con dominio propio —no una demo— hecho en JavaScript puro, sin dependencias de runtime.",
+    },
+    highlights: {
+      en: [
+        "11 curated playlists with 350+ songs",
+        "Works offline — custom audio persisted in IndexedDB",
+        "Zero runtime dependencies, deployed on Netlify",
+      ],
+      es: [
+        "11 playlists curadas con más de 350 canciones",
         "Funciona sin internet: audio propio guardado en IndexedDB",
-        "Tabla de puntajes e historial guardados en el navegador",
+        "Cero dependencias de runtime, desplegado en Netlify",
       ],
     },
     image: "/img/en-una-nota.svg",
@@ -103,37 +137,5 @@ export const projects: Project[] = [
     demoLabel: { en: "Play it", es: "Jugar" },
     repo: "https://github.com/JuanPaladea/en-una-nota-ensalada-mixta",
     stack: [tech.javascript, tech.vite, tech.indexedDb],
-  },
-  {
-    id: "imipp",
-    category: frontEnd,
-    title: "IMIPP — Landing Page",
-    description: {
-      en: "Responsive landing page for a research institute, with content served from Firestore so the team can publish without touching code.",
-      es: "Landing responsive para un instituto de investigación, con contenido servido desde Firestore para que el equipo publique sin tocar código.",
-    },
-    highlights: {
-      en: [
-        "Modular React architecture with React Router",
-        "Content fetched from Firebase/Firestore",
-        "Contact form wired to EmailJS, deployed on Vercel",
-      ],
-      es: [
-        "Arquitectura React modular con React Router",
-        "Contenido traído desde Firebase/Firestore",
-        "Formulario de contacto con EmailJS, desplegado en Vercel",
-      ],
-    },
-    image: "/img/imipp.png",
-    imageWidth: 640,
-    imageHeight: 371,
-    imageAlt: {
-      en: "IMIPP research institute landing page",
-      es: "Landing del instituto de investigación IMIPP",
-    },
-    demo: "https://imipp.vercel.app/",
-    demoLabel: { en: "Live demo", es: "Ver sitio" },
-    repo: "https://github.com/JuanPaladea/imipp",
-    stack: [tech.react, tech.vite, tech.tailwind, tech.firebase],
   },
 ];

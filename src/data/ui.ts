@@ -14,10 +14,13 @@ export const ui = {
   switchToSpanish: { en: "Ver en español", es: "Ver en español" },
   switchToEnglish: { en: "View in English", es: "View in English" },
 
-  available: { en: "Open to backend opportunities", es: "Disponible para oportunidades backend" },
   viewProjects: { en: "View projects", es: "Ver proyectos" },
   getInTouch: { en: "Get in touch", es: "Contactame" },
-  cv: { en: "CV", es: "CV" },
+  downloadCv: { en: "Download CV", es: "Descargar CV" },
+  cvPdfHint: { en: "PDF", es: "PDF" },
+
+  work: { en: "Work", es: "Trabajo" },
+  education: { en: "Education", es: "Formación" },
 
   opensInNewTab: { en: "opens in a new tab", es: "se abre en una pestaña nueva" },
   sourceOnGitHub: { en: "source code on GitHub", es: "código fuente en GitHub" },
@@ -29,13 +32,23 @@ export const ui = {
     en: "I usually reply within a couple of days.",
     es: "Normalmente respondo en un par de días.",
   },
-  addressLabel: { en: "ADDRESS", es: "UBICACIÓN" },
-  emailLabel: { en: "EMAIL", es: "EMAIL" },
+  basedIn: { en: "Based in", es: "Ubicación" },
+  timezoneLabel: { en: "Time zone", es: "Zona horaria" },
+  languagesLabel: { en: "Languages", es: "Idiomas" },
+  languagesValue: {
+    en: "Spanish (native) · English (C2 certified)",
+    es: "Español (nativo) · Inglés (C2 certificado)",
+  },
+  openToLabel: { en: "Open to", es: "Abierto a" },
+  openToValue: {
+    en: "Remote roles, full-time or contract",
+    es: "Trabajo remoto, full-time o por contrato",
+  },
+  emailLabel: { en: "Email", es: "Email" },
   emailField: { en: "Email", es: "Email" },
   messageField: { en: "Message", es: "Mensaje" },
   send: { en: "Send", es: "Enviar" },
   sending: { en: "Sending…", es: "Enviando…" },
-  mapOf: { en: "Map of", es: "Mapa de" },
 
   errorEmailRequired: { en: "Please enter your email.", es: "Ingresá tu email." },
   errorEmailInvalid: {

@@ -86,4 +86,18 @@ export const skillGroups: SkillGroup[] = [
       { name: "Netlify" },
     ],
   },
+  {
+    title: { en: "Automation & AI", es: "Automatizaciones e IA" },
+    description: {
+      en: "What I build day to day at Chatty",
+      es: "Lo que construyo a diario en Chatty",
+    },
+    items: [
+      { name: "AI agents" },
+      { name: "Conversational flows" },
+      { name: "Workflow automation" },
+      { name: "WhatsApp Business API" },
+      { name: "Custom metrics & funnels" },
+    ],
+  },
 ];

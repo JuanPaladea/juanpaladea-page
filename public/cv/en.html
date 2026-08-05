@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juan Paladea — Backend Developer · CV</title>
+    <meta
+      name="description"
+      content="CV of Juan Paladea, backend developer specialising in healthcare and research systems. Node.js, TypeScript, PostgreSQL."
+    />
+    <style>
+      :root {
+        --ink: #16192b;
+        --muted: #5a6072;
+        --accent: #4338ca;
+        --rule: #d9dce5;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body {
+        margin: 0;
+        padding: 32px 20px 48px;
+        background: #f4f5f8;
+        color: var(--ink);
+        font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+        font-size: 10.2pt;
+        line-height: 1.45;
+      }
+
+      .sheet {
+        max-width: 210mm;
+        margin: 0 auto;
+        padding: 15mm 16mm;
+        background: #fff;
+        box-shadow: 0 2px 18px rgba(20, 24, 45, 0.12);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 25pt;
+        font-weight: 700;
+        letter-spacing: -0.4px;
+      }
+
+      .role {
+        margin: 3px 0 0;
+        font-size: 12pt;
+        font-weight: 600;
+        color: var(--accent);
+      }
+
+      .contact {
+        margin: 9px 0 0;
+        font-size: 9.2pt;
+        color: var(--muted);
+      }
+
+      .contact a {
+        color: var(--muted);
+        text-decoration: none;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .contact span[aria-hidden] {
+        padding: 0 5px;
+        color: var(--rule);
+      }
+
+      .summary {
+        margin: 14px 0 0;
+        padding-top: 13px;
+        border-top: 2px solid var(--ink);
+      }
+
+      h2 {
+        margin: 20px 0 9px;
+        padding-bottom: 4px;
+        border-bottom: 1px solid var(--rule);
+        font-size: 9.4pt;
+        font-weight: 700;
+        letter-spacing: 1.3px;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      .entry {
+        margin-bottom: 13px;
+        break-inside: avoid;
+      }
+
+      .entry:last-child {
+        margin-bottom: 0;
+      }
+
+      .entry-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 14px;
+      }
+
+      .entry-title {
+        margin: 0;
+        font-size: 11pt;
+        font-weight: 700;
+      }
+
+      .entry-date {
+        flex-shrink: 0;
+        font-size: 9pt;
+        font-weight: 600;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      .entry-org {
+        margin: 1px 0 5px;
+        font-size: 9.8pt;
+        font-style: italic;
+        color: var(--muted);
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 16px;
+      }
+
+      li {
+        margin-bottom: 2.5px;
+      }
+
+      .project-links {
+        font-size: 9pt;
+        color: var(--muted);
+      }
+
+      .project-links a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .skills {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 4px 14px;
+        font-size: 9.9pt;
+      }
+
+      .skills dt {
+        font-weight: 700;
+      }
+
+      .skills dd {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .compact li {
+        margin-bottom: 4px;
+      }
+
+      .compact b {
+        color: var(--ink);
+      }
+
+      .compact span {
+        color: var(--muted);
+      }
+
+      @page {
+        size: A4;
+        margin: 13mm 14mm;
+      }
+
+      @media print {
+        body {
+          padding: 0;
+          background: #fff;
+          font-size: 9.8pt;
+        }
+
+        .sheet {
+          max-width: none;
+          padding: 0;
+          box-shadow: none;
+        }
+
+        a {
+          color: inherit;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="sheet">
+      <header>
+        <h1>Juan Paladea</h1>
+        <p class="role">Backend Developer — APIs, Automation &amp; AI Agents</p>
+        <p class="contact">
+          Buenos Aires, Argentina (UTC−3)<span aria-hidden="true">·</span>Available for remote work<span
+            aria-hidden="true"
+            >·</span
+          >C2 English<br />
+          <a href="mailto:juanpaladea5@gmail.com">juanpaladea5@gmail.com</a><span aria-hidden="true">·</span>
+          <a href="https://juanpaladea.com.ar">juanpaladea.com.ar</a><span aria-hidden="true">·</span>
+          <a href="https://github.com/JuanPaladea">github.com/JuanPaladea</a><span aria-hidden="true">·</span>
+          <a href="https://www.linkedin.com/in/juan-francisco-paladea-5703b0191/">linkedin.com/in/juan-paladea</a>
+        </p>
+      </header>
+
+      <p class="summary">
+        Backend developer building APIs, automations and AI agents. On the Customer Success team at
+        <b>Chatty</b>, a WhatsApp CRM platform, I take clients through implementation and build the AI agents,
+        automations and custom metrics they run their sales on. In parallel, five years inside a pediatric pathology
+        research institute — invoicing diagnostic and genomic services, regulatory and bioethics records, and the IT
+        behind them — after training as a radiology technician at the University of Buenos Aires. I build RESTful
+        services in <b>Node.js</b>, <b>TypeScript</b> and <b>PostgreSQL</b>, and model operational and clinical
+        domains from experience rather than from a spec.
+      </p>
+
+      <h2>Experience</h2>
+
+      <section class="entry">
+        <div class="entry-head">
+          <h3 class="entry-title">Customer Success</h3>
+          <span class="entry-date">Oct 2025 — Present</span>
+        </div>
+        <p class="entry-org">Chatty — WhatsApp CRM &amp; automation platform · Buenos Aires (remote)</p>
+        <ul>
+          <li>
+            Guide clients through platform implementation and ongoing support, from onboarding to day-to-day
+            operation.
+          </li>
+          <li>
+            Design and build the AI agents and automations that handle their customer conversations at scale.
+          </li>
+          <li>
+            Set up custom metrics and advise clients on how to act on them, tying campaign and sales performance
+            back to concrete changes.
+          </li>
+        </ul>
+      </section>
+
+      <section class="entry">
+        <div class="entry-head">
+          <h3 class="entry-title">Software Developer</h3>
+          <span class="entry-date">Dec 2022 — Present</span>
+        </div>
+        <p class="entry-org">Self-employed · Buenos Aires (remote)</p>
+        <ul>
+          <li>
+            Design and ship web products end to end: API design, database schema, frontend and deployment.
+          </li>
+          <li>
+            Build RESTful services in Node.js, TypeScript and Express, with JWT authentication, automated tests in
+            Jest and OpenAPI documentation through Swagger.
+          </li>
+          <li>
+            Work with PostgreSQL and MongoDB for data modelling, and React with Vite for client applications.
+          </li>
+          <li>Every project is publicly deployed with its source available; freelance work via Upwork and direct clients.</li>
+        </ul>
+      </section>
+
+      <section class="entry">
+        <div class="entry-head">
+          <h3 class="entry-title">Administration &amp; IT</h3>
+          <span class="entry-date">Feb 2021 — Present</span>
+        </div>
+        <p class="entry-org">
+          Multidisciplinary Institute for Research in Pediatric Pathologies (IMIPP) · Buenos Aires
+        </p>
+        <ul>
+          <li>
+            Handle invoicing and collection for high-value technological services — diagnostic, genomic and
+            educational — giving me direct working knowledge of clinical billing.
+          </li>
+          <li>
+            Manage procurement, supplier payments and financial tracking of assets and liabilities across
+            operational and scientific accounts.
+          </li>
+          <li>
+            Maintain regulatory and safety documentation: scientific project registration and bioethics protocol
+            compliance.
+          </li>
+          <li>
+            Keep laboratory equipment inventories and the institute's IT infrastructure running; support the
+            publication of scientific work.
+          </li>
+          <li>Built and maintain the institute's public website (React + Firestore), in production today.</li>
+        </ul>
+      </section>
+
+      <h2>Selected projects</h2>
+
+      <section class="entry">
+        <div class="entry-head">
+          <h3 class="entry-title">Hospital Backend — clinical data API</h3>
+          <span class="project-links">
+            <a href="https://hospital-backend-kapu.onrender.com/docs/">API docs</a> ·
+            <a href="https://github.com/JuanPaladea/hospital-backend">Code</a>
+          </span>
+        </div>
+        <p class="entry-org">Node.js · TypeScript · Express · PostgreSQL · JWT · Swagger</p>
+        <ul>
+          <li>
+            RESTful API managing patients, studies and billing, modelled on workflows I handle day to day at the
+            institute.
+          </li>
+          <li>
+            JWT sessions with bcrypt-hashed passwords, file uploads for study results and payment proofs, full
+            Swagger documentation. Deployed on Render.
+          </li>
+        </ul>
+      </section>
+
+      <section class="entry">
+        <div class="entry-head">
+          <h3 class="entry-title">IMIPP — research institute website</h3>
+          <span class="project-links">
+            <a href="https://imipp.vercel.app/">Live site</a> ·
+            <a href="https://github.com/JuanPaladea/imipp">Code</a>
+          </span>
+        </div>
+        <p class="entry-org">React · Vite · Tailwind CSS · Firebase/Firestore</p>
+        <ul>
+          <li>
+            Public site for the research institute where I work, in production. Content is served from Firestore so
+            the team publishes papers, news and services without a developer in the loop.
+          </li>
+        </ul>
+      </section>
+
+      <section class="entry">
+        <div class="entry-head">
+          <h3 class="entry-title">En una nota · Ensalada mixta — music party game</h3>
+          <span class="project-links">
+            <a href="https://enunanota.com.ar/">Live</a> ·
+            <a href="https://github.com/JuanPaladea/en-una-nota-ensalada-mixta">Code</a>
+          </span>
+        </div>
+        <p class="entry-org">Vanilla JavaScript · Vite · IndexedDB · Netlify</p>
+        <ul>
+          <li>
+            A finished product on its own domain: 11 curated playlists with 350+ songs, offline playback with custom
+            audio persisted in IndexedDB, scoreboard and history in the browser.
+          </li>
+          <li>Built with zero runtime dependencies as a deliberate constraint.</li>
+        </ul>
+      </section>
+
+      <section class="entry">
+        <div class="entry-head">
+          <h3 class="entry-title">Movie Reservation System — backend</h3>
+          <span class="project-links">
+            <a href="https://github.com/JuanPaladea/MovieReservationBack">Code</a>
+          </span>
+        </div>
+        <p class="entry-org">Node.js · Express · PostgreSQL · JWT · Jest</p>
+        <ul>
+          <li>
+            Movie, seat, showtime and reservation management with role-based authorization and unit-tested
+            endpoints.
+          </li>
+        </ul>
+      </section>
+
+      <h2>Technical skills</h2>
+      <dl class="skills">
+        <dt>Languages</dt>
+        <dd>JavaScript, TypeScript, Python, SQL, C, HTML, CSS</dd>
+        <dt>Backend</dt>
+        <dd>Node.js, Express, Flask, REST APIs, JWT, Jest, Mocha, Swagger/OpenAPI</dd>
+        <dt>Databases</dt>
+        <dd>PostgreSQL, MongoDB, MySQL</dd>
+        <dt>Frontend</dt>
+        <dd>React, Vite, Tailwind CSS</dd>
+        <dt>Tools &amp; cloud</dt>
+        <dd>Git, GitHub, Claude Code, AWS, Firebase, Vercel, Netlify, Render</dd>
+        <dt>Automation &amp; AI</dt>
+        <dd>AI agents, conversational flows, workflow automation, WhatsApp Business API, custom metrics and funnels</dd>
+      </dl>
+
+      <h2>Education</h2>
+
+      <section class="entry">
+        <div class="entry-head">
+          <h3 class="entry-title">Radiology Technician</h3>
+          <span class="entry-date">2018 — 2021</span>
+        </div>
+        <p class="entry-org">University of Buenos Aires, School of Medicine</p>
+        <ul>
+          <li>
+            Completed degree with clinical practice in hospital environments, working alongside physicians,
+            technicians and patients.
+          </li>
+        </ul>
+      </section>
+
+      <section class="entry">
+        <div class="entry-head">
+          <h3 class="entry-title">Computer Science — two years of coursework</h3>
+          <span class="entry-date">2022 — 2023</span>
+        </div>
+        <p class="entry-org">University of Buenos Aires, School of Natural and Exact Sciences</p>
+        <ul>
+          <li>
+            Algorithms, data structures and computing fundamentals. Moved to self-directed study to keep it
+            compatible with full-time work.
+          </li>
+        </ul>
+      </section>
+
+      <section class="entry">
+        <div class="entry-head">
+          <h3 class="entry-title">Self-directed software development</h3>
+          <span class="entry-date">2021 — Present</span>
+        </div>
+        <p class="entry-org">FreeCodeCamp · Codecademy · HackerRank · LeetCode</p>
+      </section>
+
+      <h2>Certifications</h2>
+      <ul class="compact">
+        <li>
+          <b>EF SET English — C2 Proficiency</b> <span>· Nov 2024 ·</span>
+          <a href="https://cert.efset.org/tcPa8L" class="project-links">certificate</a>
+        </li>
+        <li>
+          <b>CS50x, Introduction to Computer Science — Harvard University</b> <span>· 2024 ·</span>
+          <a href="https://certificates.cs50.io/31f7f89e-7a94-4c88-9509-44d216119600.pdf" class="project-links"
+            >certificate</a
+          >
+        </li>
+        <li>
+          <b>Backend Programming — Coderhouse</b> <span>· Jul 2024 ·</span>
+          <a
+            href="https://pub.coderhouse.com/legacy-certificates/66ae613c13652079130ca8fd?lang=en"
+            class="project-links"
+            >certificate</a
+          >
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>

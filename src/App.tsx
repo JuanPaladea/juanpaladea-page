@@ -2,6 +2,7 @@ import { Toaster } from "react-hot-toast";
 import HeaderComponent from "./components/HeaderComponent";
 import HeroComponent from "./components/HeroComponent";
 import AboutMeComponent from "./components/AboutMeComponent";
+import ExperienceComponent from "./components/ExperienceComponent";
 import TechnologiesComponent from "./components/TechnologiesComponent";
 import ProjectsComponent from "./components/ProjectsComponent";
 import CertificationsComponent from "./components/CertificationsComponent";
@@ -25,6 +26,7 @@ function App() {
       <main id="main">
         <HeroComponent />
         <AboutMeComponent />
+        <ExperienceComponent />
         <TechnologiesComponent />
         <ProjectsComponent />
         <CertificationsComponent />
