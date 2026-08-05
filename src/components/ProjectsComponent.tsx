@@ -1,194 +1,100 @@
-import { motion } from "framer-motion";
+import { projects } from "../data/projects";
+import { sectionCopy } from "../data/site";
+import { ui } from "../data/ui";
+import { usePreferences } from "../preferences/context";
+import Section from "./ui/Section";
+import SectionHeading from "./ui/SectionHeading";
+import TechChip from "./ui/TechChip";
+import { ExternalLinkIcon, GitHubIcon } from "./ui/icons";
 
 const ProjectsComponent = () => {
+  const { t } = usePreferences();
+
   return (
-    <>
-      <motion.section 
-      initial={{ opacity : 0 }}
-      whileInView={{ opacity : 1 }}
-      transition={{ duration: 1 }}
-      className="text-gray-400 bg-gray-900 body-font"
-      id="projects">
-        <div className="container px-5 py-24 mx-auto">
-          <div className="flex flex-wrap -m-4">
-            <div className="p-4 md:w-1/2 lg:w-1/3 mx-auto">
-              <div className="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
-                <div className="relative group">
+    <Section id="projects" aria-labelledby="projects-heading">
+      <SectionHeading
+        id="projects-heading"
+        title={t(sectionCopy.projects.title)}
+        subtitle={t(sectionCopy.projects.subtitle)}
+      />
+      <div className="container mx-auto px-5 py-12">
+        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project) => (
+            <li key={project.id} className="flex">
+              <article className="flex w-full flex-col overflow-hidden rounded-xl border border-line bg-surface transition-colors duration-300 hover:border-accent/60">
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative block overflow-hidden bg-elevated"
+                  aria-label={`${project.title} — ${t(project.demoLabel)} (${t(ui.opensInNewTab)})`}
+                >
                   <img
-                    className="lg:h-48 md:h-36 w-full object-cover object-center transition-transform duration-500 transform group-hover:rotate-y-180"
-                    src="https://i.imgur.com/w8aEHii.png"
-                    title="Backend Hospital documentation page"
-                    alt="Backend Hosptal"
+                    className="aspect-[16/9] w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    src={project.image}
+                    alt={t(project.imageAlt)}
+                    width={project.imageWidth}
+                    height={project.imageHeight}
+                    loading="lazy"
+                    decoding="async"
                   />
-                  <a href="https://hospital-backend-kapu.onrender.com/docs/" target="_blank" title="Backend live documentation page" className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="h-full flex items-center p-4 rounded-lg hover:cursor-pointer">
-                      <img
-                        alt="NodeJS icon"
-                        title="NodeJS icon"
-                        className="w-16 h-16 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                        src="https://www.svgrepo.com/show/378837/node.svg"
-                      />
-                      <img
-                        alt="ExpressJS icon"
-                        title="ExpressJS icon"
-                        className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 mr-4"
-                        src="https://www.svgrepo.com/show/376367/express.svg"
-                      />
-                      <img
-                        alt="TypeScript icon"
-                        title="TypeScript icon"
-                        className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 mr-4"
-                        src="https://www.svgrepo.com/show/354478/typescript-icon.svg"
-                      />
-                      <img
-                        alt="PostgreSQL icon"
-                        title="PostgreSQL icon"
-                        className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 mr-4"
-                        src="https://www.svgrepo.com/show/354200/postgresql.svg"
-                      />
-                    </div>
-                  </a>
-                </div>
-                <div className="p-6">
-                  <h5 className="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">
-                    Back End
-                  </h5>
-                  <h4 className="title-font text-lg font-medium text-white mb-3">
-                    Hospital Backend
-                  </h4>
-                  <p className="leading-relaxed mb-3">
-                  The STANs Backend API is a RESTful API built with Node.js and Express that manages healthcare data such as patients, studies, and bills. It provides endpoints for user authentication (register, login, logout), CRUD operations on patient records, study data, billing information, and file uploads (for study results and payment proofs). The API uses PostgreSQL as its database and implements security best practices including password hashing with bcrypt, JWT-based authentication. The API is documented using Swagger, providing a clear overview of the available endpoints and their usage. The API is deployed on Render, ensuring high availability and scalability.                
-                  </p>
-                  <div className="flex items-center flex-wrap ">
-                    <a href="https://hospital-backend-kapu.onrender.com/docs/" target="_blank" title="Backend live documentation page" className="text-indigo-400 inline-flex items-center md:mb-2 lg:mb-0">
-                      Live demo
-                    </a>
-                    <span className="text-gray-500 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1">
-                      <a href="https://github.com/JuanPaladea/hospital-backend" target="_blank" title="Backend github page" className="text-indigo-400 inline-flex items-center md:mb-2 lg:mb-0">
-                        Github
-                      </a>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="p-4 md:w-1/2 lg:w-1/3 mx-auto">
-              <div className="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
-                <div className="relative group">
-                  <img
-                    className="lg:h-48 md:h-36 w-full object-cover object-center transition-transform duration-500 transform group-hover:rotate-y-180"
-                    src="https://i.imgur.com/HzmBq7I.png"
-                    alt="IMIPP landing page"
-                    title="IMIPP landing page"
-                  />
-                  <a href="https://imipp.vercel.app/" target="blank" title="IMIPP Live Link" className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="h-full flex items-center p-4 rounded-lg hover:cursor-pointer">
-                      <img
-                        alt="JavaScript icon"
-                        title="JavaScript icon"
-                        className="w-16 h-16 object-cover object-center flex-shrink-0 mr-4"
-                        src="https://www.svgrepo.com/show/353925/javascript.svg"
-                      />
-                      <img
-                        alt="Vite icon"
-                        title="Vite icon"
-                        className="w-16 h-16 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                        src="https://www.svgrepo.com/show/374167/vite.svg"
-                      />
-                      <img
-                        alt="Firebase icon"
-                        title="Firebase icon"
-                        className="w-16 h-16 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                        src="https://www.svgrepo.com/show/373595/firebase.svg"
-                      />
-                    </div>
-                  </a>
-                </div>
-                <div className="p-6">
-                  <h5 className="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">
-                    Front End
-                  </h5>
-                  <h4 className="title-font text-lg font-medium text-white mb-3">
-                    IMIPP - Landing Page
-                  </h4>
-                  <p className="leading-relaxed mb-3">
-                    Responsive and dynamic landing page for a research institute using React, Vite, and Tailwind CSS, deployed on Vercel. The application fetches data from a backend built with Firestore/Firebase and follows best practices in frontend development. The page features a modular architecture with separate components and pages, managed using React Router DOM for smooth navigation. Additionally, it includes a contact form integrated with EmailJS, enabling seamless communication. The design is modern and mobile-friendly, ensuring a user-centric experience across devices.
-                  </p>
-                  <div className="flex items-center flex-wrap ">
-                    <a href="https://imipp.vercel.app/" target="_blank" title="IMIPP Live Link" className="text-indigo-400 inline-flex items-center md:mb-2 lg:mb-0">
-                      Live demo
-                    </a>
-                    <span className="text-gray-500 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1">
-                      <a href="https://github.com/JuanPaladea/imipp" target="_blank" title="IMIPP Github Link" className="text-indigo-400 inline-flex items-center md:mb-2 lg:mb-0">
-                        Github
-                      </a>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
+                  <span className="absolute inset-0 flex items-center justify-center bg-page/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                    <ExternalLinkIcon className="h-8 w-8 text-heading" />
+                  </span>
+                  <span className="absolute left-3 top-3 rounded-full bg-page/85 px-2.5 py-1 text-xs font-medium tracking-wide text-accent-soft backdrop-blur">
+                    {t(project.category)}
+                  </span>
+                </a>
 
-            <div className="p-4 md:w-1/2 lg:w-1/3 mx-auto">
-              <div className="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
-                <div className="relative group">
-                  <img
-                    className="lg:h-48 md:h-36 w-full object-cover object-center transition-transform duration-500 transform group-hover:rotate-y-180"
-                    src="https://i.imgur.com/w8aEHii.png"
-                    title="E-commerce backend documentation page"
-                    alt="Backend e-commerce"
-                  />
-                  <a href="https://backend-practice-ml8a.onrender.com/api-docs/" target="_blank" title="Backend live documentation page" className="absolute inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="h-full flex items-center p-4 rounded-lg hover:cursor-pointer">
-                      <img
-                        alt="NodeJS icon"
-                        title="NodeJS icon"
-                        className="w-16 h-16 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                        src="https://www.svgrepo.com/show/378837/node.svg"
-                      />
-                      <img
-                        alt="ExpressJS icon"
-                        title="ExpressJS icon"
-                        className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 mr-4"
-                        src="https://www.svgrepo.com/show/376367/express.svg"
-                      />
-                      <img
-                        alt="MongoDB icon"
-                        title="MongoDB icon"
-                        className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                        src="https://www.svgrepo.com/show/331488/mongodb.svg"
-                      />
-                    </div>
-                  </a>
-                </div>
-                <div className="p-6">
-                  <h5 className="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">
-                    Back End
-                  </h5>
-                  <h4 className="title-font text-lg font-medium text-white mb-3">
-                    E-Commerce Backend
-                  </h4>
-                  <p className="leading-relaxed mb-3">
-                    Developed a robust backend for an e-commerce platform using Node.js, TypeScript, and Express. Implemented key features such as user authentication and authorization, with secure JWT-based sessions. Integrated MongoDB to manage data models for cart, orders, products, and users, with seamless interaction through RESTful API endpoints. Ensured the system's reliability with automated tests using Jest, and provided comprehensive API documentation with Swagger. The architecture follows best practices, with a clear separation of concerns including services, controllers, routes and middlewares. Integrated logging using Winston for tracking system activity, and utilized dotenv for secure environment management.
-                  </p>
-                  <div className="flex items-center flex-wrap ">
-                    <a href="https://ecommerce-nodejs-o555.onrender.com/" target="_blank" title="Backend live documentation page" className="text-indigo-400 inline-flex items-center md:mb-2 lg:mb-0">
-                      Live demo
+                <div className="flex flex-grow flex-col p-6">
+                  <h3 className="title-font mb-2 text-lg font-medium text-heading">{project.title}</h3>
+                  <p className="mb-4 text-sm leading-relaxed">{t(project.description)}</p>
+
+                  <ul className="mb-5 space-y-1.5 text-sm">
+                    {t(project.highlights).map((highlight) => (
+                      <li key={highlight} className="flex gap-2">
+                        <span aria-hidden="true" className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <ul className="mb-5 flex flex-wrap gap-1.5">
+                    {project.stack.map((item) => (
+                      <li key={item.name}>
+                        <TechChip skill={item} size="sm" />
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-auto flex items-center justify-between border-t border-line pt-4">
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-accent-soft transition-opacity hover:opacity-80"
+                    >
+                      {t(project.demoLabel)}
+                      <ExternalLinkIcon className="h-4 w-4" />
                     </a>
-                    <span className="text-gray-500 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1">
-                      <a href="https://github.com/JuanPaladea/ecommerce-nodejs" target="_blank" title="Backend github page" className="text-indigo-400 inline-flex items-center md:mb-2 lg:mb-0">
-                        Github
-                      </a>
-                    </span>
+                    <a
+                      href={project.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-body transition-colors hover:text-heading"
+                      aria-label={`${project.title} — ${t(ui.sourceOnGitHub)}`}
+                    >
+                      <GitHubIcon className="h-4 w-4" />
+                      {t(ui.code)}
+                    </a>
                   </div>
                 </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </motion.section>
-    </>
+              </article>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Section>
   );
 };
 

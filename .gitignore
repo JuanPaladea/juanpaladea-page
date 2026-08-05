@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 .env
+.env.*
+!.env.example
+
+# TypeScript incremental build output
+*.tsbuildinfo
 
 # Editor directories and files
 .vscode/*

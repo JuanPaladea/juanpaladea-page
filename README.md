@@ -1,50 +1,105 @@
-# React + TypeScript + Vite
+# Juan Paladea — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio site built with React, TypeScript, Vite and Tailwind CSS.
+Live at [juanpaladea.com.ar](https://juanpaladea.com.ar).
 
-Currently, two official plugins are available:
+Bilingual (English / Spanish) with a light and dark theme. Both preferences are
+detected from the browser on a first visit, persisted to `localStorage`, and
+applied before first paint by a small inline script in `index.html` so the page
+never flashes the wrong theme.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting started
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+| Script            | What it does                          |
+| ----------------- | ------------------------------------- |
+| `npm run dev`     | Dev server with HMR on port 5173      |
+| `npm run build`   | Type-check and build to `dist/`       |
+| `npm run preview` | Serve the production build locally    |
+| `npm run lint`    | Run ESLint over the project           |
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Environment variables
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+The contact form uses [EmailJS](https://www.emailjs.com/). Copy `.env.example`
+to `.env` and fill in the values from the EmailJS dashboard:
+
 ```
+VITE_APP_SERVICE_ID=
+VITE_APP_TEMPLATE_ID=
+VITE_APP_PUBLIC_KEY=
+```
+
+These keys ship in the client bundle by design — restrict them with the
+allowed-origins setting in EmailJS. Without them the form falls back to
+showing the contact email address.
+
+## Project structure
+
+```
+public/
+├─ icons/              Tech logos (local SVGs, no third-party hotlinking)
+└─ img/                Portrait, project shots, certificates
+src/
+├─ components/
+│  ├─ ui/              Shared building blocks (Section, SectionHeading, TechChip, icons)
+│  └─ *Component.tsx   One component per page section
+├─ data/               Site content + `ui.ts` for interface strings
+├─ hooks/              useInView — scroll reveal via IntersectionObserver
+├─ preferences/        Language and theme context, persisted to localStorage
+├─ App.tsx             Section composition
+└─ index.css           Colour tokens, focus states, reduced-motion rules
+```
+
+**Content lives in `src/data`, not in JSX.** To add a project, append an entry
+to `src/data/projects.ts`; the same applies to `skills.ts` and
+`certifications.ts`. Nothing in the components needs to change.
+
+### Adding translated content
+
+Anything a visitor reads is a `Localized<T>` — an object with an `en` and an
+`es` key — and components render it through `t()` from `usePreferences()`:
+
+```ts
+description: {
+  en: "RESTful API that manages healthcare data…",
+  es: "API RESTful que gestiona datos clínicos…",
+}
+```
+
+TypeScript fails the build if a translation is missing, so a half-translated
+entry cannot ship. Interface strings (buttons, labels, form errors) live in
+`src/data/ui.ts`.
+
+### Adding a skill icon
+
+Skills render a logo when `icon` is set and an accent dot when it is not. To
+give one a logo, drop an SVG into `public/icons/` and reference it:
+
+```ts
+{ name: "Jest", icon: icon("jest") }   // resolves to /icons/jest.svg
+```
+
+### Colours
+
+Components never name a palette colour. They use semantic tokens — `bg-page`,
+`bg-surface`, `border-line`, `text-heading`, `text-body`, `text-muted`,
+`bg-accent` (fills) and `text-accent-soft` (accent text) — which are CSS
+variables redefined under `.dark` in `index.css`. Adding a theme means editing
+one block, not every component. Every foreground/background pair in both themes
+clears WCAG AA (4.5:1).
+
+## Notes
+
+- All images and logos are served from this origin. Nothing hotlinks to imgur
+  or svgrepo, which both rate-limit and can break the page without warning.
+- Sections fade in on scroll with a CSS transition driven by
+  `IntersectionObserver`. The reveal is progressive enhancement: it is skipped
+  for reduced-motion visitors, and a fallback timer shows the content anyway if
+  the observer never reports, so nothing is ever left invisible.
+- Images below the fold are lazy-loaded and carry intrinsic dimensions to avoid
+  layout shift. The hero portrait is preloaded from `index.html` as the LCP
+  element and served responsively via `srcset`.

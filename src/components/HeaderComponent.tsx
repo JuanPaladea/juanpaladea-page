@@ -1,40 +1,83 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { contactNavLabel, navLinks, site } from "../data/site";
+import { ui } from "../data/ui";
+import { usePreferences } from "../preferences/context";
+import PreferenceToggles from "./ui/PreferenceToggles";
+import { ArrowRightIcon, CloseIcon, MenuIcon } from "./ui/icons";
 
 const HeaderComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const { t } = usePreferences();
+
+  // Escape closes the mobile menu, matching what keyboard users expect.
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isOpen]);
+
+  const allLinks = [...navLinks, { href: "#contact", label: contactNavLabel }];
+
   return (
-    <>
-      <motion.header 
-      initial={{ opacity : 0 }}
-      whileInView={{ opacity : 1 }}
-      transition={{ duration: 1 }}
-      className="text-gray-400 bg-gray-900 body-font"
-      id="home">
-        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <a href="#home" title="Homepage" className="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-            <span className="ml-3 text-xl">Juan Paladea</span>
+    <header className="sticky top-0 z-50 border-b border-line bg-page/85 backdrop-blur">
+      <div className="container mx-auto flex items-center gap-4 px-5 py-3">
+        <a href="#home" className="title-font shrink-0 rounded text-xl font-semibold text-heading">
+          {site.name}
+        </a>
+
+        <nav aria-label={t(ui.mainNav)} className="ml-auto hidden items-center gap-6 lg:flex">
+          {navLinks.map(({ href, label }) => (
+            <a key={href} href={href} className="rounded text-body transition-colors hover:text-heading">
+              {t(label)}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            className="inline-flex items-center rounded-lg bg-elevated px-3 py-1.5 text-body transition-colors hover:text-heading"
+          >
+            {t(contactNavLabel)}
+            <ArrowRightIcon className="ml-1 h-4 w-4" />
           </a>
-          <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-            <a href="#aboutme" title="about-me" className="mr-5 hover:text-white">About Me</a>
-            <a href="#skills" title="skills" className="mr-5 hover:text-white">Skills</a>
-            <a href="#projects" title="projects" className="mr-5 hover:text-white">Projects</a>
-          </nav>
-          <a href="#contact" title="contact" className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">
-            <p>Contact</p>
-            <svg
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              className="w-4 h-4 ml-1"
-              viewBox="0 0 24 24"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </a>
-        </div>
-      </motion.header>
-    </>
+        </nav>
+
+        <PreferenceToggles className="ml-auto lg:ml-4" />
+
+        <button
+          type="button"
+          onClick={() => setIsOpen((open) => !open)}
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+          aria-label={t(isOpen ? ui.closeMenu : ui.openMenu)}
+          className="rounded-lg p-2 text-body transition-colors hover:bg-elevated hover:text-heading lg:hidden"
+        >
+          {isOpen ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
+        </button>
+      </div>
+
+      <nav
+        id="mobile-menu"
+        aria-label={t(ui.mobileNav)}
+        hidden={!isOpen}
+        className="border-t border-line px-5 pb-4 lg:hidden"
+      >
+        <ul className="flex flex-col">
+          {allLinks.map(({ href, label }) => (
+            <li key={href}>
+              <a
+                href={href}
+                onClick={() => setIsOpen(false)}
+                className="block rounded py-3 text-body transition-colors hover:text-heading"
+              >
+                {t(label)}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
   );
 };
 

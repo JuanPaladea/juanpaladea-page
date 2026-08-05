@@ -3,34 +3,115 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Welcome my Portfolio. I am a software developer with a passion for backend development." />
-    <meta name="keywords" content="Juan Paladea, Portfolio, Web Developer, Software Engineer, Backend Developer" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111827" />
+
+    <!--
+      Apply the saved theme and language before first paint. Without this the
+      page would render in the default theme and flash on hydration.
+    -->
+    <script>
+      (function () {
+        try {
+          var root = document.documentElement;
+          var theme = localStorage.getItem("portfolio-theme");
+          if (theme !== "light" && theme !== "dark") {
+            theme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+          }
+          root.classList.toggle("dark", theme === "dark");
+
+          var lang = localStorage.getItem("portfolio-lang");
+          if (lang !== "en" && lang !== "es") {
+            lang = (navigator.language || "en").toLowerCase().indexOf("es") === 0 ? "es" : "en";
+          }
+          root.lang = lang;
+        } catch (e) {
+          /* Storage blocked — the app falls back to its defaults. */
+        }
+      })();
+    </script>
+
+    <title>Juan Paladea — Backend Software Developer</title>
+    <meta
+      name="description"
+      content="Portfolio of Juan Paladea, a backend software developer from Buenos Aires building RESTful APIs and services with Node.js, Express, TypeScript, PostgreSQL and MongoDB."
+    />
     <meta name="author" content="Juan Paladea" />
-    <link rel="icon" href="public/favicon.ico" />
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    <title>Juan Paladea's Portfolio | Homepage</title>
+    <link rel="canonical" href="https://juanpaladea.com.ar/" />
 
-    <meta property="og:title" content="Juan Paladea's Portfolio" />
-    <meta property="og:description" content="Juan Paladea's Portfolio" />
-    <meta property="og:image" content="public/favicon.ico" />
-    <meta property="og:url" content="https://juanpaladea.com.ar" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+
+    <!-- Only third-party origin left: the Inter webfont. -->
+    <link rel="preconnect" href="https://rsms.me" crossorigin />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
+    <!-- The portrait is the LCP element: start fetching it before React boots. -->
+    <link
+      rel="preload"
+      as="image"
+      href="/img/portrait-1024.jpeg"
+      imagesrcset="/img/portrait-640.jpeg 575w, /img/portrait-1024.jpeg 919w"
+      imagesizes="(min-width: 1024px) 28rem, (min-width: 768px) 40vw, 80vw"
+      fetchpriority="high"
+    />
+
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Juan Paladea" />
+    <meta property="og:title" content="Juan Paladea — Backend Software Developer" />
+    <meta
+      property="og:description"
+      content="Portfolio of Juan Paladea, a backend software developer from Buenos Aires building RESTful APIs and services with Node.js, Express, TypeScript, PostgreSQL and MongoDB."
+    />
+    <meta property="og:url" content="https://juanpaladea.com.ar/" />
+    <meta property="og:image" content="https://juanpaladea.com.ar/img/portrait-1024.jpeg" />
+    <meta property="og:image:alt" content="Portrait of Juan Paladea" />
+    <meta property="og:locale" content="en_US" />
 
-    <meta name="linkedin:card" content="summary" />
-    <meta name="linkedin:site" content="https://www.linkedin.com/in/juan-francisco-paladea-5703b0191/" />
-    <meta name="linkedin:title" content="Juan Paladea's Portfolio" />
-    <meta name="linkedin:description" content="Juan Paladea's Portfolio" />
-    <meta name="linkedin:image" content="public/linkedin.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Juan Paladea — Backend Software Developer" />
+    <meta
+      name="twitter:description"
+      content="Portfolio of Juan Paladea, a backend software developer from Buenos Aires building RESTful APIs and services with Node.js, Express, TypeScript, PostgreSQL and MongoDB."
+    />
+    <meta name="twitter:image" content="https://juanpaladea.com.ar/img/portrait-1024.jpeg" />
 
-    <meta name="github:card" content="summary" />
-    <meta name="github:site" content="https://github.com/JuanPaladea" />
-    <meta name="github:title" content="Juan Paladea's Portfolio" />
-    <meta name="github:description" content="Juan Paladea's Portfolio" />
-    <meta name="github:image" content="public/github.png" />
-
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Juan Paladea",
+        "url": "https://juanpaladea.com.ar/",
+        "image": "https://juanpaladea.com.ar/img/portrait-1024.jpeg",
+        "jobTitle": "Backend Software Developer",
+        "email": "mailto:juanpaladea5@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Buenos Aires",
+          "addressCountry": "AR"
+        },
+        "sameAs": [
+          "https://github.com/JuanPaladea",
+          "https://www.linkedin.com/in/juan-francisco-paladea-5703b0191/"
+        ],
+        "knowsAbout": [
+          "Node.js",
+          "Express",
+          "TypeScript",
+          "JavaScript",
+          "Python",
+          "PostgreSQL",
+          "MongoDB",
+          "REST APIs"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      This portfolio needs JavaScript to run. You can reach Juan Paladea at
+      <a href="mailto:juanpaladea5@gmail.com">juanpaladea5@gmail.com</a>.
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
