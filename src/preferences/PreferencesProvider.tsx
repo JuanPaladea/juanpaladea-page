@@ -26,8 +26,19 @@ const detectTheme = (): Theme =>
   read(THEME_STORAGE_KEY, isTheme) ??
   (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
 
-const detectLang = (): Lang =>
-  read(LANG_STORAGE_KEY, isLang) ?? (navigator.language.toLowerCase().startsWith("es") ? "es" : "en");
+const detectLang = (): Lang => {
+  const stored = read(LANG_STORAGE_KEY, isLang);
+  if (stored) return stored;
+
+  // Walk the browser's ordered preference list and take the first language the
+  // site ships. Reading only navigator.language would send a visitor whose
+  // primary is, say, pt-BR to English even when Spanish is their second choice.
+  for (const tag of navigator.languages ?? [navigator.language]) {
+    const base = tag.toLowerCase().split("-")[0];
+    if (base === "es" || base === "en") return base;
+  }
+  return "en";
+};
 
 const PreferencesProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<Theme>(detectTheme);

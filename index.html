@@ -22,7 +22,16 @@
 
           var lang = localStorage.getItem("portfolio-lang");
           if (lang !== "en" && lang !== "es") {
-            lang = (navigator.language || "en").toLowerCase().indexOf("es") === 0 ? "es" : "en";
+            // First language in the browser's ordered list that the site ships.
+            var tags = navigator.languages || [navigator.language || "en"];
+            lang = "en";
+            for (var i = 0; i < tags.length; i++) {
+              var base = String(tags[i]).toLowerCase().split("-")[0];
+              if (base === "es" || base === "en") {
+                lang = base;
+                break;
+              }
+            }
           }
           root.lang = lang;
         } catch (e) {
