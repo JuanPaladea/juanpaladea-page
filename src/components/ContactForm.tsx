@@ -8,6 +8,7 @@ import { usePreferences } from "../preferences/context";
 import type { Localized } from "../preferences/types";
 import Section from "./ui/Section";
 import SectionHeading from "./ui/SectionHeading";
+import { CalendarIcon } from "./ui/icons";
 
 const SERVICE_ID = import.meta.env.VITE_APP_SERVICE_ID ?? "";
 const TEMPLATE_ID = import.meta.env.VITE_APP_TEMPLATE_ID ?? "";
@@ -105,6 +106,20 @@ const ContactForm = () => {
               </dd>
             </div>
           </dl>
+
+          {/* A booking link converts interest into a meeting in one click. */}
+          <div className="mt-8 border-t border-line pt-6">
+            <a
+              href={site.calendar}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 font-medium text-accent-contrast transition-opacity hover:opacity-90"
+            >
+              <CalendarIcon className="h-5 w-5" />
+              {t(ui.bookCall)}
+            </a>
+            <p className="mt-2 text-sm text-muted">{t(ui.bookCallHint)}</p>
+          </div>
         </div>
 
         <form

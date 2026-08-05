@@ -7,6 +7,7 @@ export const site = {
   photo: "/img/portrait-1024.jpeg",
   github: "https://github.com/JuanPaladea",
   linkedin: "https://www.linkedin.com/in/juan-francisco-paladea-5703b0191/",
+  calendar: "https://calendar.app.google/x3QsQgLZfA2AHXnN7",
   timezone: "UTC−3",
 } as const;
 
@@ -17,8 +18,8 @@ export const cvUrl: Record<Lang, string> = {
 };
 
 export const role: Localized<string> = {
-  en: "Backend Developer — APIs, automation & AI agents",
-  es: "Desarrollador Backend — APIs, automatizaciones y agentes de IA",
+  en: "Full-stack Developer — APIs, automation & AI agents",
+  es: "Desarrollador Full-stack — APIs, automatizaciones y agentes de IA",
 };
 
 export const location: Localized<string> = {
@@ -37,8 +38,8 @@ export const englishLevel: Localized<string> = {
 };
 
 export const summary: Localized<string> = {
-  en: "I build APIs, automations and AI agents. At Chatty, a WhatsApp CRM platform, I take clients through implementation and build the automations, AI agents and custom metrics they run their sales on. In parallel I have spent five years inside a pediatric research institute, invoicing diagnostic and genomic services and keeping its systems running — so I model clinical and operational workflows from the inside. Node.js, TypeScript and PostgreSQL.",
-  es: "Construyo APIs, automatizaciones y agentes de IA. En Chatty, una plataforma de CRM sobre WhatsApp, acompaño a los clientes en su implementación y armo las automatizaciones, agentes de IA y métricas personalizadas con las que venden. En paralelo, hace cinco años trabajo dentro de un instituto de investigación pediátrica facturando servicios diagnósticos y genómicos y manteniendo sus sistemas, así que modelo flujos clínicos y operativos desde adentro. Node.js, TypeScript y PostgreSQL.",
+  en: "I build and ship complete products — API, database and interface — with my centre of gravity on the backend. At Chatty, a WhatsApp CRM platform, I take clients through implementation and build the AI agents, automations and custom metrics they run their sales on. In parallel I have spent five years inside a pediatric research institute, invoicing diagnostic and genomic services and keeping its systems running, so I model clinical and operational workflows from the inside. Node.js, TypeScript, PostgreSQL and React.",
+  es: "Construyo y publico productos completos —API, base de datos e interfaz—, con el centro de gravedad en el backend. En Chatty, una plataforma de CRM sobre WhatsApp, acompaño a los clientes en su implementación y armo los agentes de IA, las automatizaciones y las métricas personalizadas con las que venden. En paralelo, hace cinco años trabajo dentro de un instituto de investigación pediátrica facturando servicios diagnósticos y genómicos y manteniendo sus sistemas, así que modelo flujos clínicos y operativos desde adentro. Node.js, TypeScript, PostgreSQL y React.",
 };
 
 export const navLinks: { href: string; label: Localized<string> }[] = [

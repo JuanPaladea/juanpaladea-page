@@ -3,10 +3,11 @@
 Personal portfolio site built with React, TypeScript, Vite and Tailwind CSS.
 Live at [juanpaladea.com.ar](https://juanpaladea.com.ar).
 
-Bilingual (English / Spanish) with a light and dark theme. Both preferences are
-detected from the browser on a first visit, persisted to `localStorage`, and
-applied before first paint by a small inline script in `index.html` so the page
-never flashes the wrong theme.
+Bilingual (English / Spanish) with a light and dark theme, and a case-study
+page per project. Both preferences are negotiated against the browser's
+language list on a first visit, persisted to `localStorage`, and applied before
+first paint by a small inline script in `index.html` so the page never flashes
+the wrong theme.
 
 ## Getting started
 
@@ -72,9 +73,28 @@ src/
 ├─ data/               Site content: profile, career, skills, projects, certs, UI strings
 ├─ hooks/              useInView — scroll reveal via IntersectionObserver
 ├─ preferences/        Language and theme context, persisted to localStorage
-├─ App.tsx             Section composition
+├─ router.ts           Two-route History API router, no dependency
+├─ App.tsx             Route switch and section composition
 └─ index.css           Colour tokens, focus states, reduced-motion rules
 ```
+
+### Routing
+
+Two routes — `/` and `/projects/:id` — do not justify a routing library, so
+`src/router.ts` is the History API plus a subscription, in about 40 lines.
+Links are real anchors with real `href`s, so they stay crawlable and
+ctrl-clickable; `InternalLink` intercepts only plain left clicks. Unknown
+project ids fall back to the home page rather than rendering blank.
+
+Deep links need the server to serve `index.html` for those paths — that is what
+the rewrite in `vercel.json` does. On another host, configure the equivalent
+SPA fallback or project pages will 404 on a hard refresh.
+
+### Adding a project case study
+
+A card links to its page only when `src/data/projectDetails.ts` has an entry
+under the project's `id`, holding the context, the decisions worth defending,
+and an honest note on what is still missing.
 
 **Content lives in `src/data`, not in JSX.** To add a project, append an entry
 to `src/data/projects.ts`; the same applies to `skills.ts` and

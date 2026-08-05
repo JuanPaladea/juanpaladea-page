@@ -22,6 +22,19 @@ export const ui = {
   work: { en: "Work", es: "Trabajo" },
   education: { en: "Education", es: "Formación" },
 
+  caseStudy: { en: "Read the case study", es: "Ver el caso completo" },
+  backToProjects: { en: "Back to all projects", es: "Volver a todos los proyectos" },
+  contextHeading: { en: "Context", es: "Contexto" },
+  decisionsHeading: { en: "Key decisions", es: "Decisiones clave" },
+  nextHeading: { en: "What is missing", es: "Qué falta" },
+  stackHeading: { en: "Stack", es: "Stack" },
+  bookCall: { en: "Book a call", es: "Agendar una llamada" },
+  bookCallHint: {
+    en: "Pick a slot that works for you — 30 minutes, no preparation needed.",
+    es: "Elegí un horario que te sirva — 30 minutos, sin preparación.",
+  },
+  orWriteInstead: { en: "Prefer to write? Use the form.", es: "¿Preferís escribir? Usá el formulario." },
+
   opensInNewTab: { en: "opens in a new tab", es: "se abre en una pestaña nueva" },
   sourceOnGitHub: { en: "source code on GitHub", es: "código fuente en GitHub" },
   code: { en: "Code", es: "Código" },

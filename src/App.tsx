@@ -8,11 +8,14 @@ import ProjectsComponent from "./components/ProjectsComponent";
 import CertificationsComponent from "./components/CertificationsComponent";
 import ContactForm from "./components/ContactForm";
 import FooterComponent from "./components/FooterComponent";
+import ProjectPage from "./components/ProjectPage";
 import { ui } from "./data/ui";
 import { usePreferences } from "./preferences/context";
+import { useRoute } from "./router";
 
 function App() {
   const { theme, t } = usePreferences();
+  const route = useRoute();
 
   return (
     <>
@@ -22,15 +25,21 @@ function App() {
       >
         {t(ui.skipToContent)}
       </a>
-      <HeaderComponent />
+      <HeaderComponent isHome={route.name === "home"} />
       <main id="main">
-        <HeroComponent />
-        <AboutMeComponent />
-        <ExperienceComponent />
-        <TechnologiesComponent />
-        <ProjectsComponent />
-        <CertificationsComponent />
-        <ContactForm />
+        {route.name === "project" ? (
+          <ProjectPage id={route.id} />
+        ) : (
+          <>
+            <HeroComponent />
+            <AboutMeComponent />
+            <ExperienceComponent />
+            <TechnologiesComponent />
+            <ProjectsComponent />
+            <CertificationsComponent />
+            <ContactForm />
+          </>
+        )}
       </main>
       <FooterComponent />
       <Toaster

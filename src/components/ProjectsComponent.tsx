@@ -2,10 +2,12 @@ import { projects } from "../data/projects";
 import { sectionCopy } from "../data/site";
 import { ui } from "../data/ui";
 import { usePreferences } from "../preferences/context";
+import { projectPath } from "../router";
 import Section from "./ui/Section";
 import SectionHeading from "./ui/SectionHeading";
 import TechChip from "./ui/TechChip";
-import { ExternalLinkIcon, GitHubIcon } from "./ui/icons";
+import InternalLink from "./ui/InternalLink";
+import { ArrowRightIcon, ExternalLinkIcon, GitHubIcon } from "./ui/icons";
 
 const ProjectsComponent = () => {
   const { t } = usePreferences();
@@ -22,12 +24,10 @@ const ProjectsComponent = () => {
           {projects.map((project) => (
             <li key={project.id} className="flex">
               <article className="flex w-full flex-col overflow-hidden rounded-xl border border-line bg-surface transition-colors duration-300 hover:border-accent/60">
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <InternalLink
+                  to={projectPath(project.id)}
                   className="group relative block overflow-hidden bg-elevated"
-                  aria-label={`${project.title} — ${t(project.demoLabel)} (${t(ui.opensInNewTab)})`}
+                  aria-label={`${project.title} — ${t(ui.caseStudy)}`}
                 >
                   <img
                     className="aspect-[16/9] w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
@@ -38,16 +38,20 @@ const ProjectsComponent = () => {
                     loading="lazy"
                     decoding="async"
                   />
-                  <span className="absolute inset-0 flex items-center justify-center bg-page/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
-                    <ExternalLinkIcon className="h-8 w-8 text-heading" />
-                  </span>
                   <span className="absolute left-3 top-3 rounded-full bg-page/85 px-2.5 py-1 text-xs font-medium tracking-wide text-accent-soft backdrop-blur">
                     {t(project.category)}
                   </span>
-                </a>
+                </InternalLink>
 
                 <div className="flex flex-grow flex-col p-6">
-                  <h3 className="title-font mb-2 text-lg font-medium text-heading">{project.title}</h3>
+                  <h3 className="title-font mb-2 text-lg font-medium text-heading">
+                    <InternalLink
+                      to={projectPath(project.id)}
+                      className="transition-colors hover:text-accent-soft"
+                    >
+                      {project.title}
+                    </InternalLink>
+                  </h3>
                   <p className="mb-4 text-sm leading-relaxed">{t(project.description)}</p>
 
                   <ul className="mb-5 space-y-1.5 text-sm">
@@ -67,26 +71,38 @@ const ProjectsComponent = () => {
                     ))}
                   </ul>
 
-                  <div className="mt-auto flex items-center justify-between border-t border-line pt-4">
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  <div className="mt-auto border-t border-line pt-4">
+                    <InternalLink
+                      to={projectPath(project.id)}
                       className="inline-flex items-center gap-1.5 text-sm font-medium text-accent-soft transition-opacity hover:opacity-80"
+                      aria-label={`${project.title} — ${t(ui.caseStudy)}`}
                     >
-                      {t(project.demoLabel)}
-                      <ExternalLinkIcon className="h-4 w-4" />
-                    </a>
-                    <a
-                      href={project.repo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm text-body transition-colors hover:text-heading"
-                      aria-label={`${project.title} — ${t(ui.sourceOnGitHub)}`}
-                    >
-                      <GitHubIcon className="h-4 w-4" />
-                      {t(ui.code)}
-                    </a>
+                      {t(ui.caseStudy)}
+                      <ArrowRightIcon className="h-4 w-4" />
+                    </InternalLink>
+
+                    <div className="mt-3 flex items-center justify-between text-sm">
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-body transition-colors hover:text-heading"
+                        aria-label={`${project.title} — ${t(project.demoLabel)} (${t(ui.opensInNewTab)})`}
+                      >
+                        {t(project.demoLabel)}
+                        <ExternalLinkIcon className="h-4 w-4" />
+                      </a>
+                      <a
+                        href={project.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-body transition-colors hover:text-heading"
+                        aria-label={`${project.title} — ${t(ui.sourceOnGitHub)}`}
+                      >
+                        <GitHubIcon className="h-4 w-4" />
+                        {t(ui.code)}
+                      </a>
+                    </div>
                   </div>
                 </div>
               </article>
