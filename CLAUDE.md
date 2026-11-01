@@ -21,7 +21,7 @@ solo después de que Juan apruebe ese cambio puntual.
 ## Perfil
 
 - **Rol:** Desarrollador Full-stack: APIs, automatizaciones y agentes de IA. Foco en backend.
-- **Base:** Buenos Aires, UTC−3, disponible para trabajo remoto. Inglés C2 (EF SET).
+- **Base:** Buenos Aires, UTC−3. Inglés C2 (EF SET).
 - **Hilo de la historia:** de las radiografías a las APIs. Llegó al software desde un hospital,
   y por eso modela flujos clínicos y operativos desde adentro.
 
@@ -68,6 +68,8 @@ menciona, ya no usa Firestore: el contenido pasó al repositorio.
 - Las cifras que dependen del calendario se calculan (`yearsSince` en `src/data/site.ts`).
 - Todo texto existe en inglés y español. El español es rioplatense, con voseo.
 - Prosa clara y concreta, sin adornos. Las métricas inventadas no van.
+- **No decir en ningún lado que Juan está disponible o busca trabajo.** Ni en el sitio, ni en los
+  CVs, ni en LinkedIn. Lo pidió Juan expresamente.
 - Los proyectos con código privado no llevan botón de código, y el sitio no promete código
   abierto en general.
 

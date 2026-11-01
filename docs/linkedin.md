@@ -22,7 +22,7 @@ Hoy también trabajo en Customer Success en Chatty, una plataforma de CRM y auto
 WhatsApp, donde diseño agentes de IA, automatizaciones y métricas a medida.
 
 Construyo productos completos, de la base de datos a la interfaz, con Node.js, TypeScript,
-PostgreSQL, React y Next.js. Trabajo de forma remota, en español e inglés (C2).
+PostgreSQL, React y Next.js. Trabajo en español e inglés (C2).
 
 ## Experiencia: IMIPP
 
