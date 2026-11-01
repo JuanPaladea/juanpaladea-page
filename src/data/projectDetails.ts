@@ -19,6 +19,148 @@ export interface ProjectDetail {
 }
 
 export const projectDetails: Record<string, ProjectDetail> = {
+  vialo: {
+    tagline: {
+      en: "A laboratory without Excel spreadsheets, born from my own job at IMIPP",
+      es: "Un laboratorio sin planillas de Excel, nacido de mi propio trabajo en el IMIPP",
+    },
+    context: {
+      en: [
+        "Vialo comes from my role as staff at IMIPP, a pediatric pathology research institute. There I look after procurement, the equipment inventory and the regulatory documentation, so the problems it solves are ones I know first hand.",
+        "Spreadsheets work until the team grows: duplicate versions, changes with no trail, expiry dates nobody catches. Vialo replaces them with one platform for samples, equipment, supplies, temperatures, services, budget, protocols and safety.",
+      ],
+      es: [
+        "Vialo nace de mi función como personal del IMIPP, un instituto de investigación en patologías pediátricas. Ahí me ocupo de las compras, el inventario de equipamiento y la documentación regulatoria, así que los problemas que resuelve los conozco de primera mano.",
+        "Las planillas sirven hasta que el equipo crece: versiones duplicadas, cambios sin rastro y vencimientos que nadie ve. Vialo las reemplaza por una sola plataforma para muestras, equipos, insumos, temperaturas, servicios, presupuesto, protocolos y seguridad.",
+      ],
+    },
+    decisions: {
+      en: [
+        {
+          title: "Each laboratory isolated in the database",
+          body: "Every table with a laboratory's data carries its lab_id and a row-level security policy, so a bug in the application cannot show one lab's data to another. An automated test walks through all of those tables, and another fails if one is missing its policy.",
+        },
+        {
+          title: "One base, many modules",
+          body: "Permissions, history, notifications and search are shared services. A laboratory turns on only the modules it needs, and a new module inherits all of that instead of building it again.",
+        },
+        {
+          title: "A history that holds up in an audit",
+          body: "Every change records who made it, when and what the previous value was. That lives in database triggers rather than in application code, so no screen can skip it.",
+        },
+        {
+          title: "Open to other systems and to AI assistants",
+          body: "An API lets a laboratory read and load data from Python, R or its own systems with the same permissions. An MCP server does the same for assistants such as Claude, Cursor or VS Code, and what they do shows up in the history like any other change.",
+        },
+      ],
+      es: [
+        {
+          title: "Cada laboratorio aislado en la base",
+          body: "Toda tabla con datos de un laboratorio lleva su lab_id y una política de seguridad por filas, así un error en la aplicación no puede mostrarle a un laboratorio los datos de otro. Un test automático recorre todas esas tablas, y otro falla si a alguna le falta su política.",
+        },
+        {
+          title: "Una base, muchos módulos",
+          body: "Permisos, historial, avisos y búsqueda son servicios compartidos. Cada laboratorio habilita solo los módulos que necesita, y un módulo nuevo hereda todo eso en vez de volver a construirlo.",
+        },
+        {
+          title: "Un historial que resiste una auditoría",
+          body: "Cada cambio registra quién lo hizo, cuándo y qué valor tenía antes. Eso vive en triggers de la base y no en código de aplicación, así ninguna pantalla se lo puede saltear.",
+        },
+        {
+          title: "Abierta a otros sistemas y a asistentes de IA",
+          body: "Una API permite consultar y cargar datos desde Python, R o los sistemas de cada laboratorio, con los mismos permisos. Un servidor MCP hace lo mismo para asistentes como Claude, Cursor o VS Code, y lo que hacen aparece en el historial como cualquier otro cambio.",
+        },
+      ],
+    },
+    facts: {
+      en: [
+        { title: "Role", body: "Creator and developer" },
+        { title: "Status", body: "Live at vialolab.com, with a 15-day trial" },
+        { title: "Origin", body: "My role as staff at IMIPP" },
+      ],
+      es: [
+        { title: "Rol", body: "Creador y desarrollador" },
+        { title: "Estado", body: "En vivo en vialolab.com, con prueba de 15 días" },
+        { title: "Origen", body: "Mi función como personal del IMIPP" },
+      ],
+    },
+    next: {
+      en: "Vialo is young, and what it lacks is what only time brings: laboratories running it for months, finding the cases I did not foresee. That use is what will decide which modules go deeper.",
+      es: "Vialo es joven, y lo que le falta es lo que solo da el tiempo: laboratorios usándolo durante meses y encontrando los casos que no preví. Ese uso es lo que va a definir qué módulos profundizar.",
+    },
+  },
+
+  libelulis: {
+    tagline: {
+      en: "A store for one-of-a-kind pieces, where nothing can be sold twice",
+      es: "Una tienda de piezas únicas, donde nada se puede vender dos veces",
+    },
+    context: {
+      en: [
+        "Libelulis makes handmade marbled accessories in a workshop in Almagro. Each print floats on water once and never comes out the same, so every piece exists exactly once. That breaks the usual assumption of a store, where stock is a number.",
+        "It began as a catalogue and grew to run the business: orders, sales from every channel, payments, customers, expenses and supplies, plus WhatsApp templates and a product feed for Google Shopping and Meta.",
+      ],
+      es: [
+        "Libelulis hace accesorios marmolados a mano en un taller de Almagro. Cada dibujo flota sobre el agua una sola vez y nunca sale igual, así que cada pieza existe una única vez. Eso rompe el supuesto habitual de una tienda, donde el stock es un número.",
+        "Empezó como un catálogo y creció hasta manejar el negocio: pedidos, ventas de todos los canales, cobros, clientes, gastos e insumos, además de plantillas de WhatsApp y un feed de productos para Google Shopping y Meta.",
+      ],
+    },
+    decisions: {
+      en: [
+        {
+          title: "The reservation is one transaction",
+          body: "Sending the cart calls a single database function that creates the order and reserves its pieces, so two people cannot end up with the same one. If nobody confirms, a scheduled job in Postgres frees the pieces after 48 hours.",
+        },
+        {
+          title: "Orders through WhatsApp, no account needed",
+          body: "The customer sends the order from a private link, and the conversation continues with the person who made the piece. Buying requires no account; an optional one keeps the cart across devices and lists past orders.",
+        },
+        {
+          title: "A static store that updates at once",
+          body: "The catalogue is a single cached query. When the panel changes something it invalidates that tag, so the store stays static and fast and still shows the change immediately.",
+        },
+        {
+          title: "A panel that explains itself",
+          body: "Whoever runs the store day to day is not a developer, so the panel carries its own guide: one per section, folded at the top of each page, covering the emails and the automatic tasks too.",
+        },
+      ],
+      es: [
+        {
+          title: "La reserva es una sola transacción",
+          body: "Al enviar el carrito, una única función de la base crea el pedido y reserva sus piezas, así dos personas no pueden quedarse con la misma. Si nadie confirma, una tarea programada en Postgres libera las piezas a las 48 horas.",
+        },
+        {
+          title: "Pedidos por WhatsApp, sin cuenta",
+          body: "La persona manda el pedido desde un link privado, y la charla sigue con quien hizo la pieza. Para comprar no hace falta cuenta; una opcional guarda el carrito entre dispositivos y lista los pedidos.",
+        },
+        {
+          title: "Una tienda estática que se actualiza al instante",
+          body: "El catálogo es una sola consulta cacheada. Cuando el panel cambia algo, invalida esa etiqueta, y así la tienda sigue siendo estática y rápida y muestra el cambio enseguida.",
+        },
+        {
+          title: "Un panel que se explica solo",
+          body: "Quien maneja la tienda todos los días no es desarrollador, así que el panel trae su propia guía: una por sección, plegada arriba de cada página, que también cubre los emails y las tareas automáticas.",
+        },
+      ],
+    },
+    facts: {
+      en: [
+        { title: "Role", body: "Design and development" },
+        { title: "Status", body: "Live at libelulis.com.ar" },
+        { title: "Scope", body: "Store, orders and business management" },
+      ],
+      es: [
+        { title: "Rol", body: "Diseño y desarrollo" },
+        { title: "Estado", body: "En vivo en libelulis.com.ar" },
+        { title: "Alcance", body: "Tienda, pedidos y gestión del negocio" },
+      ],
+    },
+    next: {
+      en: "The next pieces are measurements on every listing, online payment with Mercado Pago and invoicing through ARCA. Payment is the big one: it changes a flow that today ends in a conversation.",
+      es: "Lo que sigue son las medidas en cada ficha, el pago online con Mercado Pago y la facturación con ARCA. El pago es lo más grande: cambia un flujo que hoy termina en una charla.",
+    },
+  },
+
   "hospital-backend": {
     tagline: {
       en: "A clinical data API modelled on workflows I handle every day",
@@ -26,120 +168,130 @@ export const projectDetails: Record<string, ProjectDetail> = {
     },
     context: {
       en: [
-        "I work inside a pediatric pathology research institute, where part of my job is invoicing diagnostic and genomic services and keeping the records that regulators expect. That means I spend my days with the exact entities this API models: a patient, an order, a study, a result, a bill and the proof that it was paid.",
-        "Most tutorial backends model a shopping cart. I wanted to model something I actually understand, where getting the relationships wrong has consequences beyond a failing test — a study belongs to an order, an order belongs to a patient, and a bill can cover several studies without ever losing the trail back to who was seen and when.",
+        "I work inside a pediatric pathology research institute, where part of my job is invoicing diagnostic and genomic services and keeping the records regulators expect. I spend my days with the same entities this API models: a patient, a study, a result, a bill and the proof that it was paid.",
+        "Most tutorial backends model a shopping cart. I wanted to model something I understand, where getting the relationships wrong has consequences beyond a failing test.",
+        "A separate React and TypeScript client uses the same API, with login, search and pagination, so the endpoints get exercised by a real interface and not only by Swagger.",
       ],
       es: [
-        "Trabajo dentro de un instituto de investigación en patologías pediátricas, donde parte de mi tarea es facturar servicios diagnósticos y genómicos y mantener los registros que exige la regulación. Es decir, paso los días con las mismas entidades que modela esta API: un paciente, una orden, un estudio, un resultado, una factura y el comprobante de que se pagó.",
-        "La mayoría de los backends de tutorial modelan un carrito de compras. Yo quería modelar algo que entiendo de verdad, donde equivocarse en las relaciones tiene consecuencias más allá de un test en rojo: un estudio pertenece a una orden, una orden pertenece a un paciente, y una factura puede cubrir varios estudios sin perder nunca el rastro de a quién se atendió y cuándo.",
+        "Trabajo dentro de un instituto de investigación en patologías pediátricas, donde parte de mi tarea es facturar servicios diagnósticos y genómicos y mantener los registros que exige la regulación. Paso los días con las mismas entidades que modela esta API: un paciente, un estudio, un resultado, una factura y el comprobante de que se pagó.",
+        "La mayoría de los backends de tutorial modelan un carrito de compras. Yo quería modelar algo que entiendo, donde equivocarse en las relaciones tiene consecuencias más allá de un test en rojo.",
+        "Un cliente aparte en React y TypeScript usa la misma API, con login, búsqueda y paginación, así los endpoints se prueban con una interfaz real y no solo desde Swagger.",
       ],
     },
     decisions: {
       en: [
         {
           title: "PostgreSQL over MongoDB",
-          body: "Clinical data is deeply relational and the integrity rules are not negotiable: a study cannot exist without a patient, and a bill must always resolve to real services. Foreign keys and transactions enforce that in the database instead of in application code that someone can forget to call. My earlier backends used MongoDB; this domain is the reason I moved.",
+          body: "Clinical data is deeply relational and its integrity rules are not negotiable: a study cannot exist without a patient. Foreign keys and transactions enforce that in the database instead of in application code someone can forget to call. My earlier backends used MongoDB; this domain is why I moved.",
         },
         {
           title: "JWT sessions with bcrypt-hashed passwords",
-          body: "Stateless tokens keep the API deployable anywhere without shared session storage, which matters on a free Render instance that restarts often. Passwords are hashed with bcrypt rather than stored or encrypted, so a database dump alone cannot expose them.",
+          body: "Stateless tokens keep the API deployable anywhere without shared session storage, which matters on a free Render instance that restarts often. Passwords are hashed with bcrypt, so a database dump alone cannot expose them.",
         },
         {
           title: "File uploads kept separate from records",
-          body: "Study results and payment proofs are files, but the record is the source of truth. Uploads are handled as attachments to an existing entity rather than as standalone objects, so an orphaned file cannot pass for a legitimate result.",
+          body: "Study results and payment proofs are files, but the record is the source of truth. Uploads are attachments to an existing entity rather than standalone objects, so an orphaned file cannot pass for a legitimate result.",
         },
         {
-          title: "Swagger as the contract, not as decoration",
-          body: "The API is documented with Swagger so the endpoint surface is browsable without reading the source. It doubles as the demo: the docs page is what I link to, because an API with no interface is otherwise invisible to a reviewer.",
+          title: "Swagger as the contract",
+          body: "The API is documented with Swagger so its endpoints can be browsed without reading the source. An API has no interface of its own, so these docs are also what a reviewer sees first.",
         },
       ],
       es: [
         {
           title: "PostgreSQL en vez de MongoDB",
-          body: "Los datos clínicos son profundamente relacionales y las reglas de integridad no se negocian: un estudio no puede existir sin un paciente, y una factura siempre tiene que resolver contra servicios reales. Las claves foráneas y las transacciones lo garantizan en la base de datos y no en código de aplicación que alguien puede olvidarse de llamar. Mis backends anteriores usaban MongoDB; este dominio es la razón por la que cambié.",
+          body: "Los datos clínicos son profundamente relacionales y sus reglas de integridad no se negocian: un estudio no puede existir sin un paciente. Las claves foráneas y las transacciones lo garantizan en la base y no en código que alguien puede olvidarse de llamar. Mis backends anteriores usaban MongoDB; este dominio es la razón por la que cambié.",
         },
         {
           title: "Sesiones JWT con contraseñas hasheadas con bcrypt",
-          body: "Los tokens sin estado permiten desplegar la API en cualquier lado sin almacenamiento de sesiones compartido, lo que importa en una instancia gratuita de Render que se reinicia seguido. Las contraseñas se hashean con bcrypt en vez de guardarse o cifrarse, así un volcado de la base por sí solo no las expone.",
+          body: "Los tokens sin estado permiten desplegar la API en cualquier lado sin sesiones compartidas, lo que importa en una instancia gratuita de Render que se reinicia seguido. Las contraseñas se hashean con bcrypt, así un volcado de la base por sí solo no las expone.",
         },
         {
           title: "Archivos separados de los registros",
-          body: "Los resultados de estudios y los comprobantes de pago son archivos, pero el registro es la fuente de verdad. Las cargas se manejan como adjuntos de una entidad existente y no como objetos sueltos, de modo que un archivo huérfano no pueda pasar por un resultado legítimo.",
+          body: "Los resultados de estudios y los comprobantes de pago son archivos, pero el registro es la fuente de verdad. Las cargas son adjuntos de una entidad existente y no objetos sueltos, de modo que un archivo huérfano no pueda pasar por un resultado legítimo.",
         },
         {
-          title: "Swagger como contrato, no como decoración",
-          body: "La API está documentada con Swagger para que se pueda recorrer sin leer el código. Además funciona como demo: es lo que enlazo, porque una API sin interfaz es invisible para quien la revisa.",
+          title: "Swagger como contrato",
+          body: "La API está documentada con Swagger para recorrer sus endpoints sin leer el código. Una API no tiene interfaz propia, así que esta documentación es también lo primero que ve quien la revisa.",
         },
       ],
     },
     facts: {
       en: [
-        { title: "Role", body: "Sole developer — schema, API and deployment" },
+        { title: "Role", body: "Sole developer: schema, API, client and deployment" },
         { title: "Status", body: "Deployed on Render, documentation public" },
         { title: "Scope", body: "Patients, studies, billing, auth and uploads" },
       ],
       es: [
-        { title: "Rol", body: "Único desarrollador — esquema, API y despliegue" },
+        { title: "Rol", body: "Único desarrollador: esquema, API, cliente y despliegue" },
         { title: "Estado", body: "Desplegada en Render, documentación pública" },
         { title: "Alcance", body: "Pacientes, estudios, facturación, auth y archivos" },
       ],
     },
     next: {
-      en: "It runs on a free Render instance, so the first request after idling is slow — worth knowing before you click. The clearest gap is test coverage: the endpoints are documented but not yet covered end to end, which is what I would add before calling it production-ready for anyone but me.",
-      es: "Corre en una instancia gratuita de Render, así que la primera petición después de un rato de inactividad es lenta — conviene saberlo antes de hacer clic. La carencia más clara es la cobertura de tests: los endpoints están documentados pero todavía no cubiertos de punta a punta, y es lo que agregaría antes de considerarla lista para producción de alguien que no sea yo.",
+      en: "It runs on a free Render instance, so the first request after idling can take around a minute. The clearest gap is test coverage: the endpoints are documented but not covered end to end, and that is what I would add first.",
+      es: "Corre en una instancia gratuita de Render, así que la primera petición después de un rato sin uso puede tardar cerca de un minuto. La carencia más clara es la cobertura de tests: los endpoints están documentados pero no cubiertos de punta a punta, y es lo primero que agregaría.",
     },
   },
 
   "en-una-nota": {
     tagline: {
-      en: "A party game with zero runtime dependencies, built to work when the wifi does not",
-      es: "Un juego para juntadas con cero dependencias de runtime, hecho para funcionar cuando el wifi no",
+      en: "A party game in plain JavaScript that earned a backend only when it needed one",
+      es: "Un juego para juntadas en JavaScript puro, que sumó backend recién cuando lo necesitó",
     },
     context: {
       en: [
         "This started as a game we played at home without any software: someone plays a song, cuts it after a couple of seconds, and the first team to shout has to keep singing. Doing it by hand meant one person stuck on a phone all night, picking tracks and arguing about who shouted first.",
-        "So I built the referee. It is the project I am most attached to, because nobody asked for it and it is used by real people in a living room rather than by a reviewer reading a repository.",
+        "So I built the referee. It is the project I am most attached to, because nobody asked for it and real people use it in a living room. It kept growing from there: a solo mode where you guess the title from fragments that get longer, then optional Google accounts and a ranking.",
       ],
       es: [
         "Empezó como un juego que hacíamos en casa sin ningún software: alguien pone una canción, la corta a los pocos segundos y el primer equipo en gritar tiene que seguirla cantando. Hacerlo a mano significaba que una persona quedaba pegada al teléfono toda la noche, eligiendo temas y discutiendo quién gritó primero.",
-        "Así que construí al árbitro. Es el proyecto al que más cariño le tengo, porque nadie lo pidió y lo usa gente real en un living, no alguien revisando un repositorio.",
+        "Así que construí al árbitro. Es el proyecto al que más cariño le tengo, porque nadie lo pidió y lo usa gente real en un living. De ahí siguió creciendo: un modo un jugador donde adivinás el título con fragmentos cada vez más largos, y después cuentas opcionales con Google y un ranking.",
       ],
     },
     decisions: {
       en: [
         {
-          title: "Zero runtime dependencies, on purpose",
-          body: "The whole game is vanilla JavaScript with Vite as the only build tool. A party game has to load instantly on someone's phone over shared mobile data, and every dependency is weight plus a future upgrade I would have to do to keep it alive. The constraint also forced me to actually learn the platform APIs instead of reaching for a library.",
+          title: "No framework, on purpose",
+          body: "The game is plain JavaScript built with Vite. It has to load instantly on someone's phone over shared mobile data, and every framework is weight plus a future upgrade I would have to do to keep it alive. The constraint also made me learn the platform APIs.",
         },
         {
-          title: "IndexedDB for audio, not localStorage",
-          body: "Players upload their own MP3 and M4A files so the game works with music that is not on any streaming service. Those files are megabytes, well past what localStorage can hold, and IndexedDB is the only browser store that takes binary data at that size. It is also what makes the game work with no connection at all.",
+          title: "A ranking the browser cannot fake",
+          body: "A leaderboard is only worth something if it cannot be cheated from the console. A solo game is recorded in Postgres while it is played, and SQL functions check each step: that the video is in the catalogue, that the title is right, and that enough time has passed. The database computes the points, never the browser.",
         },
         {
-          title: "Everything stays in the browser",
-          body: "There is no backend and no account. Playlists, uploaded audio, scores and the history that prevents repeats all live on the device. That means no server to pay for, nothing to breach, and no reason for anyone to trust me with their data — the right trade for a game played among friends.",
+          title: "Accounts are optional, and a function holds the keys",
+          body: "A Netlify Function verifies the Google token, opens an HttpOnly session and calls the SQL functions, so the browser never sees the database credentials. Without an account the game works exactly the same. The ranking shows a short name; email and photo are not stored.",
+        },
+        {
+          title: "IndexedDB for audio",
+          body: "Players can upload their own MP3 and M4A files, so the game works with music that is not online. Those files are too large for localStorage, and keeping them in IndexedDB is what lets the game run with no connection at all.",
         },
         {
           title: "Hiding the title is the actual product",
-          body: "The hard part is not playing audio, it is not spoiling the answer: the track name has to stay hidden through selection, playback and the cut, then be revealed on cue. Getting that flow right — including a random start point for difficulty — is most of what the code does.",
+          body: "The hard part is not playing audio, it is not spoiling the answer: the track name has to stay hidden through selection, playback and the cut, then appear on cue. Getting that flow right is most of what the game does.",
         },
       ],
       es: [
         {
-          title: "Cero dependencias de runtime, a propósito",
-          body: "Todo el juego es JavaScript puro con Vite como única herramienta de build. Un juego de juntada tiene que cargar al instante en el teléfono de alguien con datos móviles compartidos, y cada dependencia es peso más una actualización futura que tendría que hacer para mantenerlo vivo. La restricción también me obligó a aprender las APIs de la plataforma en vez de buscar una librería.",
+          title: "Sin framework, a propósito",
+          body: "El juego es JavaScript puro con Vite. Tiene que cargar al instante en el teléfono de alguien con datos móviles compartidos, y cada framework es peso más una actualización futura que tendría que hacer para mantenerlo vivo. La restricción también me obligó a aprender las APIs de la plataforma.",
         },
         {
-          title: "IndexedDB para el audio, no localStorage",
-          body: "Los jugadores suben sus propios archivos MP3 y M4A para que el juego funcione con música que no está en ningún servicio de streaming. Esos archivos pesan megabytes, muy por encima de lo que aguanta localStorage, e IndexedDB es el único almacenamiento del navegador que acepta datos binarios de ese tamaño. Es también lo que hace que el juego funcione sin conexión.",
+          title: "Un ranking que el navegador no puede falsear",
+          body: "Un ranking solo vale si no se puede trampear desde la consola. La partida de un jugador se va anotando en Postgres mientras se juega, y funciones SQL comprueban cada paso: que el video sea del catálogo, que el título sea el correcto y que haya pasado el tiempo necesario. Los puntos los calcula la base, nunca el navegador.",
         },
         {
-          title: "Todo se queda en el navegador",
-          body: "No hay backend ni cuentas. Playlists, audio subido, puntajes y el historial que evita repeticiones viven en el dispositivo. Eso significa que no hay servidor que pagar, nada que filtrar y ninguna razón para que alguien tenga que confiarme sus datos — el intercambio correcto para un juego entre amigos.",
+          title: "Cuentas opcionales, y una función que guarda las claves",
+          body: "Una Netlify Function verifica el token de Google, abre una sesión HttpOnly y llama a las funciones SQL, así el navegador nunca ve las credenciales de la base. Sin cuenta, el juego funciona exactamente igual. En el ranking sale un nombre corto; el mail y la foto no se guardan.",
+        },
+        {
+          title: "IndexedDB para el audio",
+          body: "Los jugadores pueden subir sus propios archivos MP3 y M4A, así el juego funciona con música que no está en internet. Esos archivos son demasiado grandes para localStorage, y guardarlos en IndexedDB es lo que permite jugar sin conexión.",
         },
         {
           title: "Ocultar el título es el producto real",
-          body: "Lo difícil no es reproducir audio, es no spoilear la respuesta: el nombre del tema tiene que permanecer oculto durante la selección, la reproducción y el corte, y recién revelarse en el momento justo. Lograr bien ese flujo —incluido un punto de inicio aleatorio para subir la dificultad— es la mayor parte de lo que hace el código.",
+          body: "Lo difícil no es reproducir audio, es no spoilear la respuesta: el nombre del tema tiene que seguir oculto durante la selección, la reproducción y el corte, y aparecer en el momento justo. Lograr bien ese flujo es la mayor parte de lo que hace el juego.",
         },
       ],
     },
@@ -147,88 +299,17 @@ export const projectDetails: Record<string, ProjectDetail> = {
       en: [
         { title: "Role", body: "Sole developer and designer" },
         { title: "Status", body: "Live on its own domain, in real use" },
-        { title: "Content", body: "11 curated playlists, 350+ songs" },
+        { title: "Content", body: "16 playlists, more than 1,000 songs" },
       ],
       es: [
         { title: "Rol", body: "Único desarrollador y diseñador" },
         { title: "Estado", body: "En vivo con dominio propio, en uso real" },
-        { title: "Contenido", body: "11 playlists curadas, más de 350 canciones" },
+        { title: "Contenido", body: "16 playlists, más de 1000 canciones" },
       ],
     },
     next: {
-      en: "The obvious next step is the one that needs a backend: shared rooms, so teams on different phones see the same cut at the same moment. That means real-time state and reconciling clocks across devices — a genuinely harder problem than anything here, and the reason it is not built yet rather than an oversight.",
-      es: "El siguiente paso obvio es el que sí necesita backend: salas compartidas, para que equipos en distintos teléfonos vean el mismo corte en el mismo instante. Eso implica estado en tiempo real y conciliar relojes entre dispositivos — un problema bastante más difícil que todo lo que hay acá, y la razón por la que todavía no está, más que un descuido.",
-    },
-  },
-
-  imipp: {
-    tagline: {
-      en: "A public site for the institute where I work, built so nobody has to call me to publish",
-      es: "El sitio público del instituto donde trabajo, hecho para que nadie tenga que llamarme para publicar",
-    },
-    context: {
-      en: [
-        "I handle administration and IT at IMIPP, a multidisciplinary institute researching pediatric pathologies. The institute needed a public presence for its research lines, its team, the services it offers and the papers it publishes.",
-        "The people who own that content are researchers and administrative staff, not developers. A site that required a code change and a deploy for every new paper would have been abandoned within months — I know, because I would have been the bottleneck.",
-      ],
-      es: [
-        "Me ocupo de la administración y los sistemas del IMIPP, un instituto multidisciplinario que investiga patologías pediátricas. El instituto necesitaba presencia pública para sus líneas de investigación, su equipo, los servicios que ofrece y los papers que publica.",
-        "Quienes son dueños de ese contenido son investigadores y personal administrativo, no desarrolladores. Un sitio que exigiera un cambio de código y un deploy por cada paper nuevo habría quedado abandonado en meses — lo sé porque el cuello de botella habría sido yo.",
-      ],
-    },
-    decisions: {
-      en: [
-        {
-          title: "Firestore as the content source",
-          body: "Content lives in Firestore rather than in the repository, so publishing a paper or updating the team is a data change, not a deploy. This is the decision the whole project rests on: it is what keeps the site current without me.",
-        },
-        {
-          title: "Firebase instead of a backend I would have to maintain",
-          body: "The institute has no budget line for infrastructure and no one to look after a server. Firebase gives hosting-grade reliability for the read-heavy traffic a research site gets, with no machine for me to patch. Choosing the boring managed option was the responsible call, not the interesting one.",
-        },
-        {
-          title: "Modular components with React Router",
-          body: "Research lines, team members and services are the same shape repeated with different data, so they are one component driven by a collection. Adding a section is adding data and a route, which is what let the site grow past its first version.",
-        },
-        {
-          title: "EmailJS for the contact form",
-          body: "The institute needed to receive enquiries without me standing up and securing a mail service. EmailJS sends straight from the client, which is the right amount of infrastructure for a form that gets a handful of messages a week.",
-        },
-      ],
-      es: [
-        {
-          title: "Firestore como fuente de contenido",
-          body: "El contenido vive en Firestore y no en el repositorio, así publicar un paper o actualizar el equipo es un cambio de datos y no un deploy. Es la decisión sobre la que se apoya todo el proyecto: es lo que mantiene el sitio actualizado sin mí.",
-        },
-        {
-          title: "Firebase en vez de un backend que tendría que mantener",
-          body: "El instituto no tiene una partida para infraestructura ni alguien que cuide un servidor. Firebase da confiabilidad para el tráfico mayormente de lectura que recibe un sitio de investigación, sin una máquina que yo tenga que parchear. Elegir la opción aburrida y gestionada fue lo responsable, no lo interesante.",
-        },
-        {
-          title: "Componentes modulares con React Router",
-          body: "Líneas de investigación, integrantes del equipo y servicios son la misma forma repetida con datos distintos, así que son un componente alimentado por una colección. Agregar una sección es agregar datos y una ruta, y eso es lo que permitió que el sitio creciera más allá de su primera versión.",
-        },
-        {
-          title: "EmailJS para el formulario de contacto",
-          body: "El instituto necesitaba recibir consultas sin que yo levantara y asegurara un servicio de correo. EmailJS envía directo desde el cliente, que es la cantidad justa de infraestructura para un formulario que recibe unos pocos mensajes por semana.",
-        },
-      ],
-    },
-    facts: {
-      en: [
-        { title: "Role", body: "Sole developer, inside the institute" },
-        { title: "Status", body: "In production, maintained by me" },
-        { title: "Audience", body: "Researchers, patients and collaborators" },
-      ],
-      es: [
-        { title: "Rol", body: "Único desarrollador, desde adentro del instituto" },
-        { title: "Estado", body: "En producción, mantenido por mí" },
-        { title: "Público", body: "Investigadores, pacientes y colaboradores" },
-      ],
-    },
-    next: {
-      en: "The gap is that editing still means going into the Firebase console, which is a developer's tool wearing a friendly interface. A small admin panel written for the people who actually publish would remove the last reason anyone needs to ask me for help.",
-      es: "Lo que falta es que editar todavía implica entrar a la consola de Firebase, que es una herramienta de desarrollador con una interfaz amable. Un panel de administración chico, escrito para las personas que realmente publican, eliminaría la última razón por la que alguien necesita pedirme ayuda.",
+      en: "The obvious next step now that a backend exists is shared rooms, so teams on different phones see the same cut at the same moment. That means real-time state and reconciling clocks across devices, a harder problem than anything here, and the reason it is not built yet.",
+      es: "Ahora que hay backend, el siguiente paso obvio son las salas compartidas, para que equipos en distintos teléfonos vean el mismo corte en el mismo instante. Eso implica estado en tiempo real y conciliar relojes entre dispositivos, un problema más difícil que todo lo que hay acá, y la razón por la que todavía no está.",
     },
   },
 };

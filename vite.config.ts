@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { projectPages } from './scripts/projectPages'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), projectPages()],
   build: {
     target: 'es2020',
     rollupOptions: {

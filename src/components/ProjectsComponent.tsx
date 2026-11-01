@@ -3,6 +3,8 @@ import { sectionCopy } from "../data/site";
 import { ui } from "../data/ui";
 import { usePreferences } from "../preferences/context";
 import { projectPath } from "../router";
+import ProjectCover from "./motion/ProjectCover";
+import TiltCard from "./motion/TiltCard";
 import Section from "./ui/Section";
 import SectionHeading from "./ui/SectionHeading";
 import TechChip from "./ui/TechChip";
@@ -16,48 +18,48 @@ const ProjectsComponent = () => {
     <Section id="projects" aria-labelledby="projects-heading">
       <SectionHeading
         id="projects-heading"
+        index={4}
         title={t(sectionCopy.projects.title)}
         subtitle={t(sectionCopy.projects.subtitle)}
       />
       <div className="container mx-auto px-5 py-12">
-        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <ul data-stagger className="grid gap-6 lg:grid-cols-2">
           {projects.map((project) => (
             <li key={project.id} className="flex">
-              <article className="flex w-full flex-col overflow-hidden rounded-xl border border-line bg-surface transition-colors duration-300 hover:border-accent/60">
+              <TiltCard className="flex w-full flex-col overflow-hidden rounded-xl border border-line bg-surface hover:border-accent/60">
                 <InternalLink
                   to={projectPath(project.id)}
-                  className="group relative block overflow-hidden bg-elevated"
-                  aria-label={`${project.title} — ${t(ui.caseStudy)}`}
+                  className="group relative block overflow-hidden"
+                  aria-label={`${project.title}, ${t(ui.caseStudy)}`}
                 >
+                  <ProjectCover id={project.id} />
+                  {/* The drawing tells the idea; hovering shows the real product. */}
                   <img
-                    className="aspect-[16/9] w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    className="absolute inset-0 h-full w-full object-cover object-top opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100"
                     src={project.image}
-                    alt={t(project.imageAlt)}
+                    alt=""
                     width={project.imageWidth}
                     height={project.imageHeight}
                     loading="lazy"
                     decoding="async"
                   />
-                  <span className="absolute left-3 top-3 rounded-full bg-page/85 px-2.5 py-1 text-xs font-medium tracking-wide text-accent-soft backdrop-blur">
+                  <span className="absolute right-3 top-3 rounded-full bg-page/85 px-2.5 py-1 font-mono text-xs text-accent-soft backdrop-blur">
                     {t(project.category)}
                   </span>
                 </InternalLink>
 
-                <div className="flex flex-grow flex-col p-6">
-                  <h3 className="title-font mb-2 text-lg font-medium text-heading">
-                    <InternalLink
-                      to={projectPath(project.id)}
-                      className="transition-colors hover:text-accent-soft"
-                    >
+                <div className="relative z-[2] flex flex-grow flex-col p-6">
+                  <h3 className="title-font mb-2 text-2xl font-medium text-heading">
+                    <InternalLink to={projectPath(project.id)} className="transition-colors hover:text-accent-soft">
                       {project.title}
                     </InternalLink>
                   </h3>
-                  <p className="mb-4 text-sm leading-relaxed">{t(project.description)}</p>
+                  <p className="mb-4 leading-relaxed">{t(project.description)}</p>
 
                   <ul className="mb-5 space-y-1.5 text-sm">
                     {t(project.highlights).map((highlight) => (
                       <li key={highlight} className="flex gap-2">
-                        <span aria-hidden="true" className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                        <span aria-hidden="true" className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-soft" />
                         {highlight}
                       </li>
                     ))}
@@ -71,41 +73,40 @@ const ProjectsComponent = () => {
                     ))}
                   </ul>
 
-                  <div className="mt-auto border-t border-line pt-4">
+                  <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-4 text-sm">
                     <InternalLink
                       to={projectPath(project.id)}
-                      className="inline-flex items-center gap-1.5 text-sm font-medium text-accent-soft transition-opacity hover:opacity-80"
-                      aria-label={`${project.title} — ${t(ui.caseStudy)}`}
+                      className="inline-flex items-center gap-1.5 font-medium text-accent-soft transition-opacity hover:opacity-80"
+                      aria-label={`${project.title}, ${t(ui.caseStudy)}`}
                     >
                       {t(ui.caseStudy)}
                       <ArrowRightIcon className="h-4 w-4" />
                     </InternalLink>
-
-                    <div className="mt-3 flex items-center justify-between text-sm">
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-body transition-colors hover:text-heading"
-                        aria-label={`${project.title} — ${t(project.demoLabel)} (${t(ui.opensInNewTab)})`}
-                      >
-                        {t(project.demoLabel)}
-                        <ExternalLinkIcon className="h-4 w-4" />
-                      </a>
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-body transition-colors hover:text-heading"
+                      aria-label={`${project.title}, ${t(project.demoLabel)} (${t(ui.opensInNewTab)})`}
+                    >
+                      {t(project.demoLabel)}
+                      <ExternalLinkIcon className="h-4 w-4" />
+                    </a>
+                    {project.repo && (
                       <a
                         href={project.repo}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 text-body transition-colors hover:text-heading"
-                        aria-label={`${project.title} — ${t(ui.sourceOnGitHub)}`}
+                        aria-label={`${project.title}, ${t(ui.sourceOnGitHub)}`}
                       >
                         <GitHubIcon className="h-4 w-4" />
                         {t(ui.code)}
                       </a>
-                    </div>
+                    )}
                   </div>
                 </div>
-              </article>
+              </TiltCard>
             </li>
           ))}
         </ul>

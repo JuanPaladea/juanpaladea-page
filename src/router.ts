@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { flushSync } from "react-dom";
 import { projects } from "./data/projects";
+import { prefersReducedMotion } from "./hooks/useMediaQuery";
 
 export type Route = { name: "home" } | { name: "project"; id: string };
 
@@ -23,10 +25,29 @@ const parse = (pathname: string): Route => {
 const listeners = new Set<() => void>();
 
 export const navigate = (to: string) => {
-  if (window.location.pathname === to) return;
-  window.history.pushState(null, "", to);
-  listeners.forEach((notify) => notify());
-  window.scrollTo({ top: 0, behavior: "auto" });
+  const url = new URL(to, window.location.origin);
+  const samePage = url.pathname === window.location.pathname;
+  if (samePage && !url.hash) return;
+
+  const commit = () => {
+    window.history.pushState(null, "", url.pathname + url.hash);
+    // The view transition snapshots the page as this returns, so React has to
+    // finish rendering before then.
+    flushSync(() => listeners.forEach((notify) => notify()));
+
+    const target = url.hash ? document.querySelector(url.hash) : null;
+    if (target) target.scrollIntoView({ behavior: "instant" });
+    else window.scrollTo({ top: 0, behavior: "instant" });
+  };
+
+  if (samePage || !document.startViewTransition || prefersReducedMotion()) {
+    commit();
+    return;
+  }
+
+  const root = document.documentElement;
+  root.classList.add("vt-route");
+  document.startViewTransition(commit).finished.finally(() => root.classList.remove("vt-route"));
 };
 
 export const useRoute = (): Route => {

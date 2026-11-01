@@ -19,12 +19,12 @@ export const career: CareerEntry[] = [
     current: true,
     title: { en: "Customer Success", es: "Customer Success" },
     organization: {
-      en: "Chatty — WhatsApp CRM & automation platform",
-      es: "Chatty — plataforma de CRM y automatizaciones sobre WhatsApp",
+      en: "Chatty, WhatsApp CRM and automation platform",
+      es: "Chatty, plataforma de CRM y automatizaciones sobre WhatsApp",
     },
     description: {
-      en: "Guide clients through platform implementation and ongoing support. Design and build the AI agents and automations that handle their customer conversations, and set up the custom metrics they use to measure and act on campaign and sales performance.",
-      es: "Acompaño a los clientes en la implementación de la plataforma y su soporte continuo. Diseño y construyo los agentes de IA y las automatizaciones que atienden sus conversaciones, y armo las métricas personalizadas con las que miden y accionan sobre el rendimiento de campañas y ventas.",
+      en: "I take clients from implementation to day-to-day operation. I design the AI agents and automations that handle their conversations, and set up the metrics they use to measure campaigns and sales and decide what to change.",
+      es: "Acompaño a los clientes desde la implementación hasta la operación diaria. Diseño los agentes de IA y las automatizaciones que atienden sus conversaciones, y armo las métricas con las que miden campañas y ventas y deciden qué cambiar.",
     },
   },
   {
@@ -35,8 +35,8 @@ export const career: CareerEntry[] = [
     title: { en: "Software Developer", es: "Desarrollador de Software" },
     organization: { en: "Self-employed", es: "Independiente" },
     description: {
-      en: "Design and ship web products end to end, from database schema to deployment: RESTful APIs in Node.js and TypeScript, React frontends, and the infrastructure around them. Every project is publicly deployed and open source.",
-      es: "Diseño y publico productos web de punta a punta, del esquema de base de datos al despliegue: APIs RESTful en Node.js y TypeScript, frontends en React y la infraestructura alrededor. Todos los proyectos están desplegados públicamente y con código abierto.",
+      en: "I design and ship web products end to end: database schema, APIs in Node.js and TypeScript, React and Next.js interfaces, and deployment. Every project on this page is live.",
+      es: "Diseño y publico productos web de punta a punta: esquema de base de datos, APIs en Node.js y TypeScript, interfaces en React y Next.js, y despliegue. Todos los proyectos de esta página están en vivo.",
     },
   },
   {
@@ -50,21 +50,21 @@ export const career: CareerEntry[] = [
       es: "Instituto Multidisciplinario de Investigaciones en Patologías Pediátricas (IMIPP)",
     },
     description: {
-      en: "Manage procurement, payments and financial tracking across operational and scientific accounts, and handle invoicing and collection for diagnostic, genomic and educational services. Maintain regulatory and bioethics documentation for scientific projects, lab equipment inventory, and the institute's IT infrastructure. Built and maintain its public website.",
-      es: "Gestiono compras, pagos y seguimiento financiero de cuentas operativas y científicas, y me ocupo de la facturación y cobranza de servicios diagnósticos, genómicos y educativos. Mantengo la documentación regulatoria y de bioética de los proyectos científicos, el inventario de equipamiento de laboratorio y la infraestructura informática del instituto. Construí y mantengo su sitio público.",
+      en: "I manage procurement, payments and financial tracking, and invoice diagnostic, genomic and educational services. I maintain the regulatory and bioethics documentation, the equipment inventory and the IT infrastructure, and I built the institute's website. This role is where Vialo was born.",
+      es: "Gestiono compras, pagos y seguimiento financiero, y facturo servicios diagnósticos, genómicos y educativos. Mantengo la documentación regulatoria y de bioética, el inventario de equipamiento y la infraestructura informática, y construí el sitio del instituto. De esta función nació Vialo.",
     },
   },
   {
     id: "cs-uba",
     kind: "education",
     period: { en: "2022 — 2023", es: "2022 — 2023" },
-    title: { en: "Computer Science — two years of coursework", es: "Ciencias de la Computación — dos años de cursada" },
+    title: { en: "Computer Science, two years of coursework", es: "Ciencias de la Computación, dos años de cursada" },
     organization: {
       en: "University of Buenos Aires, School of Natural and Exact Sciences",
       es: "Universidad de Buenos Aires, Facultad de Ciencias Exactas y Naturales",
     },
     description: {
-      en: "Formal grounding in algorithms, data structures and computing fundamentals. Moved to self-directed study to keep it compatible with full-time work.",
+      en: "Formal grounding in algorithms, data structures and computing fundamentals. I moved to self-directed study to make it fit with full-time work.",
       es: "Base formal en algoritmos, estructuras de datos y fundamentos de computación. Pasé al estudio autodirigido para hacerlo compatible con el trabajo full-time.",
     },
   },
@@ -78,8 +78,8 @@ export const career: CareerEntry[] = [
       es: "Universidad de Buenos Aires, Facultad de Medicina",
     },
     description: {
-      en: "Completed degree with clinical practice in hospital environments, working alongside physicians, technicians and patients — where the domain knowledge behind my backend work comes from.",
-      es: "Título completo con práctica clínica en entornos hospitalarios, trabajando junto a médicos, técnicos y pacientes — de ahí viene el conocimiento de dominio detrás de mi trabajo backend.",
+      en: "Completed degree with clinical practice in hospitals, working alongside physicians, technicians and patients. The domain knowledge behind my backend work comes from here.",
+      es: "Título completo con práctica clínica en hospitales, junto a médicos, técnicos y pacientes. De acá viene el conocimiento de dominio detrás de mi trabajo backend.",
     },
   },
 ];

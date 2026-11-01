@@ -14,7 +14,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter var", "Inter", ...defaultTheme.fontFamily.sans],
+        sans: ["Inter Variable", ...defaultTheme.fontFamily.sans],
+        display: ["Bricolage Grotesque Variable", "Inter Variable", ...defaultTheme.fontFamily.sans],
+        mono: ["JetBrains Mono Variable", ...defaultTheme.fontFamily.mono],
       },
       colors: {
         page: token("page"),
@@ -29,6 +31,7 @@ export default {
           soft: token("accent-soft"),
           contrast: token("accent-contrast"),
         },
+        signal: token("signal"),
         danger: token("danger"),
       },
     },

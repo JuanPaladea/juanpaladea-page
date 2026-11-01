@@ -17,7 +17,6 @@ export const ui = {
   viewProjects: { en: "View projects", es: "Ver proyectos" },
   getInTouch: { en: "Get in touch", es: "Contactame" },
   downloadCv: { en: "Download CV", es: "Descargar CV" },
-  cvPdfHint: { en: "PDF", es: "PDF" },
 
   work: { en: "Work", es: "Trabajo" },
   education: { en: "Education", es: "Formación" },
@@ -30,10 +29,9 @@ export const ui = {
   stackHeading: { en: "Stack", es: "Stack" },
   bookCall: { en: "Book a call", es: "Agendar una llamada" },
   bookCallHint: {
-    en: "Pick a slot that works for you — 30 minutes, no preparation needed.",
-    es: "Elegí un horario que te sirva — 30 minutos, sin preparación.",
+    en: "Pick a slot that works for you: 30 minutes, no preparation needed.",
+    es: "Elegí un horario que te sirva: 30 minutos, sin preparación.",
   },
-  orWriteInstead: { en: "Prefer to write? Use the form.", es: "¿Preferís escribir? Usá el formulario." },
 
   opensInNewTab: { en: "opens in a new tab", es: "se abre en una pestaña nueva" },
   sourceOnGitHub: { en: "source code on GitHub", es: "código fuente en GitHub" },
@@ -51,11 +49,6 @@ export const ui = {
   languagesValue: {
     en: "Spanish (native) · English (C2 certified)",
     es: "Español (nativo) · Inglés (C2 certificado)",
-  },
-  openToLabel: { en: "Open to", es: "Abierto a" },
-  openToValue: {
-    en: "Remote roles, full-time or contract",
-    es: "Trabajo remoto, full-time o por contrato",
   },
   emailLabel: { en: "Email", es: "Email" },
   emailField: { en: "Email", es: "Email" },
@@ -84,4 +77,9 @@ export const ui = {
   },
 
   portraitOf: { en: "Portrait of", es: "Retrato de" },
+  builtWith: {
+    en: "Built with React, TypeScript and CSS. No animation libraries.",
+    es: "Hecho con React, TypeScript y CSS. Sin librerías de animación.",
+  },
+  sourcePrivate: { en: "Private source code", es: "Código privado" },
 } satisfies Record<string, Localized<string>>;

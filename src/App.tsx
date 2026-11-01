@@ -1,10 +1,12 @@
+import { useEffect, useRef } from "react";
 import { Toaster } from "react-hot-toast";
 import HeaderComponent from "./components/HeaderComponent";
 import HeroComponent from "./components/HeroComponent";
 import AboutMeComponent from "./components/AboutMeComponent";
+import PipelineComponent from "./components/PipelineComponent";
 import ExperienceComponent from "./components/ExperienceComponent";
-import TechnologiesComponent from "./components/TechnologiesComponent";
 import ProjectsComponent from "./components/ProjectsComponent";
+import TechnologiesComponent from "./components/TechnologiesComponent";
 import CertificationsComponent from "./components/CertificationsComponent";
 import ContactForm from "./components/ContactForm";
 import FooterComponent from "./components/FooterComponent";
@@ -14,8 +16,19 @@ import { usePreferences } from "./preferences/context";
 import { useRoute } from "./router";
 
 function App() {
-  const { theme, t } = usePreferences();
+  const { t } = usePreferences();
   const route = useRoute();
+  const mainRef = useRef<HTMLElement>(null);
+  const routeKey = route.name === "project" ? route.id : "home";
+  const previousRoute = useRef(routeKey);
+
+  // A route swap replaces the page under the keyboard and the screen reader,
+  // so focus moves to the new content instead of being lost with the old one.
+  useEffect(() => {
+    if (previousRoute.current === routeKey) return;
+    previousRoute.current = routeKey;
+    mainRef.current?.focus({ preventScroll: true });
+  }, [routeKey]);
 
   return (
     <>
@@ -26,16 +39,17 @@ function App() {
         {t(ui.skipToContent)}
       </a>
       <HeaderComponent isHome={route.name === "home"} />
-      <main id="main">
+      <main id="main" ref={mainRef} tabIndex={-1}>
         {route.name === "project" ? (
           <ProjectPage id={route.id} />
         ) : (
           <>
             <HeroComponent />
             <AboutMeComponent />
+            <PipelineComponent />
             <ExperienceComponent />
-            <TechnologiesComponent />
             <ProjectsComponent />
+            <TechnologiesComponent />
             <CertificationsComponent />
             <ContactForm />
           </>
@@ -46,10 +60,11 @@ function App() {
         position="top-right"
         toastOptions={{
           duration: 5000,
-          style:
-            theme === "dark"
-              ? { background: "#1f2937", color: "#f9fafb" }
-              : { background: "#ffffff", color: "#111827", border: "1px solid #e5e7eb" },
+          style: {
+            background: "rgb(var(--color-elevated))",
+            color: "rgb(var(--color-heading))",
+            border: "1px solid rgb(var(--color-line))",
+          },
         }}
       />
     </>

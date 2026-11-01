@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
-const prefersReducedMotion = () =>
-  typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+import { prefersReducedMotion } from "./useMediaQuery";
 
 /** How long to wait for the observer to prove it works before giving up on it. */
 const FALLBACK_DELAY_MS = 1500;

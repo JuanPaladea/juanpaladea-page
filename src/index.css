@@ -9,42 +9,44 @@
    * modifiers such as `bg-surface/60`.
    */
   :root {
-    --color-page: 255 255 255;
-    --color-surface: 249 250 251; /* gray-50  */
-    --color-elevated: 243 244 246; /* gray-100 */
-    --color-line: 229 231 235; /* gray-200 */
-    --color-heading: 17 24 39; /* gray-900 */
-    --color-body: 55 65 81; /* gray-700 */
-    --color-muted: 107 114 128; /* gray-500 */
+    --color-page: 250 250 247;
+    --color-surface: 255 255 255;
+    --color-elevated: 240 241 236;
+    --color-line: 220 222 214;
+    --color-heading: 12 18 24;
+    --color-body: 52 60 70;
+    --color-muted: 92 101 112;
     /* `accent` fills (buttons, badges); `accent-soft` is the text-safe tint. */
-    --color-accent: 79 70 229; /* indigo-600 */
-    --color-accent-soft: 67 56 202; /* indigo-700 */
+    --color-accent: 15 118 110; /* teal-700 */
+    --color-accent-soft: 15 110 102;
     --color-accent-contrast: 255 255 255;
+    /* The packet that travels through the diagrams. Never used for text. */
+    --color-signal: 194 65 12; /* orange-700 */
     --color-danger: 185 28 28; /* red-700 */
 
-    --scroll-bar-color: 129 140 248;
-    --scroll-bar-bg-color: 243 244 246;
+    --scroll-bar-color: 15 118 110;
+    --scroll-bar-bg-color: 240 241 236;
 
     color-scheme: light;
   }
 
   .dark {
-    --color-page: 17 24 39; /* gray-900 */
-    --color-surface: 24 32 47;
-    --color-elevated: 31 41 55; /* gray-800 */
-    --color-line: 31 41 55; /* gray-800 */
-    --color-heading: 255 255 255;
-    --color-body: 209 213 219; /* gray-300 */
-    --color-muted: 156 163 175; /* gray-400 */
-    /* Fill stays indigo-600 so white button labels clear 4.5:1; accent text
-       uses indigo-300, which a dark background needs to stay readable. */
-    --color-accent: 79 70 229; /* indigo-600 */
-    --color-accent-soft: 165 180 252; /* indigo-300 */
-    --color-accent-contrast: 255 255 255;
+    --color-page: 10 14 20;
+    --color-surface: 17 22 31;
+    --color-elevated: 25 31 42;
+    --color-line: 42 50 64;
+    --color-heading: 240 244 248;
+    --color-body: 190 199 210;
+    --color-muted: 139 150 165;
+    /* In dark the fill is bright, so its label flips to near black. */
+    --color-accent: 94 234 212; /* teal-300 */
+    --color-accent-soft: 94 234 212;
+    --color-accent-contrast: 6 30 30;
+    --color-signal: 251 191 36; /* amber-400 */
     --color-danger: 252 165 165; /* red-300 */
 
-    --scroll-bar-color: 79 70 229;
-    --scroll-bar-bg-color: 31 41 55;
+    --scroll-bar-color: 94 234 212;
+    --scroll-bar-bg-color: 25 31 42;
 
     color-scheme: dark;
   }
@@ -68,6 +70,11 @@
     @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-page;
   }
 
+  /* Focus lands here after a route change; it needs no ring of its own. */
+  main:focus {
+    outline: none;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -85,10 +92,31 @@
 }
 
 @layer components {
-  /* Kept for template parity — both map to the site font stack. */
-  .title-font,
-  .body-font {
-    font-family: theme("fontFamily.sans");
+  .title-font {
+    font-family: theme("fontFamily.display");
+    letter-spacing: -0.02em;
+  }
+
+  /* Small technical labels, shared by section numbers and data lists. */
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-widest text-muted;
+  }
+
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-lg px-5 py-2.5 font-medium;
+    transition: transform 200ms ease, opacity 200ms ease, background-color 200ms ease, border-color 200ms ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-accent-contrast hover:opacity-90;
+  }
+
+  .btn-ghost {
+    @apply btn border border-line text-heading hover:border-accent hover:bg-elevated;
   }
 }
 

@@ -79,26 +79,25 @@ const ContactForm = () => {
     <Section id="contact" aria-labelledby="contact-heading" className="relative">
       <SectionHeading
         id="contact-heading"
+        index={7}
         title={t(sectionCopy.contact.title)}
         subtitle={t(sectionCopy.contact.subtitle)}
       />
-      <div className="container mx-auto flex flex-wrap px-5 py-12 sm:flex-nowrap">
-        {/* Facts a recruiter checks first, in place of a decorative city map. */}
-        <div className="rounded-xl border border-line bg-surface p-8 sm:mr-10 md:w-1/2 lg:w-2/3">
+      <div data-stagger className="container mx-auto grid gap-8 px-5 py-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-12">
+        <div className="rounded-xl border border-line bg-surface p-8">
           <dl className="grid gap-6 sm:grid-cols-2">
             {[
               { label: ui.basedIn, value: t(location) },
               { label: ui.timezoneLabel, value: site.timezone },
               { label: ui.languagesLabel, value: t(ui.languagesValue) },
-              { label: ui.openToLabel, value: t(ui.openToValue) },
             ].map(({ label, value }) => (
               <div key={t(label)}>
-                <dt className="title-font text-xs font-semibold tracking-widest text-muted">{t(label)}</dt>
+                <dt className="eyebrow">{t(label)}</dt>
                 <dd className="mt-1 leading-relaxed text-heading">{value}</dd>
               </div>
             ))}
             <div className="sm:col-span-2">
-              <dt className="title-font text-xs font-semibold tracking-widest text-muted">{t(ui.emailLabel)}</dt>
+              <dt className="eyebrow">{t(ui.emailLabel)}</dt>
               <dd className="mt-1">
                 <a href={`mailto:${site.email}`} className="leading-relaxed text-accent-soft hover:opacity-80">
                   {site.email}
@@ -113,7 +112,7 @@ const ContactForm = () => {
               href={site.calendar}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 font-medium text-accent-contrast transition-opacity hover:opacity-90"
+              className="btn-primary"
             >
               <CalendarIcon className="h-5 w-5" />
               {t(ui.bookCall)}
@@ -126,9 +125,9 @@ const ContactForm = () => {
           ref={formRef}
           onSubmit={handleSubmit}
           noValidate
-          className="mt-8 flex w-full flex-col md:ml-auto md:mt-0 md:w-1/2 md:py-8 lg:w-1/3"
+          className="flex w-full flex-col"
         >
-          <h3 className="title-font mb-1 text-lg font-medium text-heading">{t(ui.contactTitle)}</h3>
+          <h3 className="title-font mb-1 text-xl font-medium text-heading">{t(ui.contactTitle)}</h3>
           <p className="mb-4 text-sm">{t(ui.contactBlurb)}</p>
 
           <div className="mb-4">
@@ -178,7 +177,7 @@ const ContactForm = () => {
           <button
             type="submit"
             disabled={isSending}
-            className="rounded-lg border-0 bg-accent px-6 py-2.5 text-lg font-medium text-accent-contrast transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+            className="btn-primary justify-center disabled:cursor-not-allowed disabled:opacity-60"
           >
             {isSending ? t(ui.sending) : t(ui.send)}
           </button>

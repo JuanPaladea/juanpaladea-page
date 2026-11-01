@@ -11,12 +11,19 @@ const tech = {
   postgres: { name: "PostgreSQL", icon: icon("postgresql") },
   react: { name: "React", icon: icon("react") },
   vite: { name: "Vite", icon: icon("vite") },
-  tailwind: { name: "Tailwind CSS", icon: icon("tailwind") },
-  firebase: { name: "Firebase", icon: icon("firebase") },
+  next: { name: "Next.js" },
+  supabase: { name: "Supabase" },
+  netlify: { name: "Netlify" },
   swagger: { name: "Swagger" },
   jwt: { name: "JWT" },
   indexedDb: { name: "IndexedDB" },
+  mcp: { name: "MCP" },
 } satisfies Record<string, Skill>;
+
+export interface ProjectLink {
+  href: string;
+  label: Localized<string>;
+}
 
 export interface Project {
   id: string;
@@ -32,110 +39,146 @@ export interface Project {
   imageAlt: Localized<string>;
   demo: string;
   demoLabel: Localized<string>;
-  repo: string;
+  /** Omitted when the source is private, so no card links to a 404. */
+  repo?: string;
+  /** A second deployed piece of the same project, such as a separate client. */
+  companion?: ProjectLink;
   stack: Skill[];
 }
 
 const backEnd: Localized<string> = { en: "Back End", es: "Backend" };
 const product: Localized<string> = { en: "Product", es: "Producto" };
-const clientWork: Localized<string> = { en: "In production", es: "En producción" };
+const inProduction: Localized<string> = { en: "In production", es: "En producción" };
 
 export const projects: Project[] = [
   {
-    id: "hospital-backend",
-    category: backEnd,
-    title: "Hospital Backend",
-    description:
-      {
-        en: "RESTful API for clinical data — patients, studies and billing — modelled on the workflows I handle day to day at a research institute. Authentication, file uploads for study results and payment proofs, and a fully documented endpoint surface.",
-        es: "API RESTful para datos clínicos —pacientes, estudios y facturación— modelada sobre los flujos que manejo a diario en un instituto de investigación. Autenticación, carga de archivos para resultados de estudios y comprobantes de pago, y endpoints completamente documentados.",
-      },
+    id: "vialo",
+    category: product,
+    title: "Vialo",
+    description: {
+      en: "A management platform for research laboratories, born from my role as staff at IMIPP. It brings samples, equipment, supplies, temperatures and protocols together, with permissions by role and a record of every change.",
+      es: "Una plataforma de gestión para laboratorios de investigación, nacida de mi función como personal del IMIPP. Reúne muestras, equipos, insumos, temperaturas y protocolos, con permisos por rol y el registro de cada cambio.",
+    },
     highlights: {
       en: [
-        "JWT sessions with bcrypt-hashed passwords",
-        "PostgreSQL schema for patients, studies and bills",
-        "Swagger docs, deployed on Render",
+        "Nine modules sharing users, permissions and history",
+        "Each laboratory isolated with row-level security",
+        "Connects to AI assistants through MCP",
       ],
       es: [
-        "Sesiones con JWT y contraseñas hasheadas con bcrypt",
-        "Esquema PostgreSQL para pacientes, estudios y facturas",
-        "Documentación con Swagger, desplegada en Render",
+        "Nueve módulos con usuarios, permisos e historial en común",
+        "Cada laboratorio aislado con seguridad por filas",
+        "Se conecta a asistentes de IA por MCP",
       ],
     },
-    image: "/img/hospital-backend.png",
-    imageWidth: 640,
-    imageHeight: 293,
+    image: "/img/project-vialo.jpg",
+    imageWidth: 1280,
+    imageHeight: 720,
     imageAlt: {
-      en: "Swagger documentation page of the Hospital Backend API",
-      es: "Página de documentación Swagger de la API Hospital Backend",
+      en: "Vialo landing page: your laboratory, without Excel spreadsheets",
+      es: "Landing de Vialo: tu laboratorio, sin planillas de Excel",
     },
-    demo: "https://hospital-backend-kapu.onrender.com/docs/",
-    demoLabel: { en: "API docs", es: "Documentación" },
-    repo: "https://github.com/JuanPaladea/hospital-backend",
-    stack: [tech.node, tech.express, tech.typescript, tech.postgres, tech.jwt, tech.swagger],
+    demo: "https://vialolab.com/",
+    demoLabel: { en: "Visit Vialo", es: "Ver Vialo" },
+    stack: [tech.next, tech.typescript, tech.supabase, tech.postgres, tech.mcp],
   },
   {
-    id: "imipp",
-    category: clientWork,
-    title: "IMIPP — Research Institute",
+    id: "libelulis",
+    category: inProduction,
+    title: "Libelulis",
     description: {
-      en: "The public site for the pediatric pathology research institute where I work. I built it so the team can publish papers, news and services straight from Firestore, without a developer in the loop for every change.",
-      es: "El sitio público del instituto de investigación en patologías pediátricas donde trabajo. Lo construí para que el equipo publique papers, novedades y servicios directamente desde Firestore, sin depender de un desarrollador para cada cambio.",
+      en: "The online store for Libelulis, handmade marbled accessories where every piece is one of a kind. Customers order through WhatsApp, and a full panel runs the business behind it.",
+      es: "La tienda online de Libelulis, accesorios marmolados hechos a mano donde cada pieza es única. Se compra por WhatsApp, y detrás hay un panel completo para manejar el negocio.",
     },
     highlights: {
       en: [
-        "In production for a real research institute",
-        "Content managed from Firebase/Firestore",
-        "Modular React architecture, deployed on Vercel",
+        "Pieces reserved for 48 hours in a single transaction",
+        "No account needed to buy",
+        "Panel for orders, sales, costs, customers and stock",
       ],
       es: [
-        "En producción para un instituto de investigación real",
-        "Contenido gestionado desde Firebase/Firestore",
-        "Arquitectura React modular, desplegada en Vercel",
+        "Piezas reservadas por 48 horas en una sola transacción",
+        "Para comprar no hace falta cuenta",
+        "Panel de pedidos, ventas, costos, clientes e insumos",
       ],
     },
-    image: "/img/imipp.png",
-    imageWidth: 640,
-    imageHeight: 371,
+    image: "/img/project-libelulis.jpg",
+    imageWidth: 1280,
+    imageHeight: 720,
     imageAlt: {
-      en: "IMIPP research institute landing page",
-      es: "Landing del instituto de investigación IMIPP",
+      en: "Libelulis online store home page",
+      es: "Inicio de la tienda online de Libelulis",
     },
-    demo: "https://imipp.vercel.app/",
-    demoLabel: { en: "Live site", es: "Ver sitio" },
-    repo: "https://github.com/JuanPaladea/imipp",
-    stack: [tech.react, tech.vite, tech.tailwind, tech.firebase],
+    demo: "https://libelulis.com.ar/",
+    demoLabel: { en: "Visit the store", es: "Ver la tienda" },
+    stack: [tech.next, tech.typescript, tech.supabase, tech.postgres, tech.netlify],
   },
   {
     id: "en-una-nota",
     category: product,
     title: "En una nota · Ensalada mixta",
     description: {
-      en: "A party game for singing with friends: a random song plays, cuts off after a beat, and the first team to shout has to keep going. A finished product on its own domain — not a demo — built in vanilla JavaScript with zero runtime dependencies.",
-      es: "Un juego para cantar con amigos: suena una canción al azar, se corta a los pocos segundos y el primer equipo en gritar tiene que seguirla. Un producto terminado con dominio propio —no una demo— hecho en JavaScript puro, sin dependencias de runtime.",
+      en: "A party game for singing with friends: a hidden song plays, cuts off, and the first team to shout has to keep going. It runs on plain JavaScript and grew a solo mode, Google accounts and a ranking the database verifies by itself.",
+      es: "Un juego para cantar con amigos: suena una canción tapada, se corta, y el primer equipo en gritar tiene que seguirla. Está hecho en JavaScript puro y sumó modo un jugador, cuentas con Google y un ranking que verifica la propia base de datos.",
     },
     highlights: {
       en: [
-        "11 curated playlists with 350+ songs",
-        "Works offline — custom audio persisted in IndexedDB",
-        "Zero runtime dependencies, deployed on Netlify",
+        "16 curated playlists with more than 1,000 songs",
+        "Ranking checked step by step in Postgres",
+        "Your own audio in IndexedDB, playable offline",
       ],
       es: [
-        "11 playlists curadas con más de 350 canciones",
-        "Funciona sin internet: audio propio guardado en IndexedDB",
-        "Cero dependencias de runtime, desplegado en Netlify",
+        "16 playlists curadas con más de 1000 canciones",
+        "Ranking comprobado paso a paso en Postgres",
+        "Tu propio audio en IndexedDB, también sin internet",
       ],
     },
-    image: "/img/en-una-nota.svg",
-    imageWidth: 1200,
-    imageHeight: 630,
+    image: "/img/project-en-una-nota.jpg",
+    imageWidth: 1280,
+    imageHeight: 720,
     imageAlt: {
-      en: "En una nota · Ensalada mixta cover artwork",
-      es: "Portada de En una nota · Ensalada mixta",
+      en: "En una nota home screen, choosing between playing with friends or alone",
+      es: "Inicio de En una nota, con la elección entre jugar con amigos o solo",
     },
     demo: "https://enunanota.com.ar/",
     demoLabel: { en: "Play it", es: "Jugar" },
     repo: "https://github.com/JuanPaladea/en-una-nota-ensalada-mixta",
-    stack: [tech.javascript, tech.vite, tech.indexedDb],
+    stack: [tech.javascript, tech.vite, tech.postgres, tech.netlify, tech.indexedDb],
+  },
+  {
+    id: "hospital-backend",
+    category: backEnd,
+    title: "Hospital Backend",
+    description: {
+      en: "A REST API for clinical data (patients, studies and billing), modelled on workflows I handle every day at a research institute. It has authentication, file uploads for results and payment proofs, and documented endpoints.",
+      es: "Una API REST para datos clínicos (pacientes, estudios y facturación), modelada sobre flujos que manejo a diario en un instituto de investigación. Tiene autenticación, carga de resultados y comprobantes de pago, y endpoints documentados.",
+    },
+    highlights: {
+      en: [
+        "JWT sessions with bcrypt-hashed passwords",
+        "PostgreSQL schema for patients, studies and bills",
+        "Swagger docs and a separate React client",
+      ],
+      es: [
+        "Sesiones con JWT y contraseñas hasheadas con bcrypt",
+        "Esquema PostgreSQL para pacientes, estudios y facturas",
+        "Documentación con Swagger y un cliente React aparte",
+      ],
+    },
+    image: "/img/project-hospital.jpg",
+    imageWidth: 1280,
+    imageHeight: 720,
+    imageAlt: {
+      en: "Swagger documentation page of the Hospital API",
+      es: "Página de documentación Swagger de la API Hospital",
+    },
+    demo: "https://hospital-backend-kapu.onrender.com/docs/",
+    demoLabel: { en: "API docs", es: "Documentación" },
+    repo: "https://github.com/JuanPaladea/hospital-backend",
+    companion: {
+      href: "https://hospital-frontend-psi.vercel.app",
+      label: { en: "React client", es: "Cliente React" },
+    },
+    stack: [tech.node, tech.express, tech.typescript, tech.postgres, tech.jwt, tech.swagger],
   },
 ];

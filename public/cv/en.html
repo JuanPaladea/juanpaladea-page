@@ -6,7 +6,7 @@
     <title>Juan Paladea — Full-stack Developer · CV</title>
     <meta
       name="description"
-      content="CV of Juan Paladea, full-stack developer building APIs, automations and AI agents. Node.js, TypeScript, PostgreSQL, React."
+      content="CV of Juan Paladea, full-stack developer building APIs, automations and AI agents. Creator of Vialo. Node.js, TypeScript, PostgreSQL, React, Next.js."
     />
     <style>
       :root {
@@ -206,10 +206,7 @@
         <h1>Juan Paladea</h1>
         <p class="role">Full-stack Developer — APIs, Automation &amp; AI Agents</p>
         <p class="contact">
-          Buenos Aires, Argentina (UTC−3)<span aria-hidden="true">·</span>Available for remote work<span
-            aria-hidden="true"
-            >·</span
-          >C2 English<br />
+          Buenos Aires, Argentina (UTC−3)<span aria-hidden="true">·</span>C2 English<br />
           <a href="mailto:juanpaladea5@gmail.com">juanpaladea5@gmail.com</a><span aria-hidden="true">·</span>
           <a href="https://juanpaladea.com.ar">juanpaladea.com.ar</a><span aria-hidden="true">·</span>
           <a href="https://github.com/JuanPaladea">github.com/JuanPaladea</a><span aria-hidden="true">·</span>
@@ -223,10 +220,11 @@
         Full-stack developer who ships complete products — API, database and interface — with a centre of gravity on
         the backend. On the Customer Success team at <b>Chatty</b>, a WhatsApp CRM platform, I take clients through
         implementation and build the AI agents, automations and custom metrics they run their sales on. In parallel,
-        five years inside a pediatric pathology research institute — invoicing diagnostic and genomic services,
-        regulatory and bioethics records, and the IT behind them — after training as a radiology technician at the
-        University of Buenos Aires. I work in <b>Node.js</b>, <b>TypeScript</b>, <b>PostgreSQL</b> and
-        <b>React</b>, and model operational and clinical domains from experience rather than from a spec.
+        more than five years inside a pediatric pathology research institute — invoicing diagnostic and genomic
+        services, regulatory and bioethics records, and the IT behind them — where <b>Vialo</b>, my management
+        platform for research laboratories, was born. Trained as a radiology technician at the University of Buenos
+        Aires. I work in <b>Node.js</b>, <b>TypeScript</b>, <b>PostgreSQL</b>, <b>React</b> and <b>Next.js</b>, and
+        model operational and clinical domains from experience rather than from a spec.
       </p>
 
       <h2>Experience</h2>
@@ -269,7 +267,7 @@
           <li>
             Work with PostgreSQL and MongoDB for data modelling, and React with Vite for client applications.
           </li>
-          <li>Every project is publicly deployed with its source available; freelance work via Upwork and direct clients.</li>
+          <li>Every project is publicly deployed; freelance work via Upwork and direct clients.</li>
         </ul>
       </section>
 
@@ -298,7 +296,7 @@
             Keep laboratory equipment inventories and the institute's IT infrastructure running; support the
             publication of scientific work.
           </li>
-          <li>Built and maintain the institute's public website (React + Firestore), in production today.</li>
+          <li>Built the institute's website. This role is where Vialo, my laboratory management platform, was born.</li>
         </ul>
       </section>
 
@@ -306,38 +304,33 @@
 
       <section class="entry">
         <div class="entry-head">
-          <h3 class="entry-title">Hospital Backend — clinical data API</h3>
+          <h3 class="entry-title">Vialo — management platform for research laboratories</h3>
           <span class="project-links">
-            <a href="https://hospital-backend-kapu.onrender.com/docs/">API docs</a> ·
-            <a href="https://github.com/JuanPaladea/hospital-backend">Code</a>
+            <a href="https://vialolab.com/">Live</a>
           </span>
         </div>
-        <p class="entry-org">Node.js · TypeScript · Express · PostgreSQL · JWT · Swagger</p>
+        <p class="entry-org">Next.js · TypeScript · Supabase · PostgreSQL · MCP</p>
         <ul>
+          <li>Born from my role as staff at IMIPP: samples, equipment, supplies, temperatures and protocols in one place.</li>
           <li>
-            RESTful API managing patients, studies and billing, modelled on workflows I handle day to day at the
-            institute.
-          </li>
-          <li>
-            JWT sessions with bcrypt-hashed passwords, file uploads for study results and payment proofs, full
-            Swagger documentation. Deployed on Render.
+            Each laboratory isolated with row-level security, a change history kept by database triggers, and a public
+            API and MCP server that share the same permissions.
           </li>
         </ul>
       </section>
 
       <section class="entry">
         <div class="entry-head">
-          <h3 class="entry-title">IMIPP — research institute website</h3>
+          <h3 class="entry-title">Libelulis — online store for handmade pieces</h3>
           <span class="project-links">
-            <a href="https://imipp.vercel.app/">Live site</a> ·
-            <a href="https://github.com/JuanPaladea/imipp">Code</a>
+            <a href="https://libelulis.com.ar/">Live</a>
           </span>
         </div>
-        <p class="entry-org">React · Vite · Tailwind CSS · Firebase/Firestore</p>
+        <p class="entry-org">Next.js · TypeScript · Supabase · PostgreSQL · Netlify</p>
         <ul>
           <li>
-            Public site for the research institute where I work, in production. Content is served from Firestore so
-            the team publishes papers, news and services without a developer in the loop.
+            One-of-a-kind pieces reserved for 48 hours in a single transaction, orders through WhatsApp, and a panel
+            for orders, sales, costs, customers and supplies.
           </li>
         </ul>
       </section>
@@ -350,28 +343,29 @@
             <a href="https://github.com/JuanPaladea/en-una-nota-ensalada-mixta">Code</a>
           </span>
         </div>
-        <p class="entry-org">Vanilla JavaScript · Vite · IndexedDB · Netlify</p>
+        <p class="entry-org">JavaScript · Vite · PostgreSQL · Netlify Functions · IndexedDB</p>
         <ul>
           <li>
-            A finished product on its own domain: 11 curated playlists with 350+ songs, offline playback with custom
-            audio persisted in IndexedDB, scoreboard and history in the browser.
+            16 curated playlists with more than 1,000 songs, built without a framework, with offline play using audio
+            stored in IndexedDB.
           </li>
-          <li>Built with zero runtime dependencies as a deliberate constraint.</li>
+          <li>Google accounts and a ranking the database verifies step by step, so the browser never computes a score.</li>
         </ul>
       </section>
 
       <section class="entry">
         <div class="entry-head">
-          <h3 class="entry-title">Movie Reservation System — backend</h3>
+          <h3 class="entry-title">Hospital Backend — clinical data API</h3>
           <span class="project-links">
-            <a href="https://github.com/JuanPaladea/MovieReservationBack">Code</a>
+            <a href="https://hospital-backend-kapu.onrender.com/docs/">API docs</a> ·
+            <a href="https://github.com/JuanPaladea/hospital-backend">Code</a>
           </span>
         </div>
-        <p class="entry-org">Node.js · Express · PostgreSQL · JWT · Jest</p>
+        <p class="entry-org">Node.js · TypeScript · Express · PostgreSQL · JWT · Swagger</p>
         <ul>
           <li>
-            Movie, seat, showtime and reservation management with role-based authorization and unit-tested
-            endpoints.
+            REST API for patients, studies and billing, modelled on workflows I handle every day, with JWT sessions,
+            file uploads and Swagger documentation.
           </li>
         </ul>
       </section>
@@ -383,13 +377,13 @@
         <dt>Backend</dt>
         <dd>Node.js, Express, Flask, REST APIs, JWT, Jest, Mocha, Swagger/OpenAPI</dd>
         <dt>Databases</dt>
-        <dd>PostgreSQL, MongoDB, MySQL</dd>
+        <dd>PostgreSQL, Supabase, MongoDB, MySQL</dd>
         <dt>Frontend</dt>
-        <dd>React, Vite, Tailwind CSS</dd>
+        <dd>React, Next.js, Vite, Tailwind CSS</dd>
         <dt>Tools &amp; cloud</dt>
         <dd>Git, GitHub, Claude Code, AWS, Firebase, Vercel, Netlify, Render</dd>
         <dt>Automation &amp; AI</dt>
-        <dd>AI agents, conversational flows, workflow automation, WhatsApp Business API, custom metrics and funnels</dd>
+        <dd>AI agents, conversational flows, workflow automation, WhatsApp Business API, custom metrics and funnels, MCP servers</dd>
       </dl>
 
       <h2>Education</h2>
@@ -444,11 +438,7 @@
         </li>
         <li>
           <b>Backend Programming — Coderhouse</b> <span>· Jul 2024 ·</span>
-          <a
-            href="https://pub.coderhouse.com/legacy-certificates/66ae613c13652079130ca8fd?lang=en"
-            class="project-links"
-            >certificate</a
-          >
+          <a href="https://juanpaladea.com.ar/img/cert-coderhouse.png" class="project-links">certificate</a>
         </li>
       </ul>
     </main>

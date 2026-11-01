@@ -9,6 +9,9 @@ language list on a first visit, persisted to `localStorage`, and applied before
 first paint by a small inline script in `index.html` so the page never flashes
 the wrong theme.
 
+`CLAUDE.md` records the career facts and the editorial and design rules, and
+`docs/linkedin.md` keeps the LinkedIn copy in step with the site and the CVs.
+
 ## Getting started
 
 ```bash
@@ -65,17 +68,21 @@ tighter to compensate.
 public/
 ├─ cv/                 CV in both languages: print-styled HTML + generated PDF
 ├─ icons/              Tech logos (local SVGs, no third-party hotlinking)
-└─ img/                Portrait, project shots, certificates
+└─ img/                Portrait, project shots, certificates, share image
+scripts/
+└─ projectPages.ts     Build step: one HTML file per project with its own metadata
 src/
 ├─ components/
+│  ├─ motion/          Motion graphics (signal field, portrait scan, project covers…)
 │  ├─ ui/              Shared building blocks (Section, SectionHeading, TechChip, icons)
 │  └─ *Component.tsx   One component per page section
 ├─ data/               Site content: profile, career, skills, projects, certs, UI strings
-├─ hooks/              useInView — scroll reveal via IntersectionObserver
+├─ hooks/              Scroll, visibility and media-query hooks behind the motion
 ├─ preferences/        Language and theme context, persisted to localStorage
 ├─ router.ts           Two-route History API router, no dependency
 ├─ App.tsx             Route switch and section composition
-└─ index.css           Colour tokens, focus states, reduced-motion rules
+├─ index.css           Colour tokens, focus states, reduced-motion rules
+└─ motion.css          Every keyframe and transition on the site
 ```
 
 ### Routing
@@ -90,11 +97,17 @@ Deep links need the server to serve `index.html` for those paths — that is wha
 the rewrite in `vercel.json` does. On another host, configure the equivalent
 SPA fallback or project pages will 404 on a hard refresh.
 
+Link previews do not run JavaScript, so `scripts/projectPages.ts` also writes
+`dist/projects/<id>/index.html` at build time with each project's title,
+description and image.
+
 ### Adding a project case study
 
 A card links to its page only when `src/data/projectDetails.ts` has an entry
 under the project's `id`, holding the context, the decisions worth defending,
-and an honest note on what is still missing.
+and an honest note on what is still missing. `repo` is optional: leave it out
+when the source is private and the page says so instead of linking to a 404.
+Each project also needs a scene in `src/components/motion/ProjectCover.tsx`.
 
 **Content lives in `src/data`, not in JSX.** To add a project, append an entry
 to `src/data/projects.ts`; the same applies to `skills.ts` and
@@ -134,11 +147,33 @@ variables redefined under `.dark` in `index.css`. Adding a theme means editing
 one block, not every component. Every foreground/background pair in both themes
 clears WCAG AA (4.5:1).
 
+### Layout
+
+Everything hangs from one left edge: section headings, text, timelines and
+cards all start on the container's left side. Do not centre a column inside
+the page or right-align a subtitle.
+
+### Motion
+
+The motion is drawn from the story it tells: a beam develops the portrait from a
+radiograph, a message travels from WhatsApp to a metric as you scroll, and each
+project cover animates the decision that defines it. There is no animation
+library, just CSS, SVG, one canvas and `IntersectionObserver`.
+
+- `motion.css` holds every keyframe. Base styles are the finished state, so
+  turning animation off leaves a complete page.
+- `prefers-reduced-motion` is honoured everywhere: the pinned section renders
+  in normal flow, the canvas paints one still frame, and loops do not run.
+- Looping pieces stop while off screen (`useOnScreen`), and scroll-driven pieces
+  write to the DOM once per frame (`useScrollFrame`) without re-rendering React.
+- Route changes and the theme toggle use the View Transitions API where it
+  exists and simply happen without it.
+
 ## Notes
 
-- All images and logos are served from this origin. Nothing hotlinks to imgur
-  or svgrepo, which both rate-limit and can break the page without warning.
-- Sections fade in on scroll with a CSS transition driven by
+- All images, logos and fonts are served from this origin, so the page has no
+  third-party dependency at load time.
+- Sections reveal on scroll with CSS transitions driven by
   `IntersectionObserver`. The reveal is progressive enhancement: it is skipped
   for reduced-motion visitors, and a fallback timer shows the content anyway if
   the observer never reports, so nothing is ever left invisible.

@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111827" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fafaf7" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0e14" />
 
     <!--
       Apply the saved theme and language before first paint. Without this the
@@ -43,16 +43,13 @@
     <title>Juan Paladea — Full-stack Developer, APIs &amp; AI Automation</title>
     <meta
       name="description"
-      content="Portfolio of Juan Paladea, a full-stack developer in Buenos Aires who builds APIs, automations and AI agents. Customer Success at Chatty, five years inside a pediatric research institute, and shipped projects in Node.js, TypeScript and PostgreSQL."
+      content="Juan Paladea is a full-stack developer in Buenos Aires who builds APIs, automations and AI agents. Creator of Vialo, Customer Success at Chatty, and more than five years inside a pediatric research institute."
     />
     <meta name="author" content="Juan Paladea" />
     <link rel="canonical" href="https://juanpaladea.com.ar/" />
 
     <link rel="icon" href="/favicon.ico" sizes="any" />
-
-    <!-- Only third-party origin left: the Inter webfont. -->
-    <link rel="preconnect" href="https://rsms.me" crossorigin />
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
     <!-- The portrait is the LCP element: start fetching it before React boots. -->
     <link
@@ -60,7 +57,7 @@
       as="image"
       href="/img/portrait-1024.jpeg"
       imagesrcset="/img/portrait-640.jpeg 575w, /img/portrait-1024.jpeg 919w"
-      imagesizes="(min-width: 1024px) 28rem, (min-width: 768px) 40vw, 80vw"
+      imagesizes="(min-width: 1024px) 28rem, (min-width: 768px) 24rem, 90vw"
       fetchpriority="high"
     />
 
@@ -69,20 +66,23 @@
     <meta property="og:title" content="Juan Paladea — Full-stack Developer, APIs &amp; AI Automation" />
     <meta
       property="og:description"
-      content="Portfolio of Juan Paladea, a full-stack developer in Buenos Aires who builds APIs, automations and AI agents. Customer Success at Chatty, five years inside a pediatric research institute, and shipped projects in Node.js, TypeScript and PostgreSQL."
+      content="Juan Paladea is a full-stack developer in Buenos Aires who builds APIs, automations and AI agents. Creator of Vialo, Customer Success at Chatty, and more than five years inside a pediatric research institute."
     />
     <meta property="og:url" content="https://juanpaladea.com.ar/" />
-    <meta property="og:image" content="https://juanpaladea.com.ar/img/portrait-1024.jpeg" />
-    <meta property="og:image:alt" content="Portrait of Juan Paladea" />
+    <meta property="og:image" content="https://juanpaladea.com.ar/img/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Juan Paladea, full-stack developer" />
     <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="es_AR" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Juan Paladea — Full-stack Developer, APIs &amp; AI Automation" />
     <meta
       name="twitter:description"
-      content="Portfolio of Juan Paladea, a full-stack developer in Buenos Aires who builds APIs, automations and AI agents. Customer Success at Chatty, five years inside a pediatric research institute, and shipped projects in Node.js, TypeScript and PostgreSQL."
+      content="Juan Paladea is a full-stack developer in Buenos Aires who builds APIs, automations and AI agents. Creator of Vialo, Customer Success at Chatty, and more than five years inside a pediatric research institute."
     />
-    <meta name="twitter:image" content="https://juanpaladea.com.ar/img/portrait-1024.jpeg" />
+    <meta name="twitter:image" content="https://juanpaladea.com.ar/img/og.png" />
 
     <script type="application/ld+json">
       {
@@ -93,11 +93,18 @@
         "image": "https://juanpaladea.com.ar/img/portrait-1024.jpeg",
         "jobTitle": "Full-stack Developer",
         "email": "mailto:juanpaladea5@gmail.com",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Chatty",
-          "url": "https://www.letschatty.com/"
-        },
+        "worksFor": [
+          {
+            "@type": "Organization",
+            "name": "Chatty",
+            "url": "https://www.letschatty.com/"
+          },
+          {
+            "@type": "Organization",
+            "name": "IMIPP",
+            "url": "https://imipp.conicet.gov.ar"
+          }
+        ],
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Buenos Aires",
@@ -122,6 +129,8 @@
           "JavaScript",
           "Python",
           "PostgreSQL",
+          "Next.js",
+          "Supabase",
           "MongoDB",
           "REST APIs",
           "AI agents",

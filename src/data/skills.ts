@@ -18,7 +18,7 @@ const icon = (file: string) => `/icons/${file}.svg`;
 export const skillGroups: SkillGroup[] = [
   {
     title: { en: "Languages", es: "Lenguajes" },
-    description: { en: "What I write day to day", es: "Lo que escribo día a día" },
+    description: { en: "What I work in", es: "Con lo que trabajo" },
     items: [
       { name: "JavaScript", icon: icon("javascript") },
       { name: "TypeScript", icon: icon("typescript") },
@@ -53,6 +53,7 @@ export const skillGroups: SkillGroup[] = [
     },
     items: [
       { name: "PostgreSQL", icon: icon("postgresql") },
+      { name: "Supabase" },
       { name: "MongoDB", icon: icon("mongodb") },
       { name: "MySQL", icon: icon("mysql") },
     ],
@@ -60,11 +61,12 @@ export const skillGroups: SkillGroup[] = [
   {
     title: { en: "Frontend", es: "Frontend" },
     description: {
-      en: "Enough to ship a full product",
-      es: "Lo suficiente para entregar un producto completo",
+      en: "To ship the complete product",
+      es: "Para entregar el producto completo",
     },
     items: [
       { name: "React", icon: icon("react") },
+      { name: "Next.js" },
       { name: "Vite", icon: icon("vite") },
       { name: "Tailwind CSS", icon: icon("tailwind") },
     ],
@@ -89,8 +91,8 @@ export const skillGroups: SkillGroup[] = [
   {
     title: { en: "Automation & AI", es: "Automatizaciones e IA" },
     description: {
-      en: "What I build day to day at Chatty",
-      es: "Lo que construyo a diario en Chatty",
+      en: "What I build at Chatty and in my own products",
+      es: "Lo que construyo en Chatty y en mis productos",
     },
     items: [
       { name: "AI agents" },
@@ -98,6 +100,7 @@ export const skillGroups: SkillGroup[] = [
       { name: "Workflow automation" },
       { name: "WhatsApp Business API" },
       { name: "Custom metrics & funnels" },
+      { name: "MCP servers" },
     ],
   },
 ];

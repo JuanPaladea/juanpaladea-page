@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { contactNavLabel, navLinks, site } from "../data/site";
 import { ui } from "../data/ui";
+import { useActiveSection } from "../hooks/useActiveSection";
+import { useScrollFrame } from "../hooks/useScrollFrame";
 import { usePreferences } from "../preferences/context";
 import PreferenceToggles from "./ui/PreferenceToggles";
 import InternalLink from "./ui/InternalLink";
 import { ArrowRightIcon, CloseIcon, MenuIcon } from "./ui/icons";
+
+// Sections outside the menu count too, so leaving one clears its highlight.
+const anchors = ["#home", "#how", ...navLinks.map(({ href }) => href), "#certifications", "#contact"];
 
 /**
  * Section anchors only resolve on the home page, so project pages get a
@@ -13,6 +18,15 @@ import { ArrowRightIcon, CloseIcon, MenuIcon } from "./ui/icons";
 const HeaderComponent = ({ isHome }: { isHome: boolean }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = usePreferences();
+  const active = useActiveSection(anchors, isHome);
+  const progressRef = useRef<HTMLSpanElement>(null);
+
+  useScrollFrame(() => {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    if (progressRef.current) {
+      progressRef.current.style.transform = `scaleX(${scrollable > 0 ? window.scrollY / scrollable : 0})`;
+    }
+  });
 
   // Escape closes the mobile menu, matching what keyboard users expect.
   useEffect(() => {
@@ -39,7 +53,12 @@ const HeaderComponent = ({ isHome }: { isHome: boolean }) => {
         {isHome && (
           <nav aria-label={t(ui.mainNav)} className="ml-auto hidden items-center gap-6 lg:flex">
             {navLinks.map(({ href, label }) => (
-              <a key={href} href={href} className="rounded text-body transition-colors hover:text-heading">
+              <a
+                key={href}
+                href={href}
+                aria-current={active === href ? "true" : undefined}
+                className="nav-link rounded text-body transition-colors hover:text-heading aria-[current=true]:text-heading"
+              >
                 {t(label)}
               </a>
             ))}
@@ -74,7 +93,7 @@ const HeaderComponent = ({ isHome }: { isHome: boolean }) => {
           id="mobile-menu"
           aria-label={t(ui.mobileNav)}
           hidden={!isOpen}
-          className="border-t border-line px-5 pb-4 lg:hidden"
+          className="menu-in border-t border-line px-5 pb-4 lg:hidden"
         >
           <ul className="flex flex-col">
             {allLinks.map(({ href, label }) => (
@@ -91,6 +110,13 @@ const HeaderComponent = ({ isHome }: { isHome: boolean }) => {
           </ul>
         </nav>
       )}
+
+      {/* Reading progress, drawn on the header's bottom edge. */}
+      <span
+        ref={progressRef}
+        aria-hidden="true"
+        className="absolute inset-x-0 -bottom-px h-0.5 origin-left scale-x-0 bg-accent-soft"
+      />
     </header>
   );
 };

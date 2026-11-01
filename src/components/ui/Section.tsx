@@ -10,21 +10,15 @@ interface SectionProps {
 }
 
 /**
- * Fade-in wrapper shared by every section. The reveal is a plain CSS
- * transition driven by an IntersectionObserver — no animation library needed.
+ * Wrapper shared by every section. It only reports when it scrolls into view;
+ * motion.css does the rest with plain transitions on `data-stagger` children
+ * and the heading, so no animation library is needed.
  */
 const Section = ({ children, id, className = "", ...rest }: SectionProps) => {
   const { ref, isInView } = useInView<HTMLElement>();
 
   return (
-    <section
-      ref={ref}
-      id={id}
-      className={`transition-[opacity,transform] duration-700 ease-out motion-reduce:transition-none ${
-        isInView ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-      } ${className}`}
-      {...rest}
-    >
+    <section ref={ref} id={id} data-inview={isInView} className={className} {...rest}>
       {children}
     </section>
   );

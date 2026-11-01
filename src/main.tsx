@@ -1,7 +1,11 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import '@fontsource-variable/inter'
+import '@fontsource-variable/bricolage-grotesque'
+import '@fontsource-variable/jetbrains-mono'
 import App from './App.tsx'
 import './index.css'
+import './motion.css'
 import PreferencesProvider from './preferences/PreferencesProvider.tsx'
 import { Analytics } from "@vercel/analytics/react"
 

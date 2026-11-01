@@ -1,0 +1,687 @@
+/*
+ * Every animation on the site lives here. Nothing below is required to read
+ * the page: the base styles are the finished state, keyframes only start from
+ * somewhere else, and the block at the end of this file switches them off for
+ * visitors who ask for reduced motion.
+ */
+:root {
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- Entrances ---------- */
+
+.enter {
+  animation: enter 800ms var(--ease-out) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+.kinetic-word {
+  display: inline-flex;
+  overflow: hidden;
+  /* Keeps the mask from cutting off descenders. */
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+.kinetic-char {
+  display: inline-block;
+  animation: kinetic-rise 900ms var(--ease-out) both;
+  animation-delay: calc(var(--i) * 32ms + 120ms);
+}
+
+@keyframes kinetic-rise {
+  from {
+    transform: translateY(115%) rotate(7deg);
+  }
+}
+
+.rotator {
+  display: inline-grid;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.rotator > span {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 600ms var(--ease-out), opacity 300ms ease;
+}
+
+.rotator > [data-state="active"] {
+  opacity: 1;
+  transform: none;
+}
+
+.rotator > [data-state="past"] {
+  transform: translateY(-100%);
+}
+
+.pulse-dot {
+  position: relative;
+}
+
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  animation: pulse-ring 2.4s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  to {
+    opacity: 0;
+    transform: scale(3.2);
+  }
+}
+
+/* ---------- Scroll reveal ---------- */
+
+.rule-draw {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1100ms var(--ease-out);
+}
+
+[data-inview="true"] .rule-draw {
+  transform: none;
+}
+
+.heading-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.heading-mask > * {
+  display: block;
+  transform: translateY(110%);
+  transition: transform 900ms var(--ease-out) 60ms;
+}
+
+[data-inview="true"] .heading-mask > * {
+  transform: none;
+}
+
+[data-stagger] > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 700ms ease, transform 700ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 80ms + 120ms);
+}
+
+[data-stagger] > :nth-child(2) { --i: 1; }
+[data-stagger] > :nth-child(3) { --i: 2; }
+[data-stagger] > :nth-child(4) { --i: 3; }
+[data-stagger] > :nth-child(5) { --i: 4; }
+[data-stagger] > :nth-child(6) { --i: 5; }
+
+[data-inview="true"] [data-stagger] > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Header ---------- */
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background: rgb(var(--color-accent-soft));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 400ms var(--ease-out);
+}
+
+.nav-link:hover::after,
+.nav-link[aria-current="true"]::after {
+  transform: none;
+}
+
+.menu-in {
+  animation: enter 300ms var(--ease-out) both;
+}
+
+/* ---------- Portrait scan ---------- */
+
+.scan {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.scan-xray,
+.scan-beam-track {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.scan-xray img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) invert(1) brightness(0.62) contrast(1.5);
+}
+
+/* Tints the negative the blue-green of a light box. */
+.scan-xray::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgb(45 212 191);
+  mix-blend-mode: color;
+}
+
+.scan[data-mode="sweep"] .scan-xray {
+  opacity: 1;
+  animation: scan-clip 2200ms cubic-bezier(0.6, 0, 0.3, 1) 350ms both;
+}
+
+.scan[data-mode="sweep"] .scan-beam-track {
+  opacity: 1;
+  animation: scan-travel 2200ms cubic-bezier(0.6, 0, 0.3, 1) 350ms both;
+}
+
+.scan-beam {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: rgb(153 246 228);
+  box-shadow: 0 0 28px 6px rgb(45 212 191 / 0.7);
+}
+
+/* The light box follows the pointer once the first sweep has played. */
+.scan[data-mode="lens"] .scan-xray {
+  opacity: 1;
+  -webkit-mask-image: radial-gradient(circle 110px at var(--lens-x) var(--lens-y), #000 70%, transparent 100%);
+  mask-image: radial-gradient(circle 110px at var(--lens-x) var(--lens-y), #000 70%, transparent 100%);
+}
+
+@keyframes scan-clip {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+  to {
+    clip-path: inset(100% 0 0 0);
+  }
+}
+
+@keyframes scan-travel {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+/* ---------- Pipeline ---------- */
+
+.pl-node rect.pl-card {
+  fill: rgb(var(--color-surface));
+  stroke: rgb(var(--color-line));
+  transition: stroke 400ms ease, fill 400ms ease;
+}
+
+.pl-node[data-on="true"] rect.pl-card {
+  stroke: rgb(var(--color-accent-soft));
+}
+
+.pl-node .pl-in {
+  opacity: 0;
+  transform: translateY(6px);
+  transform-box: fill-box;
+  transition: opacity 400ms ease, transform 500ms var(--ease-out);
+}
+
+.pl-node[data-on="true"] .pl-in {
+  opacity: 1;
+  transform: none;
+  transition-delay: var(--delay, 0ms);
+}
+
+.pl-node .pl-bar {
+  transform: scaleY(0.08);
+  transform-box: fill-box;
+  transform-origin: bottom;
+  transition: transform 700ms var(--ease-out);
+}
+
+.pl-node[data-on="true"] .pl-bar {
+  transform: none;
+  transition-delay: var(--delay, 0ms);
+}
+
+.pl-step {
+  transition: opacity 400ms ease;
+}
+
+/* ---------- Timeline ---------- */
+
+.timeline-dot {
+  background: rgb(var(--color-line));
+  transition: background-color 400ms ease, transform 500ms var(--ease-out);
+}
+
+[data-reached="true"] > .timeline-dot {
+  background: rgb(var(--color-accent-soft));
+  transform: scale(1.25);
+}
+
+/* ---------- Marquee ---------- */
+
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 0.75rem;
+  width: max-content;
+  animation: marquee var(--duration, 44s) linear infinite;
+}
+
+.marquee[data-reverse="true"] .marquee-track {
+  animation-direction: reverse;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(calc(-50% - 0.375rem));
+  }
+}
+
+/* ---------- Project cards ---------- */
+
+.tilt {
+  position: relative;
+  transform: perspective(1100px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transition: transform 500ms var(--ease-out), border-color 300ms ease;
+}
+
+.tilt[data-active="true"] {
+  transition: transform 100ms linear, border-color 300ms ease;
+}
+
+.tilt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(340px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgb(var(--color-accent-soft) / 0.1), transparent 65%);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.tilt[data-active="true"]::after {
+  opacity: 1;
+}
+
+.cover svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cover text {
+  font-family: theme("fontFamily.mono");
+  fill: rgb(var(--color-muted));
+}
+
+.cover .ink {
+  fill: rgb(var(--color-heading));
+}
+
+.cover .glow {
+  fill: rgb(var(--color-accent-soft));
+}
+
+.cover .card {
+  fill: rgb(var(--color-surface));
+  stroke: rgb(var(--color-line));
+}
+
+.cover .wire {
+  fill: none;
+  stroke: rgb(var(--color-line));
+  stroke-width: 1.5;
+}
+
+.cover[data-paused="true"] * {
+  animation-play-state: paused !important;
+}
+
+/* Vialo: a sample moves through the freezer and each move leaves a record. */
+.cv-cell {
+  fill: rgb(var(--color-elevated));
+}
+
+.cv-sample {
+  fill: rgb(var(--color-accent-soft));
+  animation: cv-hop 8s var(--ease-out) infinite;
+}
+
+@keyframes cv-hop {
+  0%, 24% {
+    transform: translate(0, 0);
+  }
+  32%, 58% {
+    transform: translate(52px, 26px);
+  }
+  66%, 92% {
+    transform: translate(104px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.cv-log {
+  animation: cv-log 8s ease infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes cv-log {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  8%, 88% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Libelulis: one piece, two buyers, and only one can reserve it. */
+.cl-piece {
+  fill: rgb(var(--color-surface));
+  stroke: rgb(var(--color-accent-soft));
+  stroke-width: 2;
+  animation: cl-piece 7s ease infinite;
+}
+
+@keyframes cl-piece {
+  0%, 30% {
+    stroke: rgb(var(--color-line));
+  }
+  38%, 86% {
+    stroke: rgb(var(--color-accent-soft));
+  }
+  100% {
+    stroke: rgb(var(--color-line));
+  }
+}
+
+.cl-wire {
+  fill: none;
+  stroke: rgb(var(--color-accent-soft));
+  stroke-width: 2;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: cl-draw 7s ease infinite;
+}
+
+.cl-wire[data-lost="true"] {
+  stroke: rgb(var(--color-line));
+  stroke-dasharray: 0.06 0.05;
+  animation-name: cl-fade;
+}
+
+@keyframes cl-draw {
+  0%, 8% {
+    stroke-dashoffset: 1;
+  }
+  30%, 90% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes cl-fade {
+  0%, 12% {
+    opacity: 0;
+  }
+  30%, 90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.cl-stamp {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: cl-stamp 7s var(--ease-out) infinite;
+}
+
+@keyframes cl-stamp {
+  0%, 34% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+  42%, 88% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* En una nota: the music plays until it is cut, and someone shouts. */
+.cn-bar {
+  fill: rgb(var(--color-accent-soft));
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: cn-bounce 900ms ease-in-out infinite alternate;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes cn-bounce {
+  from {
+    transform: scaleY(0.25);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.cn-bars {
+  animation: cn-cut 6s steps(1) infinite;
+}
+
+@keyframes cn-cut {
+  0%, 54% {
+    opacity: 1;
+  }
+  55%, 88% {
+    opacity: 0.14;
+  }
+  89%, 100% {
+    opacity: 1;
+  }
+}
+
+.cn-shout {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: cn-shout 6s var(--ease-out) infinite;
+}
+
+@keyframes cn-shout {
+  0%, 56% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  62%, 86% {
+    opacity: 1;
+    transform: none;
+  }
+  90%, 100% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
+/* Hospital: foreign keys draw themselves and a row travels along them. */
+.ch-wire {
+  fill: none;
+  stroke: rgb(var(--color-accent-soft));
+  stroke-width: 2;
+  stroke-dasharray: 1;
+  animation: ch-draw 7s ease infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes ch-draw {
+  0%, 5% {
+    stroke-dashoffset: 1;
+  }
+  28%, 92% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 1;
+  }
+}
+
+.ch-row {
+  fill: rgb(var(--color-accent-soft) / 0.16);
+  animation: ch-row 7s ease infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes ch-row {
+  0%, 18% {
+    opacity: 0;
+  }
+  28%, 92% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ---------- Footer pulse ---------- */
+
+.ecg-base,
+.ecg-trace {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.ecg-base {
+  stroke: rgb(var(--color-line));
+  stroke-width: 1;
+}
+
+.ecg-trace {
+  stroke: rgb(var(--color-accent-soft));
+  stroke-width: 2;
+  stroke-dasharray: 0.16 0.84;
+  animation: ecg 5s linear infinite;
+}
+
+@keyframes ecg {
+  from {
+    stroke-dashoffset: 0.16;
+  }
+  to {
+    stroke-dashoffset: -1;
+  }
+}
+
+/* ---------- Route and theme transitions ---------- */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+.vt-route::view-transition-new(root) {
+  animation: vt-wipe 650ms var(--ease-out) both;
+}
+
+.vt-theme::view-transition-new(root) {
+  animation: vt-circle 750ms var(--ease-out) both;
+}
+
+@keyframes vt-wipe {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes vt-circle {
+  from {
+    clip-path: circle(0 at var(--vt-x) var(--vt-y));
+  }
+  to {
+    clip-path: circle(150vmax at var(--vt-x) var(--vt-y));
+  }
+}
+
+/* ---------- Opting out ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .kinetic-char,
+  .enter,
+  .marquee-track,
+  .pulse-dot::after,
+  .cover *,
+  .ecg-trace {
+    animation: none !important;
+  }
+
+  .ecg-trace {
+    stroke-dasharray: none;
+  }
+}
+
+@media print {
+  [data-stagger] > *,
+  .heading-mask > *,
+  .rule-draw {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

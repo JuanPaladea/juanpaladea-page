@@ -13,11 +13,12 @@ const CertificationsComponent = () => {
     <Section id="certifications" aria-labelledby="certifications-heading">
       <SectionHeading
         id="certifications-heading"
+        index={6}
         title={t(sectionCopy.certifications.title)}
         subtitle={t(sectionCopy.certifications.subtitle)}
       />
       <div className="container mx-auto px-5 py-12">
-        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <ul data-stagger className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {certifications.map((cert) => (
             <li key={cert.id} className="flex">
               <article className="flex w-full flex-col overflow-hidden rounded-xl border border-line bg-surface transition-colors duration-300 hover:border-accent/60">
@@ -26,7 +27,7 @@ const CertificationsComponent = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative block overflow-hidden"
-                  aria-label={`${t(cert.title)} — ${t(ui.certificateOf)} (${t(ui.opensInNewTab)})`}
+                  aria-label={`${t(cert.title)}, ${t(ui.certificateOf)} (${t(ui.opensInNewTab)})`}
                 >
                   <img
                     alt={t(cert.imageAlt)}
@@ -42,7 +43,7 @@ const CertificationsComponent = () => {
                   </span>
                 </a>
                 <div className="flex flex-grow flex-col p-6">
-                  <h3 className="title-font text-lg font-medium text-heading">{t(cert.title)}</h3>
+                  <h3 className="title-font text-xl font-medium text-heading">{t(cert.title)}</h3>
                   <p className="mb-3 text-sm text-accent-soft">{t(cert.issuer)}</p>
                   <p className="text-sm leading-relaxed">{t(cert.description)}</p>
                 </div>

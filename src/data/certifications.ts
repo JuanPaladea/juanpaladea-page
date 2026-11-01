@@ -62,6 +62,7 @@ export const certifications: Certification[] = [
       en: "Coderhouse backend programming certificate",
       es: "Certificado de programación backend de Coderhouse",
     },
-    url: "https://pub.coderhouse.com/legacy-certificates/66ae613c13652079130ca8fd?lang=en",
+    // The issuer's verification domain is gone, so this opens the local copy.
+    url: "/img/cert-coderhouse.png",
   },
 ];
