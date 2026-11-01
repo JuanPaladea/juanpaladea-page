@@ -40,4 +40,3 @@ laboratorios de investigación que hoy desarrollo.
 - **Libelulis** · libelulis.com.ar: tienda de accesorios marmolados hechos a mano, con panel de
   gestión.
 - **En una nota · Ensalada mixta** · enunanota.com.ar: juego para cantar con amigos.
-- **Hospital Backend** · API REST de datos clínicos.

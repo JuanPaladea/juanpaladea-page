@@ -44,7 +44,7 @@ solo después de que Juan apruebe ese cambio puntual.
 
 ## Proyectos
 
-Orden en el sitio: Vialo, Libelulis, En una nota, Hospital Backend.
+Orden en el sitio: Vialo, Libelulis, En una nota.
 
 - **Vialo** (vialolab.com): plataforma de gestión para laboratorios de investigación. Muestras,
   equipos, insumos, temperaturas y protocolos, con permisos por rol e historial de cada cambio.
@@ -55,11 +55,12 @@ Orden en el sitio: Vialo, Libelulis, En una nota, Hospital Backend.
 - **En una nota · Ensalada mixta** (enunanota.com.ar): juego para cantar con amigos. JavaScript
   sin framework, 16 playlists, más de 1000 canciones, cuentas con Google y ranking verificado en
   Postgres. Código público.
-- **Hospital Backend**: API REST de datos clínicos en Node.js, TypeScript y PostgreSQL, con un
-  cliente React aparte. Código público.
 
 **El sitio del IMIPP ya no se muestra en Proyectos.** El IMIPP sigue en Experiencia. Si se lo
 menciona, ya no usa Firestore: el contenido pasó al repositorio.
+
+**Hospital Backend tampoco se muestra**, ni en el sitio, ni en los CVs, ni en LinkedIn. Lo pidió
+Juan expresamente.
 
 ## Reglas de contenido
 

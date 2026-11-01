@@ -4,26 +4,16 @@ import type { Skill } from "./skills";
 const icon = (file: string) => `/icons/${file}.svg`;
 
 const tech = {
-  node: { name: "Node.js", icon: icon("node") },
-  express: { name: "Express", icon: icon("express") },
   typescript: { name: "TypeScript", icon: icon("typescript") },
   javascript: { name: "JavaScript", icon: icon("javascript") },
   postgres: { name: "PostgreSQL", icon: icon("postgresql") },
-  react: { name: "React", icon: icon("react") },
   vite: { name: "Vite", icon: icon("vite") },
   next: { name: "Next.js" },
   supabase: { name: "Supabase" },
   netlify: { name: "Netlify" },
-  swagger: { name: "Swagger" },
-  jwt: { name: "JWT" },
   indexedDb: { name: "IndexedDB" },
   mcp: { name: "MCP" },
 } satisfies Record<string, Skill>;
-
-export interface ProjectLink {
-  href: string;
-  label: Localized<string>;
-}
 
 export interface Project {
   id: string;
@@ -41,12 +31,9 @@ export interface Project {
   demoLabel: Localized<string>;
   /** Omitted when the source is private, so no card links to a 404. */
   repo?: string;
-  /** A second deployed piece of the same project, such as a separate client. */
-  companion?: ProjectLink;
   stack: Skill[];
 }
 
-const backEnd: Localized<string> = { en: "Back End", es: "Backend" };
 const product: Localized<string> = { en: "Product", es: "Producto" };
 const inProduction: Localized<string> = { en: "In production", es: "En producción" };
 
@@ -144,41 +131,5 @@ export const projects: Project[] = [
     demoLabel: { en: "Play it", es: "Jugar" },
     repo: "https://github.com/JuanPaladea/en-una-nota-ensalada-mixta",
     stack: [tech.javascript, tech.vite, tech.postgres, tech.netlify, tech.indexedDb],
-  },
-  {
-    id: "hospital-backend",
-    category: backEnd,
-    title: "Hospital Backend",
-    description: {
-      en: "A REST API for clinical data (patients, studies and billing), modelled on workflows I handle every day at a research institute. It has authentication, file uploads for results and payment proofs, and documented endpoints.",
-      es: "Una API REST para datos clínicos (pacientes, estudios y facturación), modelada sobre flujos que manejo a diario en un instituto de investigación. Tiene autenticación, carga de resultados y comprobantes de pago, y endpoints documentados.",
-    },
-    highlights: {
-      en: [
-        "JWT sessions with bcrypt-hashed passwords",
-        "PostgreSQL schema for patients, studies and bills",
-        "Swagger docs and a separate React client",
-      ],
-      es: [
-        "Sesiones con JWT y contraseñas hasheadas con bcrypt",
-        "Esquema PostgreSQL para pacientes, estudios y facturas",
-        "Documentación con Swagger y un cliente React aparte",
-      ],
-    },
-    image: "/img/project-hospital.jpg",
-    imageWidth: 1280,
-    imageHeight: 720,
-    imageAlt: {
-      en: "Swagger documentation page of the Hospital API",
-      es: "Página de documentación Swagger de la API Hospital",
-    },
-    demo: "https://hospital-backend-kapu.onrender.com/docs/",
-    demoLabel: { en: "API docs", es: "Documentación" },
-    repo: "https://github.com/JuanPaladea/hospital-backend",
-    companion: {
-      href: "https://hospital-frontend-psi.vercel.app",
-      label: { en: "React client", es: "Cliente React" },
-    },
-    stack: [tech.node, tech.express, tech.typescript, tech.postgres, tech.jwt, tech.swagger],
   },
 ];

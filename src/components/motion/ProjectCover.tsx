@@ -95,37 +95,6 @@ const EnUnaNotaScene = () => (
   </>
 );
 
-const HospitalScene = ({ lang }: { lang: Lang }) => {
-  const tables = [
-    { x: 20, name: lang === "es" ? "pacientes" : "patients", rows: ["id", lang === "es" ? "nombre" : "name"] },
-    { x: 176, name: lang === "es" ? "estudios" : "studies", rows: ["id", "patient_id", "result"] },
-    { x: 332, name: lang === "es" ? "facturas" : "bills", rows: ["id", "patient_id", "proof"] },
-  ];
-
-  return (
-    <>
-      {tables.map((table) => (
-        <g key={table.x}>
-          <rect className="card" x={table.x} y="58" width="128" height="154" rx="10" />
-          <text className="ink" x={table.x + 14} y="84" fontSize="13" fontWeight="700">
-            {table.name}
-          </text>
-          {table.rows.map((row, index) => (
-            <text key={row} x={table.x + 14} y={116 + index * 28} fontSize="12">
-              {row}
-            </text>
-          ))}
-        </g>
-      ))}
-
-      <rect className="ch-row" x="178" y="130" width="124" height="26" rx="4" style={delay(0.2)} />
-      <rect className="ch-row" x="334" y="130" width="124" height="26" rx="4" style={delay(0.8)} />
-      <path className="ch-wire" pathLength={1} d="M148 111 C 165 111, 160 143, 180 143" style={delay(0)} />
-      <path className="ch-wire" pathLength={1} d="M148 111 C 240 40, 300 80, 336 143" style={delay(0.7)} />
-    </>
-  );
-};
-
 /**
  * Each project gets a small animated drawing of the decision that defines it.
  * Text in here is decoration: the card carries the real description. Stops
@@ -139,7 +108,6 @@ const ProjectCover = ({ id, className = "" }: { id: string; className?: string }
     vialo: <VialoScene lang={lang} />,
     libelulis: <LibelulisScene lang={lang} />,
     "en-una-nota": <EnUnaNotaScene />,
-    "hospital-backend": <HospitalScene lang={lang} />,
   };
 
   return (

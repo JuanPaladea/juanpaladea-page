@@ -557,46 +557,6 @@
   }
 }
 
-/* Hospital: foreign keys draw themselves and a row travels along them. */
-.ch-wire {
-  fill: none;
-  stroke: rgb(var(--color-accent-soft));
-  stroke-width: 2;
-  stroke-dasharray: 1;
-  animation: ch-draw 7s ease infinite;
-  animation-delay: var(--delay, 0s);
-}
-
-@keyframes ch-draw {
-  0%, 5% {
-    stroke-dashoffset: 1;
-  }
-  28%, 92% {
-    stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dashoffset: 1;
-  }
-}
-
-.ch-row {
-  fill: rgb(var(--color-accent-soft) / 0.16);
-  animation: ch-row 7s ease infinite;
-  animation-delay: var(--delay, 0s);
-}
-
-@keyframes ch-row {
-  0%, 18% {
-    opacity: 0;
-  }
-  28%, 92% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
 /* ---------- Footer pulse ---------- */
 
 .ecg-base,

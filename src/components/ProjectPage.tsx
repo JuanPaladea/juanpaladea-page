@@ -60,12 +60,6 @@ const ProjectPage = ({ id }: { id: string }) => {
             {t(project.demoLabel)}
             <ExternalLinkIcon className="h-4 w-4" />
           </a>
-          {project.companion && (
-            <a href={project.companion.href} target="_blank" rel="noopener noreferrer" className="btn-ghost">
-              {t(project.companion.label)}
-              <ExternalLinkIcon className="h-4 w-4" />
-            </a>
-          )}
           {project.repo ? (
             <a href={project.repo} target="_blank" rel="noopener noreferrer" className="btn-ghost">
               <GitHubIcon className="h-4 w-4" />
@@ -144,7 +138,7 @@ const ProjectPage = ({ id }: { id: string }) => {
 
       <nav aria-label={t(ui.backToProjects)} className="container mx-auto px-5 pt-14">
         <div className="border-t border-line pt-6">
-          <ul className="grid gap-4 sm:grid-cols-3">
+          <ul className="grid gap-4 sm:grid-cols-2">
             {others.map((other) => (
               <li key={other.id}>
                 <InternalLink
