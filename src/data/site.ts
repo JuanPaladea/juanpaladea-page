@@ -38,11 +38,6 @@ export const englishLevel: Localized<string> = {
   es: "Inglés C2",
 };
 
-export const portraitCaption: Localized<string> = {
-  en: "From X-rays to APIs",
-  es: "De las radiografías a las APIs",
-};
-
 export const summary: Localized<string> = {
   en: "I build complete products, from the database to the interface, with my focus on the backend. I also know the other side: the clients who use the software and the clinical work it has to model.",
   es: "Construyo productos completos, de la base de datos a la interfaz, con el foco puesto en el backend. También conozco el otro lado: los clientes que usan el software y el trabajo clínico que tiene que modelar.",

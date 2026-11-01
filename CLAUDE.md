@@ -22,8 +22,8 @@ solo después de que Juan apruebe ese cambio puntual.
 
 - **Rol:** Desarrollador Full-stack: APIs, automatizaciones y agentes de IA. Foco en backend.
 - **Base:** Buenos Aires, UTC−3. Inglés C2 (EF SET).
-- **Hilo de la historia:** de las radiografías a las APIs. Llegó al software desde un hospital,
-  y por eso modela flujos clínicos y operativos desde adentro.
+- **Hilo de la historia:** llegó al software desde un hospital, y por eso modela flujos clínicos
+  y operativos desde adentro.
 
 ### Experiencia actual
 
@@ -83,9 +83,9 @@ Juan expresamente.
 
 ## Motion graphics
 
-- Concepto: "la señal". Las animaciones cuentan la historia de Juan: barrido de rayos X en el
-  retrato, un mensaje de WhatsApp que termina en métrica, y portadas con la decisión real de cada
-  proyecto.
+- Concepto: "la señal". Las animaciones cuentan el trabajo de Juan: un mensaje de WhatsApp que
+  termina en métrica y portadas con la decisión real de cada proyecto.
+- **El retrato es una foto fija, sin animación ni leyenda.** Lo pidió Juan expresamente.
 - Sin librerías de animación: CSS, SVG, canvas y `IntersectionObserver`.
 - Todo respeta `prefers-reduced-motion`, y el contenido nunca depende de una animación para verse.
 

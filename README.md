@@ -73,7 +73,7 @@ scripts/
 └─ projectPages.ts     Build step: one HTML file per project with its own metadata
 src/
 ├─ components/
-│  ├─ motion/          Motion graphics (signal field, portrait scan, project covers…)
+│  ├─ motion/          Motion graphics (signal field, project covers, marquee…)
 │  ├─ ui/              Shared building blocks (Section, SectionHeading, TechChip, icons)
 │  └─ *Component.tsx   One component per page section
 ├─ data/               Site content: profile, career, skills, projects, certs, UI strings
@@ -155,10 +155,10 @@ the page or right-align a subtitle.
 
 ### Motion
 
-The motion is drawn from the story it tells: a beam develops the portrait from a
-radiograph, a message travels from WhatsApp to a metric as you scroll, and each
-project cover animates the decision that defines it. There is no animation
-library, just CSS, SVG, one canvas and `IntersectionObserver`.
+The motion is drawn from the work it describes: a message travels from WhatsApp
+to a metric as you scroll, and each project cover animates the decision that
+defines it. There is no animation library, just CSS, SVG, one canvas and
+`IntersectionObserver`. The portrait stays a still photo.
 
 - `motion.css` holds every keyframe. Base styles are the finished state, so
   turning animation off leaves a complete page.

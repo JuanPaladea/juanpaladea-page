@@ -2,7 +2,6 @@ import {
   cvUrl,
   englishLevel,
   location,
-  portraitCaption,
   role,
   roleFocus,
   site,
@@ -11,7 +10,6 @@ import {
 import { ui } from "../data/ui";
 import { usePreferences } from "../preferences/context";
 import KineticName from "./motion/KineticName";
-import PortraitScan from "./motion/PortraitScan";
 import RotatingWord from "./motion/RotatingWord";
 import SignalField from "./motion/SignalField";
 import { ArrowRightIcon, DocumentIcon, GitHubIcon, GridIcon, LinkedInIcon } from "./ui/icons";
@@ -95,7 +93,16 @@ const HeroComponent = () => {
         </div>
 
         <div className="max-w-sm lg:max-w-none">
-          <PortraitScan alt={`${t(ui.portraitOf)} ${site.name}`} caption={t(portraitCaption)} />
+          <img
+            className="block h-auto w-full rounded-2xl object-cover shadow-2xl ring-1 ring-line"
+            alt={`${t(ui.portraitOf)} ${site.name}`}
+            src="/img/portrait-1024.jpeg"
+            srcSet="/img/portrait-640.jpeg 575w, /img/portrait-1024.jpeg 919w"
+            sizes="(min-width: 1024px) 28rem, (min-width: 768px) 24rem, 90vw"
+            width={919}
+            height={930}
+            decoding="async"
+          />
         </div>
       </div>
     </section>
