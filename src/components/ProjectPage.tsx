@@ -83,7 +83,7 @@ const ProjectPage = ({ id }: { id: string }) => {
         />
       </div>
 
-      <div className="container mx-auto grid gap-10 px-5 pt-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+      <div className="container mx-auto grid grid-cols-1 gap-10 px-5 pt-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
         <div>
           <h2 className="title-font text-2xl font-semibold text-heading">{t(ui.contextHeading)}</h2>
           <div className="mt-3 space-y-4 leading-relaxed">
@@ -91,6 +91,28 @@ const ProjectPage = ({ id }: { id: string }) => {
               <p key={paragraph.slice(0, 40)}>{paragraph}</p>
             ))}
           </div>
+
+          {detail.screens && (
+            <>
+              <h2 className="title-font mt-10 text-2xl font-semibold text-heading">{t(ui.screensHeading)}</h2>
+              <div className="mt-4 space-y-6">
+                {detail.screens.map((screen) => (
+                  <figure key={screen.src}>
+                    <img
+                      src={screen.src}
+                      alt={t(screen.alt)}
+                      width={screen.width}
+                      height={screen.height}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full rounded-xl border border-line"
+                    />
+                    <figcaption className="mt-2 text-sm text-muted">{t(screen.caption)}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </>
+          )}
 
           <h2 className="title-font mt-10 text-2xl font-semibold text-heading">{t(ui.decisionsHeading)}</h2>
           <ol className="mt-4 space-y-5">
@@ -106,6 +128,25 @@ const ProjectPage = ({ id }: { id: string }) => {
               </li>
             ))}
           </ol>
+
+          {detail.snippet && (
+            <>
+              <h2 className="title-font mt-10 text-2xl font-semibold text-heading">{t(detail.snippet.title)}</h2>
+              <p className="mt-3 leading-relaxed">{t(detail.snippet.caption)}</p>
+              <pre className="mt-4 overflow-x-auto rounded-xl border border-line bg-surface p-5 font-mono text-xs leading-relaxed text-heading">
+                <code>{detail.snippet.code}</code>
+              </pre>
+              <a
+                href={detail.snippet.source}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-accent-soft transition-opacity hover:opacity-80"
+              >
+                {t(ui.fullSource)}
+                <ExternalLinkIcon className="h-4 w-4" />
+              </a>
+            </>
+          )}
 
           <h2 className="title-font mt-10 text-2xl font-semibold text-heading">{t(ui.nextHeading)}</h2>
           <p className="mt-3 leading-relaxed">{t(detail.next)}</p>

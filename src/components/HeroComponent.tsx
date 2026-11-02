@@ -34,7 +34,6 @@ const HeroComponent = () => {
             className="enter mb-6 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-sm text-accent-soft"
             style={entrance(100)}
           >
-            <span aria-hidden="true" className="pulse-dot h-2 w-2 rounded-full bg-accent-soft" />
             {t(location)}
             <span aria-hidden="true" className="text-muted">·</span>
             {site.timezone}

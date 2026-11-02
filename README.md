@@ -70,7 +70,7 @@ public/
 ├─ icons/              Tech logos (local SVGs, no third-party hotlinking)
 └─ img/                Portrait, project shots, certificates, share image
 scripts/
-└─ projectPages.ts     Build step: one HTML file per project with its own metadata
+└─ projectPages.ts     Build step: static pages with their own metadata and no-JavaScript content
 src/
 ├─ components/
 │  ├─ motion/          Motion graphics (signal field, project covers, marquee…)
@@ -87,19 +87,20 @@ src/
 
 ### Routing
 
-Two routes — `/` and `/projects/:id` — do not justify a routing library, so
+Two page types — the home page and `/projects/:id` — do not justify a routing library, so
 `src/router.ts` is the History API plus a subscription, in about 40 lines.
 Links are real anchors with real `href`s, so they stay crawlable and
-ctrl-clickable; `InternalLink` intercepts only plain left clicks. Unknown
-project ids fall back to the home page rather than rendering blank.
+ctrl-clickable; `InternalLink` intercepts only plain left clicks.
 
-Deep links need the server to serve `index.html` for those paths — that is what
-the rewrite in `vercel.json` does. On another host, configure the equivalent
-SPA fallback or project pages will 404 on a hard refresh.
+Link previews and some crawlers do not run JavaScript, so
+`scripts/projectPages.ts` writes a real file for each address at build time:
+`dist/projects/<id>/index.html` with each project's title, description and
+image, and `dist/es/index.html` with the home page's metadata in Spanish. Every
+page carries its content inside `<noscript>`. Because those files exist, the host
+needs no SPA rewrite, and any other path gets `public/404.html` with a real 404.
 
-Link previews do not run JavaScript, so `scripts/projectPages.ts` also writes
-`dist/projects/<id>/index.html` at build time with each project's title,
-description and image.
+`/es` is the address to share with Spanish speakers: it opens the site in
+Spanish and its link preview is in Spanish too.
 
 ### Adding a project case study
 

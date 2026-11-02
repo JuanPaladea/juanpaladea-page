@@ -45,10 +45,10 @@ function App() {
         ) : (
           <>
             <HeroComponent />
-            <AboutMeComponent />
-            <PipelineComponent />
-            <ExperienceComponent />
             <ProjectsComponent />
+            <AboutMeComponent />
+            <ExperienceComponent />
+            <PipelineComponent />
             <TechnologiesComponent />
             <CertificationsComponent />
             <ContactForm />

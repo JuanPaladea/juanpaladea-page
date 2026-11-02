@@ -11,7 +11,7 @@ const AboutMeComponent = () => {
     <Section id="aboutme" aria-labelledby="aboutme-heading">
       <SectionHeading
         id="aboutme-heading"
-        index={1}
+        index={2}
         title={t(sectionCopy.about.title)}
         subtitle={t(sectionCopy.about.subtitle)}
       />

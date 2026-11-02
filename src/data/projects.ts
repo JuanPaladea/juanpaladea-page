@@ -31,6 +31,8 @@ export interface Project {
   demoLabel: Localized<string>;
   /** Omitted when the source is private, so no card links to a 404. */
   repo?: string;
+  /** Gets the full width of the grid. */
+  featured?: boolean;
   stack: Skill[];
 }
 
@@ -40,6 +42,7 @@ const inProduction: Localized<string> = { en: "In production", es: "En producci�
 export const projects: Project[] = [
   {
     id: "vialo",
+    featured: true,
     category: product,
     title: "Vialo",
     description: {
@@ -48,25 +51,25 @@ export const projects: Project[] = [
     },
     highlights: {
       en: [
-        "Nine modules sharing users, permissions and history",
+        "Eight modules sharing users, permissions and history",
         "Each laboratory isolated with row-level security",
         "Connects to AI assistants through MCP",
       ],
       es: [
-        "Nueve módulos con usuarios, permisos e historial en común",
+        "Ocho módulos con usuarios, permisos e historial en común",
         "Cada laboratorio aislado con seguridad por filas",
         "Se conecta a asistentes de IA por MCP",
       ],
     },
-    image: "/img/project-vialo.jpg",
+    image: "/img/project-vialo-monitoreo.jpg",
     imageWidth: 1280,
     imageHeight: 720,
     imageAlt: {
-      en: "Vialo landing page: your laboratory, without Excel spreadsheets",
-      es: "Landing de Vialo: tu laboratorio, sin planillas de Excel",
+      en: "Temperature monitoring in Vialo's public demo: a refrigerator out of range and its alarm history",
+      es: "Monitoreo de temperaturas en la demo pública de Vialo: una heladera fuera de rango y su historial de alarmas",
     },
-    demo: "https://vialolab.com/",
-    demoLabel: { en: "Visit Vialo", es: "Ver Vialo" },
+    demo: "https://vialolab.com/demo",
+    demoLabel: { en: "Try the demo", es: "Probar la demo" },
     stack: [tech.next, tech.typescript, tech.supabase, tech.postgres, tech.mcp],
   },
   {

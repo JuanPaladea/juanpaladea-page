@@ -30,6 +30,22 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
+    title: { en: "Databases", es: "Bases de datos" },
+    description: {
+      en: "Where the rules that matter live",
+      es: "Donde viven las reglas que importan",
+    },
+    items: [
+      { name: "PostgreSQL", icon: icon("postgresql") },
+      { name: "Row-level security" },
+      { name: "Triggers" },
+      { name: "SQL functions" },
+      { name: "Supabase" },
+      { name: "MongoDB", icon: icon("mongodb") },
+      { name: "MySQL", icon: icon("mysql") },
+    ],
+  },
+  {
     title: { en: "Backend", es: "Backend" },
     description: {
       en: "APIs, auth, testing and docs",
@@ -41,21 +57,9 @@ export const skillGroups: SkillGroup[] = [
       { name: "Flask", icon: icon("flask") },
       { name: "REST APIs" },
       { name: "JWT" },
+      { name: "Vitest" },
       { name: "Jest" },
       { name: "Swagger / OpenAPI" },
-    ],
-  },
-  {
-    title: { en: "Databases", es: "Bases de datos" },
-    description: {
-      en: "Relational and document stores",
-      es: "Relacionales y orientadas a documentos",
-    },
-    items: [
-      { name: "PostgreSQL", icon: icon("postgresql") },
-      { name: "Supabase" },
-      { name: "MongoDB", icon: icon("mongodb") },
-      { name: "MySQL", icon: icon("mysql") },
     ],
   },
   {

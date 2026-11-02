@@ -101,12 +101,12 @@ const PipelineComponent = () => {
     <Section id="how" aria-labelledby="how-heading">
       <SectionHeading
         id="how-heading"
-        index={2}
+        index={4}
         title={t(sectionCopy.how.title)}
         subtitle={t(sectionCopy.how.subtitle)}
       />
 
-      <div ref={trackRef} className={pinned ? "h-[340vh]" : ""}>
+      <div ref={trackRef} className={pinned ? "h-[240vh]" : ""}>
         <div className={pinned ? "sticky top-[4.25rem] h-[calc(100svh-4.25rem)]" : "py-12"}>
           <div className="container mx-auto grid h-full gap-6 px-5 py-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,27rem)] lg:items-center lg:gap-16">
             <ol

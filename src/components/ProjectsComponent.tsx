@@ -18,24 +18,30 @@ const ProjectsComponent = () => {
     <Section id="projects" aria-labelledby="projects-heading">
       <SectionHeading
         id="projects-heading"
-        index={4}
+        index={1}
         title={t(sectionCopy.projects.title)}
         subtitle={t(sectionCopy.projects.subtitle)}
       />
       <div className="container mx-auto px-5 py-12">
         <ul data-stagger className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
-            <li key={project.id} className="flex">
-              <TiltCard className="flex w-full flex-col overflow-hidden rounded-xl border border-line bg-surface hover:border-accent/60">
+            <li key={project.id} className={`flex ${project.featured ? "md:col-span-2 lg:col-span-3" : ""}`}>
+              <TiltCard
+                className={`flex w-full flex-col overflow-hidden rounded-xl border border-line bg-surface hover:border-accent/60 ${
+                  project.featured ? "lg:flex-row-reverse" : ""
+                }`}
+              >
                 <InternalLink
                   to={projectPath(project.id)}
-                  className="group relative block overflow-hidden"
+                  className={`group relative block overflow-hidden ${
+                    project.featured ? "lg:m-6 lg:w-[52%] lg:shrink-0 lg:self-start lg:rounded-lg lg:border lg:border-line" : ""
+                  }`}
                   aria-label={`${project.title}, ${t(ui.caseStudy)}`}
                 >
                   <ProjectCover id={project.id} />
-                  {/* The drawing tells the idea; hovering shows the real product. */}
+                  {/* The drawing tells the idea; hovering shows the real product. Touch screens cannot hover, so they get the product. */}
                   <img
-                    className="absolute inset-0 h-full w-full object-cover object-top opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100"
+                    className="absolute inset-0 h-full w-full object-cover object-top opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100 [@media(hover:none)]:opacity-100"
                     src={project.image}
                     alt=""
                     width={project.imageWidth}
