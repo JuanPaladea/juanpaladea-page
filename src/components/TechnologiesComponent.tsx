@@ -24,8 +24,8 @@ const TechnologiesComponent = () => {
       />
 
       <div className="mt-10">
-        <TechMarquee items={unique.slice(0, middle)} duration={46} />
-        <TechMarquee items={unique.slice(middle)} duration={38} reverse />
+        <TechMarquee items={unique.slice(0, middle)} duration={72} />
+        <TechMarquee items={unique.slice(middle)} duration={60} reverse />
       </div>
 
       <div className="container mx-auto px-5 py-12">

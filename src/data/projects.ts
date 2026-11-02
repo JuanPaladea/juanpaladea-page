@@ -8,11 +8,12 @@ const tech = {
   javascript: { name: "JavaScript", icon: icon("javascript") },
   postgres: { name: "PostgreSQL", icon: icon("postgresql") },
   vite: { name: "Vite", icon: icon("vite") },
-  next: { name: "Next.js" },
-  supabase: { name: "Supabase" },
-  netlify: { name: "Netlify" },
+  next: { name: "Next.js", icon: icon("nextjs") },
+  supabase: { name: "Supabase", icon: icon("supabase") },
+  neon: { name: "Neon", icon: icon("neon") },
+  netlify: { name: "Netlify", icon: icon("netlify") },
   indexedDb: { name: "IndexedDB" },
-  mcp: { name: "MCP" },
+  mcp: { name: "MCP", icon: icon("mcp") },
 } satisfies Record<string, Skill>;
 
 export interface Project {
@@ -133,6 +134,6 @@ export const projects: Project[] = [
     demo: "https://enunanota.com.ar/",
     demoLabel: { en: "Play it", es: "Jugar" },
     repo: "https://github.com/JuanPaladea/en-una-nota-ensalada-mixta",
-    stack: [tech.javascript, tech.vite, tech.postgres, tech.netlify, tech.indexedDb],
+    stack: [tech.javascript, tech.vite, tech.postgres, tech.neon, tech.netlify, tech.indexedDb],
   },
 ];
