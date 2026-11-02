@@ -27,6 +27,8 @@ export const ui = {
   decisionsHeading: { en: "Key decisions", es: "Decisiones clave" },
   nextHeading: { en: "What is missing", es: "Qué falta" },
   stackHeading: { en: "Stack", es: "Stack" },
+  screensHeading: { en: "The product", es: "El producto" },
+  fullSource: { en: "See the full file", es: "Ver el archivo completo" },
   bookCall: { en: "Book a call", es: "Agendar una llamada" },
   bookCallHint: {
     en: "Pick a slot that works for you: 30 minutes, no preparation needed.",

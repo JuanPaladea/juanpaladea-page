@@ -24,6 +24,14 @@ WhatsApp, donde diseño agentes de IA, automatizaciones y métricas a medida.
 Construyo productos completos, de la base de datos a la interfaz, con Node.js, TypeScript,
 PostgreSQL, React y Next.js. Trabajo en español e inglés (C2).
 
+## Experiencia: Desarrollador de Software
+
+**Independiente**, dic 2022 — presente
+
+Diseño y publico productos web de punta a punta: esquema de base de datos, APIs en Node.js y
+TypeScript, interfaces en React y Next.js, y despliegue. Las reglas que importan viven en
+PostgreSQL: seguridad por filas, triggers y funciones transaccionales.
+
 ## Experiencia: IMIPP
 
 **Administración y sistemas**, feb 2021 — presente
@@ -35,8 +43,8 @@ laboratorios de investigación que hoy desarrollo.
 
 ## Proyectos
 
-- **Vialo** · vialolab.com: gestión de laboratorios de investigación. Nace de mi función como
-  personal del IMIPP.
+- **Vialo** · vialolab.com: gestión de laboratorios de investigación, con demo pública en
+  vialolab.com/demo. Nace de mi función como personal del IMIPP.
 - **Libelulis** · libelulis.com.ar: tienda de accesorios marmolados hechos a mano, con panel de
   gestión.
 - **En una nota · Ensalada mixta** · enunanota.com.ar: juego para cantar con amigos.

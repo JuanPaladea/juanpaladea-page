@@ -13,6 +13,18 @@ export interface CareerEntry {
 
 export const career: CareerEntry[] = [
   {
+    id: "self-employed",
+    kind: "work",
+    period: { en: "Dec 2022 — Present", es: "Dic 2022 — Presente" },
+    current: true,
+    title: { en: "Software Developer", es: "Desarrollador de Software" },
+    organization: { en: "Self-employed", es: "Independiente" },
+    description: {
+      en: "I design and ship web products end to end: database schema, APIs in Node.js and TypeScript, React and Next.js interfaces, and deployment. The rules that matter live in PostgreSQL: row-level security, triggers and transactional functions. Every project on this page is live.",
+      es: "Diseño y publico productos web de punta a punta: esquema de base de datos, APIs en Node.js y TypeScript, interfaces en React y Next.js, y despliegue. Las reglas que importan viven en PostgreSQL: seguridad por filas, triggers y funciones transaccionales. Todos los proyectos de esta página están en vivo.",
+    },
+  },
+  {
     id: "chatty",
     kind: "work",
     period: { en: "Oct 2025 — Present", es: "Oct 2025 — Presente" },
@@ -25,18 +37,6 @@ export const career: CareerEntry[] = [
     description: {
       en: "I take clients from implementation to day-to-day operation. I design the AI agents and automations that handle their conversations, and set up the metrics they use to measure campaigns and sales and decide what to change.",
       es: "Acompaño a los clientes desde la implementación hasta la operación diaria. Diseño los agentes de IA y las automatizaciones que atienden sus conversaciones, y armo las métricas con las que miden campañas y ventas y deciden qué cambiar.",
-    },
-  },
-  {
-    id: "self-employed",
-    kind: "work",
-    period: { en: "Dec 2022 — Present", es: "Dic 2022 — Presente" },
-    current: true,
-    title: { en: "Software Developer", es: "Desarrollador de Software" },
-    organization: { en: "Self-employed", es: "Independiente" },
-    description: {
-      en: "I design and ship web products end to end: database schema, APIs in Node.js and TypeScript, React and Next.js interfaces, and deployment. Every project on this page is live.",
-      es: "Diseño y publico productos web de punta a punta: esquema de base de datos, APIs en Node.js y TypeScript, interfaces en React y Next.js, y despliegue. Todos los proyectos de esta página están en vivo.",
     },
   },
   {

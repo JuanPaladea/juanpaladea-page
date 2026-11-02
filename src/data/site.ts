@@ -39,14 +39,14 @@ export const englishLevel: Localized<string> = {
 };
 
 export const summary: Localized<string> = {
-  en: "I build complete products, from the database to the interface, with my focus on the backend. I also know the other side: the clients who use the software and the clinical work it has to model.",
-  es: "Construyo productos completos, de la base de datos a la interfaz, con el foco puesto en el backend. También conozco el otro lado: los clientes que usan el software y el trabajo clínico que tiene que modelar.",
+  en: "I came to software from a hospital. Today I build Vialo, a management platform for research laboratories born from my role as staff at IMIPP, and design AI agents on WhatsApp at Chatty.",
+  es: "Llegué al software desde un hospital. Hoy construyo Vialo, una plataforma de gestión para laboratorios de investigación que nace de mi función como personal del IMIPP, y diseño agentes de IA sobre WhatsApp en Chatty.",
 };
 
 export const navLinks: { href: string; label: Localized<string> }[] = [
+  { href: "#projects", label: { en: "Projects", es: "Proyectos" } },
   { href: "#aboutme", label: { en: "About me", es: "Sobre mí" } },
   { href: "#experience", label: { en: "Experience", es: "Experiencia" } },
-  { href: "#projects", label: { en: "Projects", es: "Proyectos" } },
   { href: "#skills", label: { en: "Skills", es: "Habilidades" } },
 ];
 
@@ -61,10 +61,10 @@ export const sectionCopy = {
     },
   },
   how: {
-    title: { en: "From message to metric", es: "Del mensaje a la métrica" },
+    title: { en: "One change, end to end", es: "Un cambio, de punta a punta" },
     subtitle: {
-      en: "What I do, drawn as the path of one conversation",
-      es: "Lo que hago, dibujado como el recorrido de una conversación",
+      en: "The path of one change in Vialo, the platform born from my role as staff at IMIPP",
+      es: "El recorrido de un cambio en Vialo, la plataforma que nace de mi función como personal del IMIPP",
     },
   },
   experience: {
@@ -77,8 +77,8 @@ export const sectionCopy = {
   projects: {
     title: { en: "Projects", es: "Proyectos" },
     subtitle: {
-      en: "Published, in use, and built end to end",
-      es: "Publicados, en uso y construidos de punta a punta",
+      en: "Published and built end to end",
+      es: "Publicados y construidos de punta a punta",
     },
   },
   skills: {
@@ -105,8 +105,8 @@ export const sectionCopy = {
 } satisfies Record<string, { title: Localized<string>; subtitle: Localized<string> }>;
 
 export const aboutLead: Localized<string> = {
-  en: "I came to software from a hospital, and that changes how I build it.",
-  es: "Llegué al software desde un hospital, y eso cambia cómo lo construyo.",
+  en: "I know the work I model because I did it before I programmed it.",
+  es: "Conozco el trabajo que modelo porque lo hice antes de programarlo.",
 };
 
 export const aboutMe: Localized<string>[] = [
@@ -162,7 +162,10 @@ export const aboutStats: AboutStat[] = [
     label: { en: "products live", es: "productos en vivo" },
   },
   {
-    value: "C2",
-    label: { en: "certified English", es: "inglés certificado" },
+    value: 8,
+    label: {
+      en: "Vialo modules sharing permissions and history",
+      es: "módulos de Vialo con permisos e historial en común",
+    },
   },
 ];

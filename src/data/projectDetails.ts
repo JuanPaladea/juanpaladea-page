@@ -5,6 +5,22 @@ export interface DetailBlock {
   body: string;
 }
 
+export interface ProjectScreen {
+  src: string;
+  width: number;
+  height: number;
+  alt: Localized<string>;
+  caption: Localized<string>;
+}
+
+export interface ProjectSnippet {
+  title: Localized<string>;
+  caption: Localized<string>;
+  /** Copied verbatim from the public repository. */
+  code: string;
+  source: string;
+}
+
 export interface ProjectDetail {
   /** One line under the title on the project page. */
   tagline: Localized<string>;
@@ -14,6 +30,10 @@ export interface ProjectDetail {
   decisions: Localized<DetailBlock[]>;
   /** Honest reflection — what is missing, what would change. */
   next: Localized<string>;
+  /** Real screens, with sample data only. */
+  screens?: ProjectScreen[];
+  /** Real code, only from public repositories. */
+  snippet?: ProjectSnippet;
   /** Facts a reader can verify at a glance. */
   facts: Localized<DetailBlock[]>;
 }
@@ -75,12 +95,12 @@ export const projectDetails: Record<string, ProjectDetail> = {
     facts: {
       en: [
         { title: "Role", body: "Creator and developer" },
-        { title: "Status", body: "Live at vialolab.com, with a 15-day trial" },
+        { title: "Status", body: "Live at vialolab.com, with a public demo and a 15-day trial" },
         { title: "Origin", body: "My role as staff at IMIPP" },
       ],
       es: [
         { title: "Rol", body: "Creador y desarrollador" },
-        { title: "Estado", body: "En vivo en vialolab.com, con prueba de 15 días" },
+        { title: "Estado", body: "En vivo en vialolab.com, con demo pública y prueba de 15 días" },
         { title: "Origen", body: "Mi función como personal del IMIPP" },
       ],
     },
@@ -88,6 +108,34 @@ export const projectDetails: Record<string, ProjectDetail> = {
       en: "Vialo is young, and what it lacks is what only time brings: laboratories running it for months, finding the cases I did not foresee. That use is what will decide which modules go deeper.",
       es: "Vialo es joven, y lo que le falta es lo que solo da el tiempo: laboratorios usándolo durante meses y encontrando los casos que no preví. Ese uso es lo que va a definir qué módulos profundizar.",
     },
+    screens: [
+      {
+        src: "/img/project-vialo-biobanco.jpg",
+        width: 1280,
+        height: 720,
+        alt: {
+          en: "Vialo's sample list in the public demo, with search, filters and sample types",
+          es: "Lista de muestras de Vialo en la demo pública, con búsqueda, filtros y tipos de muestra",
+        },
+        caption: {
+          en: "Biobank: every sample with its code, type, location and extraction date.",
+          es: "Biobanco: cada muestra con su código, tipo, ubicación y fecha de extracción.",
+        },
+      },
+      {
+        src: "/img/project-vialo-agenda.jpg",
+        width: 1280,
+        height: 720,
+        alt: {
+          en: "Vialo's equipment calendar in the public demo, with one column per shared piece of equipment",
+          es: "Agenda de equipos de Vialo en la demo pública, con una columna por equipo compartido",
+        },
+        caption: {
+          en: "Equipment: bookings for shared equipment, by day, week or month.",
+          es: "Equipos: reservas de los equipos compartidos, por día, semana o mes.",
+        },
+      },
+    ],
   },
 
   libelulis: {
@@ -237,6 +285,39 @@ export const projectDetails: Record<string, ProjectDetail> = {
     next: {
       en: "The obvious next step now that a backend exists is shared rooms, so teams on different phones see the same cut at the same moment. That means real-time state and reconciling clocks across devices, a harder problem than anything here, and the reason it is not built yet.",
       es: "Ahora que hay backend, el siguiente paso obvio son las salas compartidas, para que equipos en distintos teléfonos vean el mismo corte en el mismo instante. Eso implica estado en tiempo real y conciliar relojes entre dispositivos, un problema más difícil que todo lo que hay acá, y la razón por la que todavía no está.",
+    },
+    screens: [
+      {
+        src: "/img/project-en-una-nota-partida.jpg",
+        width: 1280,
+        height: 720,
+        alt: {
+          en: "En una nota's game setup, choosing the music genres to play with friends",
+          es: "Armado de partida de En una nota, con la elección de géneros para jugar con amigos",
+        },
+        caption: {
+          en: "Setting up a game with friends: each group picks the genres it wants.",
+          es: "Armar una partida con amigos: cada grupo elige los géneros que quiere.",
+        },
+      },
+    ],
+    snippet: {
+      title: { en: "What the database checks", es: "Lo que comprueba la base" },
+      caption: {
+        en: "This is part of the function that runs on every song. If the title is wrong, the video is not in the catalogue or too little time has passed, the database throws the game away.",
+        es: "Es parte de la función que corre en cada canción. Si el título no es el correcto, el video no está en el catálogo o pasó menos tiempo del necesario, la base descarta la partida.",
+      },
+      code: `-- Con s intentos sonaron 1 + 2 + … + s segundos;
+-- se dan 2 de margen por la red.
+if n <> cardinality(p.segundos) + 1 or p_segundos is null or p_segundos not between 0 and 6
+   or (p_segundos > 0 and (
+     not exists (select 1 from public.catalogo_solo c where c.video = p.videos[n] and c.titulo = p_titulo)
+     or now() - p.sono_en < make_interval(secs => p_segundos * (p_segundos + 1) / 2.0 - 2)
+   )) then
+  delete from public.partidas_en_curso where id = p_partida;
+  return false;
+end if;`,
+      source: "https://github.com/JuanPaladea/en-una-nota-ensalada-mixta/blob/main/db/esquema.sql",
     },
   },
 };

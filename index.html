@@ -20,7 +20,7 @@
           }
           root.classList.toggle("dark", theme === "dark");
 
-          var lang = localStorage.getItem("portfolio-lang");
+          var lang = /^\/es\/?$/.test(location.pathname) ? "es" : localStorage.getItem("portfolio-lang");
           if (lang !== "en" && lang !== "es") {
             // First language in the browser's ordered list that the site ships.
             var tags = navigator.languages || [navigator.language || "en"];
@@ -47,6 +47,9 @@
     />
     <meta name="author" content="Juan Paladea" />
     <link rel="canonical" href="https://juanpaladea.com.ar/" />
+    <link rel="alternate" hreflang="en" href="https://juanpaladea.com.ar/" />
+    <link rel="alternate" hreflang="es" href="https://juanpaladea.com.ar/es" />
+    <link rel="alternate" hreflang="x-default" href="https://juanpaladea.com.ar/" />
 
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

@@ -32,8 +32,8 @@ const clamp = (value: number) => Math.min(1, Math.max(0, value));
 const ease = (value: number) => value * value * (3 - 2 * value);
 
 /**
- * The page's main motion graphic: scrolling carries one message through the
- * system, from a WhatsApp chat to a metric. The section pins while the track
+ * The page's main motion graphic: scrolling carries one change through Vialo,
+ * from the interface to the history. The section pins while the track
  * scrolls past. Without room to pin, or with reduced motion, the same diagram
  * and steps render complete and in normal flow.
  */
@@ -101,12 +101,12 @@ const PipelineComponent = () => {
     <Section id="how" aria-labelledby="how-heading">
       <SectionHeading
         id="how-heading"
-        index={2}
+        index={4}
         title={t(sectionCopy.how.title)}
         subtitle={t(sectionCopy.how.subtitle)}
       />
 
-      <div ref={trackRef} className={pinned ? "h-[340vh]" : ""}>
+      <div ref={trackRef} className={pinned ? "h-[240vh]" : ""}>
         <div className={pinned ? "sticky top-[4.25rem] h-[calc(100svh-4.25rem)]" : "py-12"}>
           <div className="container mx-auto grid h-full gap-6 px-5 py-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,27rem)] lg:items-center lg:gap-16">
             <ol
@@ -187,58 +187,58 @@ const Node = ({ id, tag, index, on }: NodeProps) => {
         {tag}
       </text>
 
-      {id === "message" && (
+      {id === "change" && (
         <g className="pl-in">
           <rect x="14" y="36" width="168" height="40" rx="10" fill="rgb(var(--color-elevated))" />
           <text x="26" y="61" fontSize="13" fill="rgb(var(--color-heading))">
-            {t(pipelineLabels.customerMessage)}
+            {t(pipelineLabels.change)}
           </text>
         </g>
       )}
 
-      {id === "agent" && (
+      {id === "role" && (
         <g className="pl-in" style={delayed(150)}>
           <rect x="14" y="36" width="168" height="40" rx="10" fill="rgb(var(--color-accent-soft) / 0.16)" />
           <text x="26" y="61" fontSize="13" fill="rgb(var(--color-heading))">
-            {t(pipelineLabels.agentReply)}
+            {t(pipelineLabels.role)}
           </text>
         </g>
       )}
 
-      {id === "automation" &&
-        t(pipelineLabels.stages).map((stage, position) => (
-          <g key={stage} className="pl-in" style={delayed(position * 180)}>
+      {id === "isolation" &&
+        t(pipelineLabels.checks).map((check, position) => (
+          <g key={check} className="pl-in" style={delayed(position * 180)}>
             <circle cx={22} cy={44 + position * 15} r="4" fill="rgb(var(--color-accent-soft))" />
             <text x="34" y={48 + position * 15} fontSize="11.5" fill="rgb(var(--color-heading))">
-              {stage}
+              {check}
             </text>
           </g>
         ))}
 
-      {id === "data" && (
+      {id === "trigger" && (
         <g className="pl-in" style={delayed(100)}>
           <text x="14" y="52" fontSize="12" fill="rgb(var(--color-heading))" className="font-mono">
-            POST /leads
+            AFTER UPDATE
           </text>
           <text x="14" y="72" fontSize="12" fill="rgb(var(--color-accent-soft))" className="font-mono">
-            201 Created
+            {t(pipelineLabels.valueChange)}
           </text>
         </g>
       )}
 
-      {id === "metric" &&
-        [18, 30, 24, 38, 46, 56].map((height, position) => (
-          <rect
-            key={height}
-            className="pl-bar"
-            x={14 + position * 29}
-            y={84 - height}
-            width="20"
-            height={height}
-            rx="3"
-            fill="rgb(var(--color-accent-soft))"
-            style={delayed(position * 70)}
-          />
+      {id === "history" &&
+        t(pipelineLabels.record).map((line, position) => (
+          <text
+            key={line}
+            className="pl-in font-mono"
+            x="14"
+            y={46 + position * 16}
+            fontSize="11.5"
+            fill="rgb(var(--color-heading))"
+            style={delayed(position * 180)}
+          >
+            {line}
+          </text>
         ))}
     </g>
   );

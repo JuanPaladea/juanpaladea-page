@@ -185,18 +185,6 @@
   transition-delay: var(--delay, 0ms);
 }
 
-.pl-node .pl-bar {
-  transform: scaleY(0.08);
-  transform-box: fill-box;
-  transform-origin: bottom;
-  transition: transform 700ms var(--ease-out);
-}
-
-.pl-node[data-on="true"] .pl-bar {
-  transform: none;
-  transition-delay: var(--delay, 0ms);
-}
-
 .pl-step {
   transition: opacity 400ms ease;
 }

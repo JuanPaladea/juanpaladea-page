@@ -27,6 +27,9 @@ const detectTheme = (): Theme =>
   (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
 
 const detectLang = (): Lang => {
+  // /es is the Spanish address of the home page, so a shared link opens in Spanish.
+  if (/^\/es\/?$/.test(window.location.pathname)) return "es";
+
   const stored = read(LANG_STORAGE_KEY, isLang);
   if (stored) return stored;
 

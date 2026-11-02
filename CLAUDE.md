@@ -46,8 +46,9 @@ solo después de que Juan apruebe ese cambio puntual.
 
 Orden en el sitio: Vialo, Libelulis, En una nota.
 
-- **Vialo** (vialolab.com): plataforma de gestión para laboratorios de investigación. Muestras,
-  equipos, insumos, temperaturas y protocolos, con permisos por rol e historial de cada cambio.
+- **Vialo** (vialolab.com, demo pública en vialolab.com/demo): plataforma de gestión para
+  laboratorios de investigación, con ocho módulos. Muestras, equipos, insumos, temperaturas y
+  protocolos, con permisos por rol e historial de cada cambio.
   **Siempre aclarar que nace de la función de Juan como personal del IMIPP.** Código privado.
 - **Libelulis** (libelulis.com.ar): tienda de accesorios marmolados hechos a mano. Next.js,
   Supabase y Netlify, con pedidos por WhatsApp, reserva de piezas y panel de gestión. Reemplaza a
@@ -61,6 +62,9 @@ menciona, ya no usa Firestore: el contenido pasó al repositorio.
 
 **Hospital Backend tampoco se muestra**, ni en el sitio, ni en los CVs, ni en LinkedIn. Lo pidió
 Juan expresamente.
+
+**Las capturas de proyectos llevan solo datos de ejemplo.** Las de Vialo salen de su demo pública.
+Las del panel de Libelulis necesitan datos ficticios, porque el panel real tiene datos de clientes.
 
 ## Reglas de contenido
 
@@ -76,6 +80,9 @@ Juan expresamente.
 
 ## Diseño
 
+- **Orden de la portada:** hero, Proyectos, Sobre mí, Experiencia, la sección animada,
+  Habilidades, Certificaciones y Contacto. Los proyectos van primero porque son la prueba.
+- En Experiencia y en los CVs, el rol de desarrollador va antes que Customer Success.
 - **Un solo borde izquierdo.** Nada de columnas centradas en la página ni subtítulos alineados a
   la derecha: todo arranca alineado con los títulos de sección. Lo pidió Juan expresamente.
 - Colores solo con los tokens semánticos de `src/index.css`, en tema claro y oscuro.
@@ -83,8 +90,8 @@ Juan expresamente.
 
 ## Motion graphics
 
-- Concepto: "la señal". Las animaciones cuentan el trabajo de Juan: un mensaje de WhatsApp que
-  termina en métrica y portadas con la decisión real de cada proyecto.
+- Concepto: "la señal". Las animaciones cuentan el trabajo de Juan: un cambio en Vialo que llega
+  hasta el historial y portadas con la decisión real de cada proyecto.
 - **El retrato es una foto fija, sin animación ni leyenda.** Lo pidió Juan expresamente.
 - Sin librerías de animación: CSS, SVG, canvas y `IntersectionObserver`.
 - Todo respeta `prefers-reduced-motion`, y el contenido nunca depende de una animación para verse.
