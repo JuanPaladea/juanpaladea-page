@@ -1,10 +1,10 @@
 # Perfil de GitHub
 
-Texto listo para pegar. Sale de los mismos datos que `CLAUDE.md`. Reemplaza el README de
-`JuanPaladea/JuanPaladea`, que todavía dice que Juan busca oportunidades, y la bio "Looking to
-learn".
+Texto publicado en el perfil. Sale de los mismos datos que `CLAUDE.md`, y se actualiza junto con
+el sitio y los CVs. El README vive en `JuanPaladea/JuanPaladea`.
 
-**Última revisión:** 2026-11-01. Todavía sin publicar.
+**Última revisión:** 2026-11-01. Publicado ese día. `hospital-backend` y `hospital-frontend`
+quedaron privados.
 
 ## Bio
 
