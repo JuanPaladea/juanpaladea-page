@@ -23,9 +23,9 @@ const ProjectsComponent = () => {
         subtitle={t(sectionCopy.projects.subtitle)}
       />
       <div className="container mx-auto px-5 py-12">
-        <ul data-stagger className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <ul data-stagger className="grid gap-6 md:grid-cols-2">
           {projects.map((project) => (
-            <li key={project.id} className={`flex ${project.featured ? "md:col-span-2 lg:col-span-3" : ""}`}>
+            <li key={project.id} className={`flex ${project.featured ? "md:col-span-2" : ""}`}>
               <TiltCard
                 className={`flex w-full flex-col overflow-hidden rounded-xl border border-line bg-surface hover:border-accent/60 ${
                   project.featured ? "lg:flex-row-reverse" : ""
