@@ -61,10 +61,10 @@ export const sectionCopy = {
     },
   },
   how: {
-    title: { en: "From message to metric", es: "Del mensaje a la métrica" },
+    title: { en: "One change, end to end", es: "Un cambio, de punta a punta" },
     subtitle: {
-      en: "What I do, drawn as the path of one conversation",
-      es: "Lo que hago, dibujado como el recorrido de una conversación",
+      en: "The path of one change in Vialo, the platform born from my role as staff at IMIPP",
+      es: "El recorrido de un cambio en Vialo, la plataforma que nace de mi función como personal del IMIPP",
     },
   },
   experience: {

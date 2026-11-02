@@ -90,8 +90,8 @@ Las del panel de Libelulis necesitan datos ficticios, porque el panel real tiene
 
 ## Motion graphics
 
-- Concepto: "la señal". Las animaciones cuentan el trabajo de Juan: un mensaje de WhatsApp que
-  termina en métrica y portadas con la decisión real de cada proyecto.
+- Concepto: "la señal". Las animaciones cuentan el trabajo de Juan: un cambio en Vialo que llega
+  hasta el historial y portadas con la decisión real de cada proyecto.
 - **El retrato es una foto fija, sin animación ni leyenda.** Lo pidió Juan expresamente.
 - Sin librerías de animación: CSS, SVG, canvas y `IntersectionObserver`.
 - Todo respeta `prefers-reduced-motion`, y el contenido nunca depende de una animación para verse.

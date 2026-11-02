@@ -156,8 +156,8 @@ the page or right-align a subtitle.
 
 ### Motion
 
-The motion is drawn from the work it describes: a message travels from WhatsApp
-to a metric as you scroll, and each project cover animates the decision that
+The motion is drawn from the work it describes: one change travels through Vialo
+to its history as you scroll, and each project cover animates the decision that
 defines it. There is no animation library, just CSS, SVG, one canvas and
 `IntersectionObserver`. The portrait stays a still photo.
 
