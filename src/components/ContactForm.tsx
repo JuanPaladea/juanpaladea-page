@@ -8,7 +8,6 @@ import { usePreferences } from "../preferences/context";
 import type { Localized } from "../preferences/types";
 import Section from "./ui/Section";
 import SectionHeading from "./ui/SectionHeading";
-import { CalendarIcon } from "./ui/icons";
 
 const SERVICE_ID = import.meta.env.VITE_APP_SERVICE_ID ?? "";
 const TEMPLATE_ID = import.meta.env.VITE_APP_TEMPLATE_ID ?? "";
@@ -84,7 +83,7 @@ const ContactForm = () => {
         subtitle={t(sectionCopy.contact.subtitle)}
       />
       <div data-stagger className="container mx-auto grid gap-8 px-5 py-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-12">
-        <div className="rounded-xl border border-line bg-surface p-8">
+        <div className="self-start rounded-xl border border-line bg-surface p-8">
           <dl className="grid gap-6 sm:grid-cols-2">
             {[
               { label: ui.basedIn, value: t(location) },
@@ -105,20 +104,6 @@ const ContactForm = () => {
               </dd>
             </div>
           </dl>
-
-          {/* A booking link converts interest into a meeting in one click. */}
-          <div className="mt-8 border-t border-line pt-6">
-            <a
-              href={site.calendar}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary"
-            >
-              <CalendarIcon className="h-5 w-5" />
-              {t(ui.bookCall)}
-            </a>
-            <p className="mt-2 text-sm text-muted">{t(ui.bookCallHint)}</p>
-          </div>
         </div>
 
         <form

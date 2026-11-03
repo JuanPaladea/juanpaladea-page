@@ -29,11 +29,6 @@ export const ui = {
   stackHeading: { en: "Stack", es: "Stack" },
   screensHeading: { en: "The product", es: "El producto" },
   fullSource: { en: "See the full file", es: "Ver el archivo completo" },
-  bookCall: { en: "Book a call", es: "Agendar una llamada" },
-  bookCallHint: {
-    en: "Pick a slot that works for you: 30 minutes, no preparation needed.",
-    es: "Elegí un horario que te sirva: 30 minutos, sin preparación.",
-  },
 
   opensInNewTab: { en: "opens in a new tab", es: "se abre en una pestaña nueva" },
   sourceOnGitHub: { en: "source code on GitHub", es: "código fuente en GitHub" },

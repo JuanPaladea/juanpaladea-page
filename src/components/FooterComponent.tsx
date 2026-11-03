@@ -9,7 +9,7 @@ const FooterComponent = () => {
   const { t } = usePreferences();
 
   return (
-    <footer className="mt-24 border-t border-line">
+    <footer className="mt-24">
       <HeartbeatLine />
       <div className="container mx-auto flex flex-col gap-4 px-5 py-8 sm:flex-row sm:items-center">
         <InternalLink to="/" className="title-font flex items-center text-xl font-semibold text-heading">

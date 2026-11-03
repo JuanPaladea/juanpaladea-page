@@ -7,7 +7,6 @@ export const site = {
   email: "juanpaladea5@gmail.com",
   github: "https://github.com/JuanPaladea",
   linkedin: "https://www.linkedin.com/in/juan-francisco-paladea-5703b0191/",
-  calendar: "https://calendar.app.google/x3QsQgLZfA2AHXnN7",
   timezone: "UTC−3",
 } as const;
 
