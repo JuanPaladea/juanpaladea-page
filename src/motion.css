@@ -185,8 +185,8 @@
   transition-delay: var(--delay, 0ms);
 }
 
-.pl-step {
-  transition: opacity 400ms ease;
+.pl-trail {
+  transition: stroke-dashoffset 1400ms var(--ease-out);
 }
 
 /* ---------- Timeline ---------- */
@@ -547,6 +547,10 @@
 
   .ecg-trace {
     stroke-dasharray: none;
+  }
+
+  .pl-trail {
+    transition: none;
   }
 }
 

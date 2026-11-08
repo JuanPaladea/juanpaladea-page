@@ -60,7 +60,7 @@ export const sectionCopy = {
     },
   },
   how: {
-    title: { en: "One change, end to end", es: "Un cambio, de punta a punta" },
+    title: { en: "Where the rules live", es: "Dónde viven las reglas" },
     subtitle: {
       en: "The path of one change in Vialo, the platform born from my role as staff at IMIPP",
       es: "El recorrido de un cambio en Vialo, la plataforma que nace de mi función como personal del IMIPP",
