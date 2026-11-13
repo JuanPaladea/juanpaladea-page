@@ -26,6 +26,21 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://juanpaladea.com.ar/es/projects/vialo</loc>
+    <lastmod>2026-11-13</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://juanpaladea.com.ar/es/projects/libelulis</loc>
+    <lastmod>2026-11-13</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://juanpaladea.com.ar/es/projects/en-una-nota</loc>
+    <lastmod>2026-11-13</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://juanpaladea.com.ar/cv/en.html</loc>
     <lastmod>2026-11-01</lastmod>
     <priority>0.7</priority>

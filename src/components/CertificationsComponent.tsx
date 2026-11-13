@@ -6,6 +6,10 @@ import Section from "./ui/Section";
 import SectionHeading from "./ui/SectionHeading";
 import { ExternalLinkIcon } from "./ui/icons";
 
+/**
+ * A plain list: these back up the story, they are not the story. Each row is a
+ * small picture of the certificate, what it covers and a link to verify it.
+ */
 const CertificationsComponent = () => {
   const { t } = usePreferences();
 
@@ -17,37 +21,34 @@ const CertificationsComponent = () => {
         title={t(sectionCopy.certifications.title)}
         subtitle={t(sectionCopy.certifications.subtitle)}
       />
-      <div className="container mx-auto px-5 py-12">
-        <ul data-stagger className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="container mx-auto px-5 py-8 sm:py-12">
+        <ul data-stagger className="divide-y divide-line border-y border-line">
           {certifications.map((cert) => (
-            <li key={cert.id} className="flex">
-              <article className="flex w-full flex-col overflow-hidden rounded-xl border border-line bg-surface transition-colors duration-300 hover:border-accent/60">
+            <li key={cert.id} className="grid grid-cols-[5rem_minmax(0,1fr)] gap-x-4 py-5 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-x-8 sm:py-6">
+              <img
+                alt={t(cert.imageAlt)}
+                className="aspect-[16/10] w-full rounded-lg border border-line object-cover object-center"
+                src={cert.image}
+                width={cert.imageWidth}
+                height={cert.imageHeight}
+                loading="lazy"
+                decoding="async"
+              />
+              <div>
+                <h3 className="title-font text-xl font-medium text-heading">{t(cert.title)}</h3>
+                <p className="text-sm text-accent-soft">{t(cert.issuer)}</p>
+                <p className="mt-2 max-w-prose text-sm leading-relaxed">{t(cert.description)}</p>
                 <a
                   href={cert.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative block overflow-hidden"
-                  aria-label={`${t(cert.title)}, ${t(ui.certificateOf)} (${t(ui.opensInNewTab)})`}
+                  className="tap mt-2 gap-1.5 text-sm font-medium text-accent-soft transition-opacity hover:opacity-80"
+                  aria-label={`${t(cert.title)}, ${t(ui.viewCertificate)} (${t(ui.opensInNewTab)})`}
                 >
-                  <img
-                    alt={t(cert.imageAlt)}
-                    className="aspect-[16/10] w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                    src={cert.image}
-                    width={cert.imageWidth}
-                    height={cert.imageHeight}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <span className="absolute inset-0 flex items-center justify-center bg-page/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
-                    <ExternalLinkIcon className="h-8 w-8 text-heading" />
-                  </span>
+                  {t(ui.viewCertificate)}
+                  <ExternalLinkIcon className="h-4 w-4" />
                 </a>
-                <div className="flex flex-grow flex-col p-6">
-                  <h3 className="title-font text-xl font-medium text-heading">{t(cert.title)}</h3>
-                  <p className="mb-3 text-sm text-accent-soft">{t(cert.issuer)}</p>
-                  <p className="text-sm leading-relaxed">{t(cert.description)}</p>
-                </div>
-              </article>
+              </div>
             </li>
           ))}
         </ul>

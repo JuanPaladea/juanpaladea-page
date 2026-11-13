@@ -7,12 +7,18 @@ import Section from "./ui/Section";
 import SectionHeading from "./ui/SectionHeading";
 
 const NODE = { width: 196, height: 92 };
+/*
+ * The two columns overlap, so the drawing is only 340 units wide. On a phone
+ * that is close to one unit per pixel, which keeps the labels inside the
+ * nodes at a readable size instead of shrinking them with the diagram.
+ */
+const VIEW = { width: 340, height: 528 };
 const positions = [
   { x: 2, y: 2 },
-  { x: 222, y: 118 },
-  { x: 2, y: 234 },
-  { x: 222, y: 350 },
-  { x: 2, y: 466 },
+  { x: 142, y: 110 },
+  { x: 2, y: 218 },
+  { x: 142, y: 326 },
+  { x: 2, y: 434 },
 ];
 const centers = positions.map(({ x, y }) => ({ x: x + NODE.width / 2, y: y + NODE.height / 2 }));
 
@@ -57,11 +63,11 @@ const PipelineComponent = () => {
 
       <div
         ref={ref}
-        className="container mx-auto grid gap-10 px-5 py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-center lg:gap-16"
+        className="container mx-auto grid gap-10 px-5 py-8 sm:py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,21rem)] lg:items-center lg:gap-16"
       >
         <ol className="order-last space-y-6 lg:order-first">
           {pipelineSteps.map((item, index) => (
-            <li key={item.id} className="flex gap-4">
+            <li key={item.id} className="flex max-w-prose gap-4">
               <span aria-hidden="true" className="eyebrow mt-1.5 shrink-0 text-accent-soft">
                 {String(index + 1).padStart(2, "0")}
               </span>
@@ -73,7 +79,7 @@ const PipelineComponent = () => {
           ))}
         </ol>
 
-        <svg viewBox="0 0 420 560" aria-hidden="true" className="w-full max-w-sm lg:max-w-none">
+        <svg viewBox={`0 0 ${VIEW.width} ${VIEW.height}`} aria-hidden="true" className="w-full max-w-[21rem]">
           <path d={FULL_PATH} fill="none" stroke="rgb(var(--color-line))" strokeWidth="2" strokeDasharray="4 6" />
           <path
             ref={trailRef}

@@ -9,7 +9,7 @@ interface SectionHeadingProps {
 
 /** Everything sits on the page's left edge, so every section starts in the same place. */
 const SectionHeading = ({ title, subtitle, id, index }: SectionHeadingProps) => (
-  <div className="container mx-auto px-5 pt-24">
+  <div className="container mx-auto px-5 pt-16 sm:pt-24">
     <div className="rule-draw h-px w-full bg-gradient-to-r from-accent via-line to-transparent" />
     <p aria-hidden="true" className="eyebrow mt-6">
       {String(index).padStart(2, "0")}

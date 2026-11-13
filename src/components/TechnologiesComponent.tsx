@@ -23,21 +23,21 @@ const TechnologiesComponent = () => {
         subtitle={t(sectionCopy.skills.subtitle)}
       />
 
-      <div className="mt-10">
+      <div className="mt-8 sm:mt-10">
         <TechMarquee items={unique.slice(0, middle)} duration={72} />
         <TechMarquee items={unique.slice(middle)} duration={60} reverse />
       </div>
 
-      <div className="container mx-auto px-5 py-12">
+      <div className="container mx-auto px-5 py-8 sm:py-12">
         <div data-stagger className="grid gap-5 md:grid-cols-2">
           {skillGroups.map((group) => (
             <div
               key={group.title.en}
-              className="rounded-xl border border-line bg-surface p-6 transition-colors duration-300 hover:border-accent/50"
+              className="rounded-xl border border-line bg-surface p-5 transition-colors duration-300 hover:border-accent/50 sm:p-6"
             >
               <h3 className="title-font text-xl font-medium text-heading">{t(group.title)}</h3>
               <p className="mb-4 text-sm text-muted">{t(group.description)}</p>
-              <ul className="flex flex-wrap gap-2">
+              <ul className="flex flex-wrap gap-1.5 sm:gap-2">
                 {group.items.map((skill) => (
                   <li key={skill.name}>
                     <TechChip skill={skill} />

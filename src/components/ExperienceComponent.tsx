@@ -38,7 +38,7 @@ const ExperienceComponent = () => {
         title={t(sectionCopy.experience.title)}
         subtitle={t(sectionCopy.experience.subtitle)}
       />
-      <div className="container mx-auto px-5 py-12">
+      <div className="container mx-auto px-5 py-8 sm:py-12">
         <ol ref={listRef} className="relative">
           {/* The rail, and the part of it that fills as the page scrolls. */}
           <span aria-hidden="true" className="absolute inset-y-0 left-1 w-px bg-line sm:left-[11.5rem]" />
@@ -65,7 +65,7 @@ const ExperienceComponent = () => {
                   {t(entry.kind === "work" ? ui.work : ui.education)}
                 </p>
               </div>
-              <div className="max-w-3xl">
+              <div className="max-w-prose">
                 <h3 className="title-font text-xl font-medium text-heading">{t(entry.title)}</h3>
                 <p className="text-sm text-accent-soft">{t(entry.organization)}</p>
                 <p className="mt-2 leading-relaxed">{t(entry.description)}</p>

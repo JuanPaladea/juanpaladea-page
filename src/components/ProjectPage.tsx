@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import { projects } from "../data/projects";
 import { projectDetails } from "../data/projectDetails";
-import { site } from "../data/site";
 import { ui } from "../data/ui";
 import { usePreferences } from "../preferences/context";
 import { projectPath } from "../router";
@@ -11,23 +9,9 @@ import TechChip from "./ui/TechChip";
 import { ArrowRightIcon, ExternalLinkIcon, GitHubIcon } from "./ui/icons";
 
 const ProjectPage = ({ id }: { id: string }) => {
-  const { lang, t } = usePreferences();
+  const { t } = usePreferences();
   const project = projects.find((entry) => entry.id === id);
   const detail = projectDetails[id];
-
-  // The tab title and share description have to follow the route, not the SPA shell.
-  useEffect(() => {
-    if (!project || !detail) return;
-    const previousTitle = document.title;
-    document.title = `${project.title} — ${site.name}`;
-    const meta = document.querySelector('meta[name="description"]');
-    const previousDescription = meta?.getAttribute("content") ?? "";
-    meta?.setAttribute("content", `${project.title}: ${detail.tagline[lang]}`);
-    return () => {
-      document.title = previousTitle;
-      meta?.setAttribute("content", previousDescription);
-    };
-  }, [project, detail, lang]);
 
   if (!project || !detail) return null;
 
@@ -38,7 +22,7 @@ const ProjectPage = ({ id }: { id: string }) => {
       <div className="container mx-auto px-5 pt-10">
         <InternalLink
           to="/#projects"
-          className="inline-flex items-center gap-2 text-sm text-body transition-colors hover:text-heading"
+          className="tap gap-2 text-sm text-body transition-colors hover:text-heading"
         >
           <ArrowRightIcon className="h-4 w-4 rotate-180" />
           {t(ui.backToProjects)}
@@ -86,7 +70,7 @@ const ProjectPage = ({ id }: { id: string }) => {
       <div className="container mx-auto grid grid-cols-1 gap-10 px-5 pt-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
         <div>
           <h2 className="title-font text-2xl font-semibold text-heading">{t(ui.contextHeading)}</h2>
-          <div className="mt-3 space-y-4 leading-relaxed">
+          <div className="mt-3 max-w-prose space-y-4 leading-relaxed">
             {t(detail.context).map((paragraph) => (
               <p key={paragraph.slice(0, 40)}>{paragraph}</p>
             ))}
@@ -115,7 +99,7 @@ const ProjectPage = ({ id }: { id: string }) => {
           )}
 
           <h2 className="title-font mt-10 text-2xl font-semibold text-heading">{t(ui.decisionsHeading)}</h2>
-          <ol className="mt-4 space-y-5">
+          <ol className="mt-4 max-w-2xl space-y-5">
             {t(detail.decisions).map((decision, index) => (
               <li key={decision.title} className="rounded-xl border border-line bg-surface p-5">
                 <h3 className="title-font flex gap-3 font-medium text-heading">
@@ -132,7 +116,7 @@ const ProjectPage = ({ id }: { id: string }) => {
           {detail.snippet && (
             <>
               <h2 className="title-font mt-10 text-2xl font-semibold text-heading">{t(detail.snippet.title)}</h2>
-              <p className="mt-3 leading-relaxed">{t(detail.snippet.caption)}</p>
+              <p className="mt-3 max-w-prose leading-relaxed">{t(detail.snippet.caption)}</p>
               <pre className="mt-4 overflow-x-auto rounded-xl border border-line bg-surface p-5 font-mono text-xs leading-relaxed text-heading">
                 <code>{detail.snippet.code}</code>
               </pre>
@@ -140,7 +124,7 @@ const ProjectPage = ({ id }: { id: string }) => {
                 href={detail.snippet.source}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-accent-soft transition-opacity hover:opacity-80"
+                className="tap mt-3 gap-1.5 text-sm font-medium text-accent-soft transition-opacity hover:opacity-80"
               >
                 {t(ui.fullSource)}
                 <ExternalLinkIcon className="h-4 w-4" />
@@ -149,7 +133,7 @@ const ProjectPage = ({ id }: { id: string }) => {
           )}
 
           <h2 className="title-font mt-10 text-2xl font-semibold text-heading">{t(ui.nextHeading)}</h2>
-          <p className="mt-3 leading-relaxed">{t(detail.next)}</p>
+          <p className="mt-3 max-w-prose leading-relaxed">{t(detail.next)}</p>
         </div>
 
         <aside className="lg:sticky lg:top-24 lg:self-start">
@@ -177,7 +161,7 @@ const ProjectPage = ({ id }: { id: string }) => {
         </aside>
       </div>
 
-      <nav aria-label={t(ui.backToProjects)} className="container mx-auto px-5 pt-14">
+      <nav aria-label={t(ui.otherProjects)} className="container mx-auto px-5 pt-14">
         <div className="border-t border-line pt-6">
           <ul className="grid gap-4 sm:grid-cols-2">
             {others.map((other) => (

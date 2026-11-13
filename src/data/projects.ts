@@ -18,6 +18,7 @@ const tech = {
 
 export interface Project {
   id: string;
+  /** What the project is. All three are live, so status would say nothing. */
   category: Localized<string>;
   title: string;
   /** Two or three sentences — the card stays readable at a glance. */
@@ -37,14 +38,11 @@ export interface Project {
   stack: Skill[];
 }
 
-const product: Localized<string> = { en: "Product", es: "Producto" };
-const inProduction: Localized<string> = { en: "In production", es: "En producción" };
-
 export const projects: Project[] = [
   {
     id: "vialo",
     featured: true,
-    category: product,
+    category: { en: "Platform", es: "Plataforma" },
     title: "Vialo",
     description: {
       en: "A management platform for research laboratories, born from my role as staff at IMIPP. It brings samples, equipment, supplies, temperatures and protocols together, with permissions by role and a record of every change.",
@@ -75,7 +73,7 @@ export const projects: Project[] = [
   },
   {
     id: "libelulis",
-    category: inProduction,
+    category: { en: "Online store", es: "Tienda online" },
     title: "Libelulis",
     description: {
       en: "The online store for Libelulis, handmade marbled accessories where every piece is one of a kind. Customers order through WhatsApp, and a full panel runs the business behind it.",
@@ -106,7 +104,7 @@ export const projects: Project[] = [
   },
   {
     id: "en-una-nota",
-    category: product,
+    category: { en: "Game", es: "Juego" },
     title: "En una nota · Ensalada mixta",
     description: {
       en: "A party game for singing with friends: a hidden song plays, cuts off, and the first team to shout has to keep going. It runs on plain JavaScript and grew a solo mode, Google accounts and a ranking the database verifies by itself.",

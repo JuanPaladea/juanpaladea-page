@@ -23,6 +23,8 @@ export const ui = {
 
   caseStudy: { en: "Read the case study", es: "Ver el caso completo" },
   backToProjects: { en: "Back to all projects", es: "Volver a todos los proyectos" },
+  otherProjects: { en: "Other projects", es: "Otros proyectos" },
+  viewCertificate: { en: "View certificate", es: "Ver certificado" },
   contextHeading: { en: "Context", es: "Contexto" },
   decisionsHeading: { en: "Key decisions", es: "Decisiones clave" },
   nextHeading: { en: "What is missing", es: "Qué falta" },

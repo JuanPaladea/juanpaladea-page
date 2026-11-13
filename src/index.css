@@ -102,6 +102,18 @@
     @apply font-mono text-xs uppercase tracking-widest text-muted;
   }
 
+  /* A text link or icon that is also comfortable to hit with a thumb. */
+  .tap {
+    @apply inline-flex items-center;
+  }
+
+  @media (pointer: coarse) {
+    .tap {
+      min-height: 2.75rem;
+      min-width: 2.75rem;
+    }
+  }
+
   .btn {
     @apply inline-flex items-center gap-2 rounded-lg px-5 py-2.5 font-medium;
     transition: transform 200ms ease, opacity 200ms ease, background-color 200ms ease, border-color 200ms ease;

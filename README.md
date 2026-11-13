@@ -4,10 +4,12 @@ Personal portfolio site built with React, TypeScript, Vite and Tailwind CSS.
 Live at [juanpaladea.com.ar](https://juanpaladea.com.ar).
 
 Bilingual (English / Spanish) with a light and dark theme, and a case-study
-page per project. Both preferences are negotiated against the browser's
-language list on a first visit, persisted to `localStorage`, and applied before
-first paint by a small inline script in `index.html` so the page never flashes
-the wrong theme.
+page per project. The address carries the language: everything under `/es` is
+Spanish and the rest is English. A first visit to an address without a language
+goes to the one the browser's language list prefers, and only a choice made
+with the switch is saved to `localStorage`. A small inline script in
+`index.html` applies theme and language before first paint, so the page never
+flashes the wrong one.
 
 `CLAUDE.md` records the career facts and the editorial and design rules, and
 `docs/linkedin.md` keeps the LinkedIn copy in step with the site and the CVs.
@@ -78,7 +80,7 @@ src/
 │  └─ *Component.tsx   One component per page section
 ├─ data/               Site content: profile, career, skills, projects, certs, UI strings
 ├─ hooks/              Scroll, visibility and media-query hooks behind the motion
-├─ preferences/        Language and theme context, persisted to localStorage
+├─ preferences/        Language and theme context, and the language-in-the-address rules
 ├─ router.ts           Two-route History API router, no dependency
 ├─ App.tsx             Route switch and section composition
 ├─ index.css           Colour tokens, focus states, reduced-motion rules
@@ -93,14 +95,23 @@ Links are real anchors with real `href`s, so they stay crawlable and
 ctrl-clickable; `InternalLink` intercepts only plain left clicks.
 
 Link previews and some crawlers do not run JavaScript, so
-`scripts/projectPages.ts` writes a real file for each address at build time:
-`dist/projects/<id>/index.html` with each project's title, description and
-image, and `dist/es/index.html` with the home page's metadata in Spanish. Every
-page carries its content inside `<noscript>`. Because those files exist, the host
-needs no SPA rewrite, and any other path gets `public/404.html` with a real 404.
+`scripts/projectPages.ts` writes a real file for each address at build time, in
+both languages: the home page (`dist/index.html`, `dist/es/index.html`) and each
+project (`dist/projects/<id>/index.html`, `dist/es/projects/<id>/index.html`),
+with its own title, description, image and `hreflang` pair. Every page carries
+its content inside `<noscript>`. Because those files exist, the host needs no
+SPA rewrite, and any other path gets `public/404.html` with a real 404.
 
-`/es` is the address to share with Spanish speakers: it opens the site in
-Spanish and its link preview is in Spanish too.
+The same step writes a Content Security Policy into each of those pages as a
+`<meta>` tag. It hashes the inline script from the HTML it is writing, so the
+policy cannot fall out of step with it. `vercel.json` adds the headers a meta
+tag cannot carry, and the cache rules: a year for the hashed files under
+`/assets`, a day for `/icons` and `/img`.
+
+`/es` and `/es/projects/<id>` are the addresses to share with Spanish speakers:
+they open in Spanish and their link previews are in Spanish too. In the app,
+links are written without a language and `InternalLink` adds the prefix
+(`src/preferences/langPath.ts`); the switch swaps the address in place.
 
 ### Adding a project case study
 

@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
+import { flushSync } from "react-dom";
 import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
 import { location, sectionCopy, site } from "../data/site";
@@ -15,8 +16,14 @@ const PUBLIC_KEY = import.meta.env.VITE_APP_PUBLIC_KEY ?? "";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+/** In the order they appear, which is the order focus looks for an error. */
+const FIELDS = ["email", "message"] as const;
+
+/** A field hidden from people. Only a script filling in every input reaches it. */
+const TRAP_FIELD = "website";
+
 /** Errors are stored localized so they re-render in the chosen language. */
-type Errors = Partial<Record<"email" | "message", Localized<string>>>;
+type Errors = Partial<Record<(typeof FIELDS)[number], Localized<string>>>;
 
 const validate = ({ email, message }: { email: string; message: string }): Errors => {
   const errors: Errors = {};
@@ -46,9 +53,29 @@ const ContactForm = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
+    const form = formRef.current;
+    if (!form) return;
+
     const nextErrors = validate(formData);
-    setErrors(nextErrors);
-    if (Object.keys(nextErrors).length > 0 || !formRef.current) return;
+    // Rendered at once, so each field already points at its error when focus arrives.
+    flushSync(() => setErrors(nextErrors));
+
+    // Focus goes to the first field to fix. Its error is tied to it with
+    // aria-describedby, so a screen reader announces it on arrival.
+    const firstInvalid = FIELDS.find((field) => nextErrors[field]);
+    if (firstInvalid) {
+      form.querySelector<HTMLElement>(`#${firstInvalid}`)?.focus();
+      return;
+    }
+
+    // Nobody can see or reach the trap field, so anything in it came from a
+    // bot. It gets the same answer as a real message and nothing is sent.
+    if (new FormData(form).get(TRAP_FIELD)) {
+      toast.success(t(ui.toastSuccess));
+      form.reset();
+      setFormData({ email: "", message: "" });
+      return;
+    }
 
     if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
       toast.error(`${t(ui.toastUnavailable)} ${site.email}`);
@@ -57,7 +84,7 @@ const ContactForm = () => {
 
     setIsSending(true);
     try {
-      await toast.promise(emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY), {
+      await toast.promise(emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form, PUBLIC_KEY), {
         loading: t(ui.sending),
         success: t(ui.toastSuccess),
         error: t(ui.toastError),
@@ -82,7 +109,7 @@ const ContactForm = () => {
         title={t(sectionCopy.contact.title)}
         subtitle={t(sectionCopy.contact.subtitle)}
       />
-      <div data-stagger className="container mx-auto grid gap-8 px-5 py-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-12">
+      <div data-stagger className="container mx-auto grid gap-8 px-5 py-8 sm:py-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:gap-12">
         <div className="self-start rounded-xl border border-line bg-surface p-8">
           <dl className="grid gap-6 sm:grid-cols-2">
             {[
@@ -98,7 +125,7 @@ const ContactForm = () => {
             <div className="sm:col-span-2">
               <dt className="eyebrow">{t(ui.emailLabel)}</dt>
               <dd className="mt-1">
-                <a href={`mailto:${site.email}`} className="leading-relaxed text-accent-soft hover:opacity-80">
+                <a href={`mailto:${site.email}`} className="tap leading-relaxed text-accent-soft hover:opacity-80">
                   {site.email}
                 </a>
               </dd>
@@ -115,6 +142,11 @@ const ContactForm = () => {
           <h3 className="title-font mb-1 text-xl font-medium text-heading">{t(ui.contactTitle)}</h3>
           <p className="mb-4 text-sm">{t(ui.contactBlurb)}</p>
 
+          <div aria-hidden="true" className="sr-only">
+            <label htmlFor={TRAP_FIELD}>Website</label>
+            <input type="text" id={TRAP_FIELD} name={TRAP_FIELD} tabIndex={-1} autoComplete="off" />
+          </div>
+
           <div className="mb-4">
             <label htmlFor="email" className="text-sm leading-7">
               {t(ui.emailField)}
@@ -124,6 +156,7 @@ const ContactForm = () => {
               id="email"
               name="email"
               autoComplete="email"
+              required
               value={formData.email}
               onChange={handleChange}
               aria-invalid={Boolean(errors.email)}
@@ -144,6 +177,7 @@ const ContactForm = () => {
             <textarea
               id="message"
               name="message"
+              required
               value={formData.message}
               onChange={handleChange}
               aria-invalid={Boolean(errors.message)}

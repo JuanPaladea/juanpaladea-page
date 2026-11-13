@@ -11,13 +11,25 @@ import CertificationsComponent from "./components/CertificationsComponent";
 import ContactForm from "./components/ContactForm";
 import FooterComponent from "./components/FooterComponent";
 import ProjectPage from "./components/ProjectPage";
+import { projectDetails } from "./data/projectDetails";
+import { projects } from "./data/projects";
+import { pageDescription, pageTitle, site } from "./data/site";
 import { ui } from "./data/ui";
+import { useDocumentMeta } from "./hooks/useDocumentMeta";
 import { usePreferences } from "./preferences/context";
 import { useRoute } from "./router";
 
 function App() {
-  const { t } = usePreferences();
+  const { lang, t } = usePreferences();
   const route = useRoute();
+
+  const project = route.name === "project" ? projects.find((entry) => entry.id === route.id) : undefined;
+  const detail = project && projectDetails[project.id];
+  useDocumentMeta(
+    project ? `${project.title} — ${site.name}` : t(pageTitle),
+    project && detail ? `${project.title}: ${detail.tagline[lang]}` : t(pageDescription),
+  );
+
   const mainRef = useRef<HTMLElement>(null);
   const routeKey = route.name === "project" ? route.id : "home";
   const previousRoute = useRef(routeKey);

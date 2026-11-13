@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { flushSync } from "react-dom";
 import { projects } from "./data/projects";
 import { prefersReducedMotion } from "./hooks/useMediaQuery";
+import { stripLang } from "./preferences/langPath";
 
 export type Route = { name: "home" } | { name: "project"; id: string };
 
@@ -10,7 +11,8 @@ const PROJECT_PATH = /^\/projects\/([a-z0-9-]+)\/?$/i;
 export const projectPath = (id: string) => `/projects/${id}`;
 
 const parse = (pathname: string): Route => {
-  const match = pathname.match(PROJECT_PATH);
+  // Routes are the same in both languages; the /es prefix only picks the copy.
+  const match = stripLang(pathname).match(PROJECT_PATH);
   // Unknown ids fall back to home rather than rendering an empty page.
   if (match && projects.some((project) => project.id === match[1])) {
     return { name: "project", id: match[1] };
@@ -23,6 +25,25 @@ const parse = (pathname: string): Route => {
  * subscription so every mounted component re-renders on navigation.
  */
 const listeners = new Set<() => void>();
+
+/** Calls back whenever the address changes, from a link or from the back button. */
+export const onNavigation = (listener: () => void) => {
+  listeners.add(listener);
+  window.addEventListener("popstate", listener);
+  return () => {
+    listeners.delete(listener);
+    window.removeEventListener("popstate", listener);
+  };
+};
+
+/**
+ * Swaps the address in place: no history entry, no scroll and no transition.
+ * The language switch uses it, because the page stays the same one.
+ */
+export const replacePath = (to: string) => {
+  window.history.replaceState(window.history.state, "", to);
+  listeners.forEach((notify) => notify());
+};
 
 export const navigate = (to: string) => {
   const url = new URL(to, window.location.origin);
@@ -53,15 +74,7 @@ export const navigate = (to: string) => {
 export const useRoute = (): Route => {
   const [route, setRoute] = useState<Route>(() => parse(window.location.pathname));
 
-  useEffect(() => {
-    const update = () => setRoute(parse(window.location.pathname));
-    listeners.add(update);
-    window.addEventListener("popstate", update);
-    return () => {
-      listeners.delete(update);
-      window.removeEventListener("popstate", update);
-    };
-  }, []);
+  useEffect(() => onNavigation(() => setRoute(parse(window.location.pathname))), []);
 
   return route;
 };
