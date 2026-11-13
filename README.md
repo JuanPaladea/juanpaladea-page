@@ -106,8 +106,7 @@ The same step writes a Content Security Policy into each of those pages as a
 `<meta>` tag. It hashes the inline script from the HTML it is writing, so the
 policy cannot fall out of step with it. `vercel.json` adds the headers a meta
 tag cannot carry, and the cache rules: a year for the hashed files under
-`/assets`, a day for `/icons` and `/img`. `.github/workflows/ci.yml` runs lint
-and build on every pull request.
+`/assets`, a day for `/icons` and `/img`.
 
 `/es` and `/es/projects/<id>` are the addresses to share with Spanish speakers:
 they open in Spanish and their link previews are in Spanish too. In the app,
