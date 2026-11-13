@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { useInView } from "../../hooks/useInView";
 import { prefersReducedMotion } from "../../hooks/useMediaQuery";
 
-const DURATION_MS = 1300;
+/** Short: the figures are small, and a long count reads as the page lagging. */
+const DURATION_MS = 800;
 
 /** Counts up the first time it scrolls into view. Screen readers get the total. */
 const CountUp = ({ value, suffix = "" }: { value: number; suffix?: string }) => {

@@ -90,7 +90,7 @@
 .rule-draw {
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 1100ms var(--ease-out);
+  transition: transform 800ms var(--ease-out);
 }
 
 [data-inview="true"] .rule-draw {
@@ -107,7 +107,7 @@
 .heading-mask > * {
   display: block;
   transform: translateY(110%);
-  transition: transform 900ms var(--ease-out) 60ms;
+  transition: transform 600ms var(--ease-out) 40ms;
 }
 
 [data-inview="true"] .heading-mask > * {
@@ -117,8 +117,8 @@
 [data-stagger] > * {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 700ms ease, transform 700ms var(--ease-out);
-  transition-delay: calc(var(--i, 0) * 80ms + 120ms);
+  transition: opacity 450ms ease, transform 500ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 60ms + 60ms);
 }
 
 [data-stagger] > :nth-child(2) { --i: 1; }
@@ -557,6 +557,7 @@
 @media print {
   [data-stagger] > *,
   .heading-mask > *,
+  .pl-node .pl-in,
   .rule-draw {
     opacity: 1 !important;
     transform: none !important;

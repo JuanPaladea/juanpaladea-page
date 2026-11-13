@@ -46,6 +46,9 @@ const PreferenceToggles = ({ className = "" }: { className?: string }) => {
             type="button"
             onClick={() => setLang(code)}
             aria-pressed={lang === code}
+            // Named in its own language, so it is read as a word and not as two letters.
+            aria-label={code === "es" ? "Español" : "English"}
+            lang={code}
             title={t(code === "es" ? ui.switchToSpanish : ui.switchToEnglish)}
             className={`px-2.5 py-1.5 font-medium uppercase transition-colors ${
               lang === code ? "bg-accent text-accent-contrast" : "text-body hover:text-heading"

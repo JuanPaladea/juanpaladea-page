@@ -20,7 +20,7 @@
           }
           root.classList.toggle("dark", theme === "dark");
 
-          var lang = /^\/es\/?$/.test(location.pathname) ? "es" : localStorage.getItem("portfolio-lang");
+          var lang = /^\/es(\/|$)/.test(location.pathname) ? "es" : localStorage.getItem("portfolio-lang");
           if (lang !== "en" && lang !== "es") {
             // First language in the browser's ordered list that the site ships.
             var tags = navigator.languages || [navigator.language || "en"];
@@ -54,13 +54,16 @@
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
-    <!-- The portrait is the LCP element: start fetching it before React boots. -->
+    <!--
+      The portrait is on the first screen at every width: start fetching it
+      before React boots. `imagesizes` has to match the <img> in HeroComponent.
+    -->
     <link
       rel="preload"
       as="image"
       href="/img/portrait-1024.jpeg"
       imagesrcset="/img/portrait-640.jpeg 575w, /img/portrait-1024.jpeg 919w"
-      imagesizes="(min-width: 1024px) 28rem, (min-width: 768px) 24rem, 90vw"
+      imagesizes="(min-width: 1280px) 28rem, (min-width: 1024px) 24rem, 6rem"
       fetchpriority="high"
     />
 

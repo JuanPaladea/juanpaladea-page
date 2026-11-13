@@ -11,6 +11,8 @@ import TechChip from "./ui/TechChip";
 import InternalLink from "./ui/InternalLink";
 import { ArrowRightIcon, ExternalLinkIcon, GitHubIcon } from "./ui/icons";
 
+const footerLink = "tap gap-1.5 text-body transition-colors hover:text-heading";
+
 const ProjectsComponent = () => {
   const { t } = usePreferences();
 
@@ -22,26 +24,31 @@ const ProjectsComponent = () => {
         title={t(sectionCopy.projects.title)}
         subtitle={t(sectionCopy.projects.subtitle)}
       />
-      <div className="container mx-auto px-5 py-12">
+      <div className="container mx-auto px-5 py-8 sm:py-12">
         <ul data-stagger className="grid gap-6 md:grid-cols-2">
           {projects.map((project) => (
             <li key={project.id} className={`flex ${project.featured ? "md:col-span-2" : ""}`}>
-              <TiltCard
-                className={`flex w-full flex-col overflow-hidden rounded-xl border border-line bg-surface hover:border-accent/60 ${
-                  project.featured ? "lg:flex-row-reverse" : ""
-                }`}
-              >
+              <TiltCard className="flex w-full flex-col overflow-hidden rounded-xl border border-line bg-surface hover:border-accent/60">
+                {/*
+                  The title and "case study" links below go to the same page,
+                  so this one is for the mouse only: no tab stop, not announced.
+                  The featured card has room to show the product and the
+                  drawing side by side; the others swap them on hover.
+                */}
                 <InternalLink
                   to={projectPath(project.id)}
+                  tabIndex={-1}
+                  aria-hidden
                   className={`group relative block overflow-hidden ${
-                    project.featured ? "lg:m-6 lg:w-[52%] lg:shrink-0 lg:self-start lg:rounded-lg lg:border lg:border-line" : ""
+                    project.featured ? "lg:grid lg:grid-cols-2 lg:gap-px lg:border-b lg:border-line lg:bg-line" : ""
                   }`}
-                  aria-label={`${project.title}, ${t(ui.caseStudy)}`}
                 >
                   <ProjectCover id={project.id} />
                   {/* The drawing tells the idea; hovering shows the real product. Touch screens cannot hover, so they get the product. */}
                   <img
-                    className="absolute inset-0 h-full w-full object-cover object-top opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100 [@media(hover:none)]:opacity-100"
+                    className={`absolute inset-0 h-full w-full object-cover object-top opacity-0 transition-opacity duration-500 group-hover:opacity-100 [@media(hover:none)]:opacity-100 ${
+                      project.featured ? "lg:static lg:order-first lg:opacity-100" : ""
+                    }`}
                     src={project.image}
                     alt=""
                     width={project.imageWidth}
@@ -54,35 +61,47 @@ const ProjectsComponent = () => {
                   </span>
                 </InternalLink>
 
-                <div className="relative z-[2] flex flex-grow flex-col p-6">
-                  <h3 className="title-font mb-2 text-2xl font-medium text-heading">
-                    <InternalLink to={projectPath(project.id)} className="transition-colors hover:text-accent-soft">
-                      {project.title}
-                    </InternalLink>
-                  </h3>
-                  <p className="mb-4 leading-relaxed">{t(project.description)}</p>
+                <div
+                  className={`relative z-[2] flex flex-grow flex-col p-6 ${
+                    project.featured ? "lg:grid lg:grid-cols-2 lg:gap-x-12" : ""
+                  }`}
+                >
+                  <div>
+                    <h3 className="title-font mb-2 text-2xl font-medium text-heading">
+                      <InternalLink to={projectPath(project.id)} className="transition-colors hover:text-accent-soft">
+                        {project.title}
+                      </InternalLink>
+                    </h3>
+                    <p className="mb-4 leading-relaxed">{t(project.description)}</p>
+                  </div>
 
-                  <ul className="mb-5 space-y-1.5 text-sm">
-                    {t(project.highlights).map((highlight) => (
-                      <li key={highlight} className="flex gap-2">
-                        <span aria-hidden="true" className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-soft" />
-                        {highlight}
-                      </li>
-                    ))}
-                  </ul>
+                  <div>
+                    <ul className="mb-5 space-y-1.5 text-sm">
+                      {t(project.highlights).map((highlight) => (
+                        <li key={highlight} className="flex gap-2">
+                          <span aria-hidden="true" className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-soft" />
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
 
-                  <ul className="mb-5 flex flex-wrap gap-1.5">
-                    {project.stack.map((item) => (
-                      <li key={item.name}>
-                        <TechChip skill={item} size="sm" />
-                      </li>
-                    ))}
-                  </ul>
+                    <ul className="mb-5 flex flex-wrap gap-1.5">
+                      {project.stack.map((item) => (
+                        <li key={item.name}>
+                          <TechChip skill={item} size="sm" />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                  <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-4 text-sm">
+                  <div
+                    className={`mt-auto flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-4 text-sm ${
+                      project.featured ? "lg:col-span-2" : ""
+                    }`}
+                  >
                     <InternalLink
                       to={projectPath(project.id)}
-                      className="inline-flex items-center gap-1.5 font-medium text-accent-soft transition-opacity hover:opacity-80"
+                      className="tap gap-1.5 font-medium text-accent-soft transition-opacity hover:opacity-80"
                       aria-label={`${project.title}, ${t(ui.caseStudy)}`}
                     >
                       {t(ui.caseStudy)}
@@ -92,7 +111,7 @@ const ProjectsComponent = () => {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-body transition-colors hover:text-heading"
+                      className={footerLink}
                       aria-label={`${project.title}, ${t(project.demoLabel)} (${t(ui.opensInNewTab)})`}
                     >
                       {t(project.demoLabel)}
@@ -103,7 +122,7 @@ const ProjectsComponent = () => {
                         href={project.repo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-body transition-colors hover:text-heading"
+                        className={footerLink}
                         aria-label={`${project.title}, ${t(ui.sourceOnGitHub)}`}
                       >
                         <GitHubIcon className="h-4 w-4" />

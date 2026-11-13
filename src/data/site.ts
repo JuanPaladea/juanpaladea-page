@@ -10,6 +10,28 @@ export const site = {
   timezone: "UTC−3",
 } as const;
 
+const MS_PER_YEAR = 365.25 * 24 * 60 * 60 * 1000;
+
+/** Whole years since a date, so these figures do not go stale with the calendar. */
+const yearsSince = (date: string) => Math.floor((Date.now() - new Date(date).getTime()) / MS_PER_YEAR);
+
+const IMIPP_SINCE = "2021-02-01";
+
+/**
+ * The home page's tab title and share description. The build step writes them
+ * into the HTML of each language, over whatever index.html says, and the app
+ * keeps the open tab in step.
+ */
+export const pageTitle: Localized<string> = {
+  en: "Juan Paladea — Full-stack Developer, APIs & AI Automation",
+  es: "Juan Paladea — Desarrollador Full-stack, APIs y automatización con IA",
+};
+
+export const pageDescription: Localized<string> = {
+  en: `Juan Paladea is a full-stack developer in Buenos Aires who builds APIs, automations and AI agents. Creator of Vialo, Customer Success at Chatty, and more than ${yearsSince(IMIPP_SINCE)} years inside a pediatric research institute.`,
+  es: `Juan Paladea es un desarrollador full-stack de Buenos Aires que construye APIs, automatizaciones y agentes de IA. Creador de Vialo, Customer Success en Chatty y más de ${yearsSince(IMIPP_SINCE)} años dentro de un instituto de investigación en patologías pediátricas.`,
+};
+
 /** Served from this domain so the link never breaks or changes permissions. */
 export const cvUrl: Record<Lang, string> = {
   en: "/cv/juan-paladea-cv-en.pdf",
@@ -127,11 +149,6 @@ export const aboutMe: Localized<string>[] = [
   },
 ];
 
-const MS_PER_YEAR = 365.25 * 24 * 60 * 60 * 1000;
-
-/** Whole years since a date, so these figures do not go stale with the calendar. */
-const yearsSince = (date: string) => Math.floor((Date.now() - new Date(date).getTime()) / MS_PER_YEAR);
-
 export interface AboutStat {
   /** Numbers count up on reveal; anything else is shown as written. */
   value: number | string;
@@ -141,7 +158,7 @@ export interface AboutStat {
 
 export const aboutStats: AboutStat[] = [
   {
-    value: yearsSince("2021-02-01"),
+    value: yearsSince(IMIPP_SINCE),
     suffix: "+",
     label: {
       en: "years inside a research institute",
